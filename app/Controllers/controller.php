@@ -8,6 +8,6 @@
 
         public function diplayHeader()
         {
-            
+            include('/app/Views/header.php');
         }
     }
