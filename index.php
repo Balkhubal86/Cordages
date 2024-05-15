@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include('/app/Controllers/controller.php');
+    include('app/Controllers/controller.php');
     
     if (!isset($controller))
     {
@@ -11,8 +11,8 @@
         $controller->displayHeader();
 
         // Appel de la méthode d'affichage de la page
-        $controller->displayBody();
+        //$controller->displayBody();
 
         // Appel de la méthode d'affichage du pied de page
-        $controller->displayFooter();
+        //$controller->displayFooter();
     }

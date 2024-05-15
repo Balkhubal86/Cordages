@@ -4,53 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/public/assets/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/assets/css/header.css">
+    <link rel="stylesheet" href="public/assets/node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+
+    <link rel="stylesheet" href="public/assets/css/header.css">
 
     <title>Cord'âges</title>
 </head>
 <body>
     
-  <header class="main-header">
-    <div class="container">
-      <nav class="navbar navbar-expand-lg main-nav px-0">
-        <a class="navbar-brand" href="/mojo">
-					      <img src="http://rajeshdas.com/assets/images/logo.svg" alt="rajeshdas.com">
-					    </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-bar icon-bar-1"></span>
-                        <span class="icon-bar icon-bar-2"></span>
-                        <span class="icon-bar icon-bar-3"></span>
-                    </button>
-        <div class="collapse navbar-collapse" id="mainMenu">
-          <ul class="navbar-nav ml-auto text-uppercase f1">
-            <li>
-              <a href="#home" class="active active-first">home</a>
-            </li>
-            <li>
-              <a href="#about">about us</a>
-            </li>
-            <li>
-              <a href="#service">services</a>
-            </li>
-            <li>
-              <a href="#project">projects</a>
-            </li>
-            <li>
-              <a href="#team">team</a>
-            </li>
-            <li>
-              <a href="#testimony">testimonils</a>
-            </li>
-            <li>
-              <a href="#contact">contact</a>
-            </li>
-          </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Audacia</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Un autre visage de la solidarité <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          L'association
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Les pôles</a>
+          <a class="dropdown-item" href="#">Offres d'emploi</a>
+          <a class="dropdown-item" href="#">Actualités</a>
         </div>
-      </nav>
-    </div>
-    <!-- /.container -->
-  </header>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-outline-primary nav-link" href="#">Boutique</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-outline-primary nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-outline-primary nav-link" href="#">Devenir membre</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-outline-primary nav-link" href="#">Faire un don</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+	
+	
   
 
-<script src="/public/assets/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
