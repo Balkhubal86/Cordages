@@ -11,8 +11,8 @@
         $controller->displayHeader();
 
         // Appel de la méthode d'affichage de la page
-        //$controller->displayBody();
+        $controller->displayBody();
 
         // Appel de la méthode d'affichage du pied de page
-        //$controller->displayFooter();
+        $controller->displayFooter();
     }

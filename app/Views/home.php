@@ -1,26 +1,254 @@
-<div class="banner">
-		<div class="container">
-			<h1>Bienvenue</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec elit ex. Etiam elementum lectus et tempor molestie.</p>
-			<a href="#content" class="button button-primary">Learn More</a>
-		</div>
-	</div>
-</header>
+<?php
+	class Home
+	{
+		public function __construct()
+		{
+			$this->displayWelcome();
+			$this->displayHistory();
+			$this->displayValues();
+			$this->displayMission();
+			$this->displayTeam();
+		}
 
-<main>
-	<section id="content" class="content">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec elit ex. Etiam elementum lectus et tempor molestie. Pellentesque vestibulum dui sit amet dui volutpat sollicitudin. Etiam non erat finibus, iaculis nunc vel, convallis eros. Etiam efficitur tempor dui, vitae fringilla ipsum tristique quis. Aliquam erat volutpat. Cras ullamcorper ex et viverra vulputate. Nam lectus ligula, pretium nec risus nec, ultricies fringilla mauris. Proin quis venenatis neque, iaculis porta nulla. </p>
-				</div>
-				<div class="col-md-4">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec elit ex. Etiam elementum lectus et tempor molestie. Pellentesque vestibulum dui sit amet dui volutpat sollicitudin. Etiam non erat finibus, iaculis nunc vel, convallis eros. Etiam efficitur tempor dui, vitae fringilla ipsum tristique quis. Aliquam erat volutpat. Cras ullamcorper ex et viverra vulputate. Nam lectus ligula, pretium nec risus nec, ultricies fringilla mauris. Proin quis venenatis neque, iaculis porta nulla. </p>
-				</div>
-				<div class="col-md-4">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec elit ex. Etiam elementum lectus et tempor molestie. Pellentesque vestibulum dui sit amet dui volutpat sollicitudin. Etiam non erat finibus, iaculis nunc vel, convallis eros. Etiam efficitur tempor dui, vitae fringilla ipsum tristique quis. Aliquam erat volutpat. Cras ullamcorper ex et viverra vulputate. Nam lectus ligula, pretium nec risus nec, ultricies fringilla mauris. Proin quis venenatis neque, iaculis porta nulla. </p>
-				</div>
-			</div>
-		</div>
-	</section>
-</main>
+		public function displayWelcome()
+		{
+			?>
+
+			<!-- Première Section avec l'image en fond et le texte par dessus -->
+			<section id="welcome" class="section">
+        		<div class="img"></div>
+        		<div class="title">
+            		<h2>Bienvenue sur le site de l'association des Ateliers Cord'âges </h2>
+        		</div>
+        		<div class="welcome2">
+            		<p>Nous sommes une association reconnue d’intérêt général dédiée à la lutte contre l’isolement. Unique en France, notre mission est de cultiver le lien social, la bienveillance et la tolérance au cœur de notre action. À travers nos ateliers et nos initiatives, nous œuvrons chaque jour pour créer un environnement où chacun se sent accueilli, soutenu et valorisé. Que vous soyez une personne âgée, en situation de handicap ou simplement en quête de compagnie, nous sommes là pour vous offrir un espace où vous pourrez vous épanouir, échanger et tisser des liens durables. Rejoignez-nous dans cette belle aventure de solidarité et de partage. Ensemble, faisons de chaque jour une occasion de construire un monde où personne ne se sentira seul. Explorez notre site pour en savoir plus sur nos activités, nos événements à venir et comment vous pouvez vous impliquer. </p>
+        		</div>
+    		</section>  
+    		<!-- Fin Première Section -->
+
+			<?php
+		}
+
+		public function displayHistory()
+		{
+			?>
+
+			<!-- Partie Histoire -->
+			<section id="history" class="section">
+    			<div class="container">
+        			<div class="row">
+        				<div class="col-6">
+            				<h3 class="mb-3">Notre Histoire </h3>
+        				</div>
+        			</div>
+        		</div>
+			</section>
+    		<!-- Fin Histoire -->
+
+			<?php
+		}
+
+		public function displayValues()
+		{
+			?>
+			<br><br>
+			<!-- Partie Valeurs -->
+			<section id="values" class="section">
+        		<div class="container">
+            		<div class="row"></div>
+                		<div class="col-6">
+                    		<h3 class="mb-3">Nos Valeurs</h3>
+                		</div>
+            		</div>
+        		</div>
+    		</section>
+    <!-- Fin Valeurs -->
+
+			<?php
+		}
+
+		public function displayMission()
+		{
+			?>
+			<br><br>
+			<!-- Partie Missions -->
+			<section id="mission" class="section">
+        		<div class="container">
+            		<div class="row">
+                		<div class="col-6">
+                    		<h3 class="mb-3">Nos Missions Et Notre Accompagnement </h3>
+                		</div>
+            		</div>
+        		</div>
+    		</section>
+
+			<?php
+
+		}
+
+		public function displayTeam()
+		{
+			?>
+			<br>
+			<!-- Partie Equipe -->
+    <section id="team" class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-3">Notre Equipe </h3>
+            </div>
+            <div class="col-6 text-right">
+                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-12">
+                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Nom Prénom Personne 1</h4>
+                                            <p class="card-text">Intitulé Poste</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Nom Prénom Personne 2</h4>
+                                            <p class="card-text">Intitulé Poste</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Nom Prénom Personne 3</h4>
+                                            <p class="card-text">Intitulé Poste</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Nom Prénom Personne 4</h4>
+                                            <p class="card-text">Intitulé Poste</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Nom Prénom Personne 5</h4>
+                                            <p class="card-text">Intitulé Poste</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Nom Prénom Personne 6</h4>
+                                            <p class="card-text">Intitulé Poste</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Nom Prénom Personne 7</h4>
+                                            <p class="card-text">Intitulé Poste</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Nom Prénom Personne 8</h4>
+                                            <p class="card-text">Intitulé Poste</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Nom Prénom Personne 9</h4>
+                                            <p class="card-text">Intitulé Poste</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php
+		}
+
+	}
+?>
+
+
+
+
+
+
+
+    <br><br>
+
+
+    
+
+    
+
+    
+
+
+ 
+
+
+    
+    
+

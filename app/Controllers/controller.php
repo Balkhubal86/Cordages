@@ -12,7 +12,7 @@
         }
 
         // Méthode pour afficher la page du site (Contenu central)
-        public function displayPage()
+        public function displayBody()
         {
             if (isset($_GET['view']) && isset($_GET['action']))
             {
@@ -27,6 +27,7 @@
             else
             {
                 include('app/Views/home.php');
+                new Home;
             }
         }
 
@@ -34,4 +35,6 @@
         {
             include('app/Views/footer.php');
         }
+
+        
     }

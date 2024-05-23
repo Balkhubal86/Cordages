@@ -1,0 +1,97 @@
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  right: 0%;
+
+}
+
+.btn-primary.don {
+  background-color: #ea0d25;
+  border: #ea0d25;
+}
+
+.btn-secondary.membre {
+  background-color: #1d714f;
+  border: #1d714f;
+}
+
+.btn-success.benevole {
+  background-color: #ebd41c;
+  border: #ebd41c;
+}
+
+.btn-danger.mecene {
+  background-color: #e4066e;
+  border: #e4066e;
+}
+
+
+:root {
+  --header-height: 7rem;
+}
+
+html {
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+}
+
+
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+}
+
+.img {
+  background-image: url('/public/img/image2.jpg');
+  width: 100%;
+  height: 250px;
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.title {
+  position: relative;
+  text-align: center;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #ffffff; 
+  font-weight: normal;
+  text-decoration: underline solid rgb(255, 255, 255);
+  font-style: italic;
+  font-variant: normal;
+  text-transform: capitalize;
+      
+  left: 50%;
+  transform: translate(-50%, -200%); 
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  }
+
+
+.welcome h2{
+  position: relative;
+  text-align: center;
+  top: 30%;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #ffffff;
+  font-weight: normal;
+  text-decoration: underline solid rgb(255, 255, 255);
+  font-style: italic;
+  font-variant: normal;
+  text-transform: capitalize;
+  
+}
+
+.welcome2 p{
+  width: 80%;
+  margin-top: auto;
+  vertical-align: middle;
+  justify-content: center;
+  text-align: center;
+}
