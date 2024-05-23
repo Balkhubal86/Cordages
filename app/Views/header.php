@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEST Cord'âges</title>
+    <title>Les Ateliers Cord'âges</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
@@ -12,17 +12,18 @@
 <body>
     
     <!-- HEADER -->
-    <header class="header sticky-top navbar navbar-expand-lg " style="background-color: white; border-bottom: 1px solid;" >
+    <header class="header sticky-top navbar navbar-expand-lg shadow " style="background-color: white; " >
         <div class="container-fluid">
+
             <a href="index.php">
-                <img src="public/img/logo.jpg" width="100" height="100" alt="">
+                <img src="public/img/logo.jpg" width="100" height="100" alt="logo">
             </a>  
 
-            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" data-bs-theme="white">
+            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse bg-white rounded " id="navbarNav">
                 <ul class="navbar-nav" style="width: 95%;">
                     <li class="nav-item dropdown">
                         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
