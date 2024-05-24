@@ -1,5 +1,5 @@
 <?php
-	class Home
+	class viewHome
 	{
 		public function __construct()
 		{
@@ -34,7 +34,7 @@
             		</div>
 					
 				</div>
-    		</section>  
+    		</section><br>
     		<!-- Fin Première Section -->
 			
 			
@@ -110,21 +110,21 @@
                             <img src="public/img/logo point d'interrogation.jpg" alt="" class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 50%;"><br>
                             <h4>Nos valeurs</h4><br>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis molestiae id, rem debitis impedit ea tempora nam nulla quam suscipit esse. Odit voluptate, nesciunt a iure consectetur fugiat exercitationem perspiciatis.</p><br>
-                            <a href="">En savoir plus</a>
+                            <a href="index.php?view=value">En savoir plus</a>
                         </div>
 
                         <div class="col">
                             <img src="public/img/logo point d'interrogation.jpg" alt="" class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 50%;"><br>
                             <h4>Notre histoire</h4><br>
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt rem dolorem reprehenderit iusto repellendus sapiente molestiae hic eligendi eos aut quasi quibusdam cumque, repudiandae voluptatibus eaque, nihil fugiat dicta aspernatur!</p><br>
-                            <a href="">En savoir plus</a>
+                            <a href="index.php?view=history">En savoir plus</a>
                         </div>
 
                         <div class="col">
                             <img src="public/img/logo point d'interrogation.jpg" alt="" class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 50%;"><br>
                             <h4>Nos Missions</h4><br>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus facere harum unde dignissimos laudantium fuga eaque iure maiores voluptatum. Consectetur architecto, voluptatibus repellendus non ab nam quibusdam veritatis. Illum, sint.</p><br>
-                            <a href="">En savoir plus</a>
+                            <a href="index.php?view=mission">En savoir plus</a>
                         </div>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3 class="mb-3">Notre Equipe </h3>
+                <h3 class="mb-3">Notre Equipe</h3>
             </div>
             <div class="col-6 text-right">
                 <a class="btn btn-light mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
@@ -160,7 +160,7 @@
                             <div class="row">
 
                                 <div class="col-md-4 mb-3">
-                                    <div class="card shadow rounded" >
+                                    <div class="card shadow rounded" style="width: 25rem;">
                                         <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
                                         <div class="card-body">
                                             <h4 class="card-title">Nom Prénom Personne 1</h4>
@@ -171,7 +171,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <div class="card shadow rounded">
+                                    <div class="card shadow rounded" style="width: 25rem;">
                                         <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
                                         <div class="card-body">
                                             <h4 class="card-title">Nom Prénom Personne 2</h4>
@@ -181,7 +181,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <div class="card shadow rounded">
+                                    <div class="card shadow rounded" style="width: 25rem;">
                                         <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
                                         <div class="card-body">
                                             <h4 class="card-title">Nom Prénom Personne 3</h4>
@@ -197,7 +197,7 @@
                             <div class="row">
 
                                 <div class="col-md-4 mb-3">
-                                    <div class="card shadow rounded">
+                                    <div class="card shadow rounded" style="width: 25rem;">
                                         <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
                                         <div class="card-body">
                                             <h4 class="card-title">Nom Prénom Personne 4</h4>
@@ -209,7 +209,7 @@
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <div class="card shadow rounded">
+                                    <div class="card shadow rounded" style="width: 25rem;">
                                         <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
                                         <div class="card-body">
                                             <h4 class="card-title">Nom Prénom Personne 5</h4>
@@ -219,7 +219,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <div class="card shadow rounded">
+                                    <div class="card shadow rounded" style="width: 25rem;">
                                         <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
                                         <div class="card-body">
                                             <h4 class="card-title">Nom Prénom Personne 6</h4>
@@ -233,7 +233,7 @@
                             <div class="row">
 
                                 <div class="col-md-4 mb-3">
-                                    <div class="card shadow rounded">
+                                    <div class="card shadow rounded" style="width: 25rem;">
                                         <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
                                         <div class="card-body">
                                             <h4 class="card-title">Nom Prénom Personne 7</h4>
@@ -244,17 +244,16 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <div class="card shadow rounded">
+                                    <div class="card shadow rounded" style="width: 25rem;">
                                         <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
                                         <div class="card-body">
                                             <h4 class="card-title">Nom Prénom Personne 8</h4>
                                             <p class="card-text">Intitulé Poste</p>
-
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <div class="card shadow rounded">
+                                    <div class="card shadow rounded" style="width: 25rem;">
                                         <img class="img-fluid" alt="100%x280" src="public/img/jhon doe.avif">
                                         <div class="card-body">
                                             <h4 class="card-title">Nom Prénom Personne 9</h4>
@@ -268,6 +267,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="text-center">
+        <a href="index.php?view=team" class="link-light">En savoir plus</a>
     </div>
 </section>
 <?php

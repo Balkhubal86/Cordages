@@ -13,16 +13,16 @@
       <div class="col"> 
         <h4><ins>Accès Rapide</ins></h4> 
         <ul type="cercle" style="list-style: none; color: black;">
-          <li><a href="" class="link-dark">Association</a></li> 
-          <li><a href="" class="link-dark">Services</a></li> 
-          <li><a href="" class="link-dark">Location</a></li> 
-          <li><a href="" class="link-dark">Actualités</a></li> 
-          <li><a href="" class="link-dark">Contact</a></li>
+          <li><a href="index.php" class="link-dark text-decoration-none">Association</a></li> 
+          <li><a href="index.php?view=service" class="link-dark text-decoration-none">Services</a></li> 
+          <li><a href="index.php?view=rental" class="link-dark text-decoration-none">Location</a></li> 
+          <li><a href="index.php?view=news" class="link-dark text-decoration-none">Actualités</a></li> 
+          <li><a href="index.php?view=contact" class="link-dark text-decoration-none">Contact</a></li>
         </ul> 
       </div> 
 
       <div class="col">
-        <img src="public/img/logo.jpg" alt="logo" style="width: 45%">
+          <img src="public/img/logo.jpg" alt="logo" style="width: 45%">
       </div>
     </div> 
   </div>

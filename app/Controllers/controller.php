@@ -1,4 +1,6 @@
 <?php
+    include_once("tools/autoload.php");
+
     class controller
     {
         public function __construct()
@@ -14,20 +16,26 @@
         // Méthode pour afficher la page du site (Contenu central)
         public function displayBody()
         {
-            if (isset($_GET['view']) && isset($_GET['action']))
+            if (isset($_GET['view']))
             {
                 $view = $_GET['view'];
-                $action = $_GET['action'];
 
                 switch ($view)
                 {
-                    
+                    case 'value':
+                        new viewValue;
+                        break;
+                    case 'history':
+                        new viewHistory;
+                        break;
+                    case 'mission':
+                        new viewMission;
+                        break;
                 }
             }
             else
             {
-                include('app/Views/home.php');
-                new Home;
+                new viewHome;
             }
         }
 

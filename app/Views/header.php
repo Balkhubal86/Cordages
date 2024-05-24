@@ -30,11 +30,11 @@
                         Association
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#history">Notre Histoire</a></li>
-                            <li><a class="dropdown-item" href="#values">Nos Valeurs</a></li>
-                            <li><a class="dropdown-item" href="#mission">Nos Missions</a></li>
-                            <li><a class="dropdown-item" href="#team">Notre Equipe</a></li>
-                            <li><a class="dropdown-item" href="#">Nos Partenaire</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=history">Notre Histoire</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=value">Nos Valeurs</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=mission">Nos Missions</a></li>
+                            <li><a class="dropdown-item" href="index.php#team">Notre Equipe</a></li>
+                            <li><a class="dropdown-item" href="index.php#partenary">Nos Partenaire</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -78,6 +78,7 @@
                     <button type="button" class="btn btn-success benevole">Devenir Bénévole</button>
                     <button type="button" class="btn btn-danger mecene">Devenir Mécène</button>
                 </div>
+                <br>
             </div>
         </div>
     </header>
