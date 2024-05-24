@@ -1,3 +1,5 @@
+/* HEADER */
+
 .button-group {
   display: flex;
   justify-content: center;
@@ -99,3 +101,10 @@ html {
 
 /* Section Equipe */
 
+
+
+
+/* FOOTER*/
+.footer{
+  background-color: #1d714f;
+}
