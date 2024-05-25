@@ -31,6 +31,21 @@
                     case 'mission':
                         new viewMission;
                         break;
+                    case 'partner':
+                        new viewPartner;
+                        break;
+                    case 'service':
+                        new viewService;
+                        break;
+                    case 'rental':
+                        new viewRental;
+                        break;
+                    case 'news':
+                        new viewNews;
+                        break;
+                    case 'contact':
+                        new viewContact;
+                        break;
                 }
             }
             else

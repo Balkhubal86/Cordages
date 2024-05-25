@@ -33,8 +33,8 @@
                             <li><a class="dropdown-item" href="index.php?view=history">Notre Histoire</a></li>
                             <li><a class="dropdown-item" href="index.php?view=value">Nos Valeurs</a></li>
                             <li><a class="dropdown-item" href="index.php?view=mission">Nos Missions</a></li>
-                            <li><a class="dropdown-item" href="index.php#team">Notre Equipe</a></li>
-                            <li><a class="dropdown-item" href="index.php#partenary">Nos Partenaire</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=team">Notre Equipe</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=partner">Nos Partenaire</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -42,9 +42,9 @@
                         Services
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Maison</a></li>
-                            <li><a class="dropdown-item" href="#">Club</a></li>
-                            <li><a class="dropdown-item" href="#">Formation</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=service#">Maison</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=service#">Club</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=service#">Formation</a></li>
                         </ul>   
                     </li>
                     <li class="nav-item dropdown">
@@ -52,9 +52,9 @@
                         Location
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Salle</a></li>
-                            <li><a class="dropdown-item" href="#">Exposition</a></li>
-                            <li><a class="dropdown-item" href="#">Vélo</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=rental#">Salle</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=rental#">Exposition</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=rental#">Vélo</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -62,12 +62,12 @@
                         Actualités
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Évènement</a></li>
-                            <li><a class="dropdown-item" href="#">Presse</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=news#event">Évènement</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=news#article">Presse</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color : black">Contact</a>
+                        <a class="nav-link" href="index.php?view=contact" style="color : black">Contact</a>
                     </li>
                 </ul>
                 

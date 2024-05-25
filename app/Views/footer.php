@@ -1,44 +1,74 @@
 <!-- FOOTER -->
-<footer>
-  <section>
-    <br>
-  <div class="container text-center"> 
-    <div class="row"> 
+<footer class="mainfooter" role="contentinfo">
+  <div class="footer-middle">
+  <div class="container">
+    <div class="row">
 
-      <div class="col"> 
-        <h4><ins>Contact</ins></h4><br>
-        <p>Adresse : 15 All, de la Providence, <br>86000 Poitiers</p>  
-        <p><a>Tél :05 86 98 02 00</a></p> 
-      </div> 
-      <div class="col"> 
-        <h4><ins>Accès Rapide</ins></h4> 
-        <ul type="cercle" style="list-style: none; color: black;">
-          <li><a href="index.php" class="link-dark text-decoration-none">Association</a></li> 
-          <li><a href="index.php?view=service" class="link-dark text-decoration-none">Services</a></li> 
-          <li><a href="index.php?view=rental" class="link-dark text-decoration-none">Location</a></li> 
-          <li><a href="index.php?view=news" class="link-dark text-decoration-none">Actualités</a></li> 
-          <li><a href="index.php?view=contact" class="link-dark text-decoration-none">Contact</a></li>
-        </ul> 
-      </div> 
 
-      <div class="col">
-          <img src="public/img/logo.jpg" alt="logo" style="width: 45%">
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h4>Contact</h4>
+          <ul class="list-unstyled">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+              </svg>
+              <a href="https://maps.app.goo.gl/1uHD2mp1eXW1FWoA8" class="link-light text-decoration-none" target="_blank"> 15 All, de la Providence, <br>86000 Poitiers</a>
+            </li>
+
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+              </svg>
+              <a href="tel:0586980200" class="link-light text-decoration-none"> 05 86 98 02 00</a>
+            </li>
+            
+          </ul>
+        </div>
       </div>
-    </div> 
-  </div>
-  </section>
 
-  <section class="bg-success">
-    <div class="container-fluid" style="color: white; text-align: center;">
-      Les Ateliers Cord'âges - 
-      <a href="" style="color: white;">Mentions légales</a> - 
-      <a href="" style="color: white;">Politique de Confidentialité</a> 
 
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
-      </svg>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h4>Accès Rapide</h4>
+          <ul class="list-unstyled">
+            <li><a href="index.php" class="link-light text-decoration-none">Association</a></li> 
+            <li><a href="index.php?view=service" class="link-light text-decoration-none">Services</a></li> 
+            <li><a href="index.php?view=rental" class="link-light text-decoration-none">Location</a></li> 
+            <li><a href="index.php?view=news" class="link-light text-decoration-none">Actualités</a></li> 
+            <li><a href="index.php?view=contact" class="link-light text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <h4>Suivez-nous</h4>
+            <ul class="social-network social-circle">
+             <li><a href="https://www.facebook.com/people/Les-Ateliers-Cord%C3%A2ges/100064935270868/" target="_blank" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+             <li><a href="https://fr.linkedin.com/in/ateliers-cordages-5980a0264" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+            </ul>       
+        </div>
+
+      <div class="col-md-3">
+        <!--Column1-->
+        <div class="footer-pad">
+          <img src="public/img/logo.jpg" alt="logo" style="width: 45%" class="rounded"> 
+        </div>
+      </div>
+
+      
+      </div>
+
+        <div class="row">
+          <div class="col-md-12 copy">
+            <p class="text-center">&copy; Copyright 2024 - Les Ateliers Cord'âges.  Site réalisé par Baptiste FAU.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
 </footer>
 
 <!-- FIN FOOTER-->

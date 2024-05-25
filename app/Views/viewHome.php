@@ -9,6 +9,7 @@
 			// $this->displayMission();
             $this->displayAbout();
 			$this->displayTeam();
+            $this->displayPartner();
 		}
 
 		public function displayWelcome()
@@ -23,14 +24,14 @@
 					</div>
 				</div>
 				<br>
-				<div class="container">
+				<div class="container shadow">
 					<div class="row"></div>
-                		<div class="col-6">
-                    		<h3 class="mb-3">Présentation</h3>
+                		<div class="col text-center">
+                    		<br><br><h3 class="mb-3">Présentation</h3>
                 		</div>
 						<p>Nous sommes une association reconnue <b>d’intérêt général dédiée à la lutte contre l’isolement</b>. Unique en France, notre mission est de cultiver le <b>lien social</b>, <b>la bienveillance</b> et <b>la tolérance</b> au cœur de notre action. À travers nos ateliers et nos initiatives, nous œuvrons chaque jour pour créer un environnement où chacun se sent <b>accueilli</b>, <b>soutenu</b> et <b>valorisé</b>. 
 						Que vous soyez une personne âgée, en situation de handicap ou simplement en quête de compagnie, nous sommes là pour vous offrir un espace où vous pourrez vous <b>épanouir</b>, <b>échanger</b> et <b>tisser des liens durables</b>. <br><br>
-						Rejoignez-nous dans cette belle aventure de solidarité et de partage. Ensemble, faisons de chaque jour une occasion de construire un monde où personne ne se sentira seul. Explorez notre site pour en savoir plus sur nos activités, nos événements à venir et comment vous pouvez vous impliquer. </p>
+						Rejoignez-nous dans cette belle aventure de solidarité et de partage. Ensemble, faisons de chaque jour une occasion de construire un monde où personne ne se sentira seul. Explorez notre site pour en savoir plus sur nos activités, nos événements à venir et comment vous pouvez vous impliquer. </p><br><br>
             		</div>
 					
 				</div>
@@ -138,11 +139,11 @@
 			?>
 			<br>
 			<!-- Partie Equipe -->
-    <section id="team" class="pt-5 pb-5 bg-success">
+    <section id="team" class="pt-5 pb-5 bg-team">
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3 class="mb-3">Notre Equipe</h3>
+                <h3 class="mb-3 text-white">Notre Equipe</h3>
             </div>
             <div class="col-6 text-right">
                 <a class="btn btn-light mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
@@ -275,19 +276,105 @@
 <?php
 		}
 
+        public function displayPartner()
+        {
+            ?>
+            <br>
+            <h4 class="text-center">Ils nous soutiennent</h4>
+            <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="lc-block">
+                    <div id="carouselLogos" class="carousel slide pt-5 pb-4" data-bs-ride="carousel">
+
+                        <div class="carousel-inner px-5">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-6 col-lg-2 align-self-center">
+                                        <img class="d-block w-100 px-3 mb-3" src="https://cdn.livecanvas.com/media/logos/11.png" alt="">
+                                    </div>
+                                    <div class="col-6 col-lg-2  align-self-center">
+                                        <img class="d-block w-100 px-3  mb-3" src="https://cdn.livecanvas.com/media/logos/2.png" alt="">
+                                    </div>
+                                    <div class="col-6 col-lg-2  align-self-center">
+                                        <img class="d-block w-100 px-3  mb-3" src="https://cdn.livecanvas.com/media/logos/3.png" alt="">
+                                    </div>
+                                    <div class="col-6 col-lg-2  align-self-center">
+                                        <img class="d-block w-100 px-3  mb-3" src="https://cdn.livecanvas.com/media/logos/12.png" alt="">
+                                    </div>
+                                    <div class="col-6 col-lg-2  align-self-center">
+                                        <img class="d-block w-100 px-3  mb-3" src="https://cdn.livecanvas.com/media/logos/5.png" alt="">
+                                    </div>
+                                    <div class="col-6 col-lg-2  align-self-center">
+                                        <img class="d-block w-100 px-3  mb-3" src="https://cdn.livecanvas.com/media/logos/6.png" alt="">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-6 col-lg-2 align-self-center">
+                                        <img class="d-block w-100 px-3 mb-3" src="https://cdn.livecanvas.com/media/logos/11.png" alt="">
+                                    </div>
+                                    <div class="col-6 col-lg-2  align-self-center">
+                                        <img class="d-block w-100 px-3  mb-3" src="https://cdn.livecanvas.com/media/logos/2.png" alt="">
+                                    </div>
+                                    <div class="col-6 col-lg-2  align-self-center">
+                                        <img class="d-block w-100 px-3  mb-3" src="https://cdn.livecanvas.com/media/logos/3.png" alt="">
+                                    </div>
+                                    <div class="col-6 col-lg-2  align-self-center">
+                                        <img class="d-block w-100 px-3  mb-3" src="https://cdn.livecanvas.com/media/logos/12.png" alt="">
+                                    </div>
+                                    <div class="col-6 col-lg-2  align-self-center">
+                                        <img class="d-block w-100 px-3  mb-3" src="https://cdn.livecanvas.com/media/logos/5.png" alt="">
+                                    </div>
+                                    <div class="col-6 col-lg-2  align-self-center">
+                                        <img class="d-block w-100 px-3  mb-3" src="https://cdn.livecanvas.com/media/logos/6.png" alt="">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!--
+	<ol class="carousel-indicators list-unstyled position-relative mt-3">
+		<li data-bs-target="#carouselLogos" data-bs-slide-to="0" class="active bg-dark carousel-control-prev-icon"></li>
+		<li data-bs-target="#carouselLogos" data-bs-slide-to="1" class="bg-dark"></li>
+	</ol>
+	-->
+
+                        <div class="w-100 px-3 text-center mt-4">
+                            <a class="carousel-control-prev position-relative d-inline me-4" href="#carouselLogos" data-bs-slide="prev">
+                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="text-dark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
+                                </svg>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next position-relative d-inline" href="#carouselLogos" data-bs-slide="next">
+                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="text-dark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
+                                </svg>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+                </div><!-- /lc-block -->
+            </div><!-- /col -->
+        </div>
+    </div>
+
+    
+
+            <?php
+        }
+
 	}
 ?>
-
-    
-
-    
-
-    
-
-
- 
-
-
-    
-    
-
