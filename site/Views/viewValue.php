@@ -29,7 +29,7 @@
 
         <section>
             <div class="container">
-                <h3 class="mb-3 text-center">Aidez-nous à "pAnsez" l'isolement autrement</h3>
+                <h3 class="mb-3 text-center">Aidez-nous à "pansez" l'isolement autrement</h3>
                 
             </div><br>
             

@@ -26,7 +26,7 @@
 				<div class="container shadow">
 					<div class="row"></div>
                 		<div class="col text-center">
-                    		<br><br><h3 class="mb-3">Présentation</h3>
+                    		<br><h3 class="mb-3">Présentation</h3>
                 		</div>
 						<p>Nous sommes une association reconnue <b>d’intérêt général dédiée à la lutte contre l’isolement</b>. Unique en France, notre mission est de cultiver le <b>lien social</b>, <b>la bienveillance</b> et <b>la tolérance</b> au cœur de notre action. À travers nos ateliers et nos initiatives, nous œuvrons chaque jour pour créer un environnement où chacun se sent <b>accueilli</b>, <b>soutenu</b> et <b>valorisé</b>. 
 						Que vous soyez une personne âgée, en situation de handicap ou simplement en quête de compagnie, nous sommes là pour vous offrir un espace où vous pourrez vous <b>épanouir</b>, <b>échanger</b> et <b>tisser des liens durables</b>. <br><br>
@@ -223,7 +223,7 @@
         {
             ?>
             <br>
-            <h4 class="text-center">Ils nous soutiennent</h4>
+            <h4 class="text-center"><i><u>Ils nous soutiennent !</u></i></h4>
             <div class="container">
         <div class="row">
             <div class="col-md-12">
