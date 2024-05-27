@@ -42,8 +42,8 @@
                         Services
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?view=service#">Maison</a></li>
-                            <li><a class="dropdown-item" href="index.php?view=service#">Club</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=service#">La Maison du Lien Social</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=service#">Le Club des Z'aimants</a></li>
                             <li><a class="dropdown-item" href="index.php?view=service#">Formation</a></li>
                         </ul>   
                     </li>
