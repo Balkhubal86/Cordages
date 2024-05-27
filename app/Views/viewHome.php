@@ -12,6 +12,8 @@
             $this->displayPartner();
 		}
 
+        // Ces templates sont à utiliser pour réaaliser les sections en fonction de la BD 
+
 		public function displayWelcome()
 		{
 			?>

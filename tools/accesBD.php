@@ -1,0 +1,131 @@
+<?php
+    class AccessDB
+    {
+        private $host;
+        private $login;
+        private $password;
+        private $dataBase;
+        private $conn;
+
+        public function __construct()
+        {
+            $this->host = "127.0.0.1";
+            $this->login = "root";
+            $this->password = "";
+            $this->dataBase = "cordages";
+            $this->connexion();
+        }
+
+        public function connexion()
+        {
+			try
+			{
+				$this->conn = new PDO("mysql:host=".$this->host.";dbname=".$this->dataBase.";charset=utf8", $this->login, $this->password);
+			}
+			catch(PDOException $e)
+			{
+				die("Connection à la base de données échouée".$e->getMessage());
+			}
+        }
+
+		public function logUser($login,$pwd)
+		{   
+			//on va mettre le mot de passe saisie en clair par l'utilisateur en crypé MD5 pour pouvoir le comparer à celui dans la base de données.
+			$pwd=MD5($pwd);
+			
+			$requete='SELECT login FROM utilisateur where login = "'.$login.'" and password = "'.$pwd.'" ;';
+			$result=$this->conn->query($requete);
+
+			if ($result)
+    		{
+				if ($result->rowCount()==1)
+				{
+					//on va créer une ligne de log dans notre table logActionUtilisateur
+					//$requete='INSERT INTO logActionUsers (action,temps, idUtilisateur) VALUES (\'connexion\',\''.date('d-m-y h:i:s').'\',\''.$login.'\');';
+					$result=$this->conn->query($requete);
+					
+					return(1);
+				}
+				else
+				{
+					return(0);
+				}
+			}
+		}
+
+		// Fonction qui donne le l'idRole de l'utilisateur connecté
+		public function roleUser() {
+			$login = $_SESSION['login'];
+			$idRole=null;
+			$request = $this->conn->prepare('SELECT idRole FROM utilisateur WHERE login = "'.$login.'";');
+			if(!$request->execute())
+			{
+				die("Erreur dans le Role de l'utilisateur : ".$request->errorCode());
+			}
+			else
+			{
+				$idRole = $request->fetchAll();
+			}
+			return $idRole;	
+		}
+
+        // Fonction Chargement des tables dans la BD
+
+        public function Load($uneTable)
+	    {
+	    	$lesInfos=null;
+	    	$nbTuples=0;
+	    	$stringQuery="SELECT * FROM ";
+	    	$stringQuery = $this->specialCase($stringQuery,$uneTable);
+	    	$query = $this->conn->prepare($stringQuery);
+		  	if($query->execute())
+	    	{
+	    		while($row = $query->fetch(PDO::FETCH_NUM))
+	    		{
+	    			$lesInfos[$nbTuples] = $row;
+	    			$nbTuples++;
+	    		}
+	    	}
+	    	else
+	    	{
+	    		die('Problème dans chargement : '.$query->errorCode());
+	    	}
+	    	return $lesInfos;
+	    }
+
+	    private function specialCase($stringQuery,$uneTable)
+	    {
+	    	$uneTable = strtoupper($uneTable);
+	    	switch ($uneTable) 
+			{
+				case '':
+
+                    break;
+	    		default:
+	    			die('Pas une table valide');
+	    	}
+	    	return $stringQuery.";";
+	    }
+
+		public function giveNextId($table)
+		{
+			$stringQuery = $this->specialCase("SELECT * FROM ",$table);
+			$requete = $this->conn->prepare($stringQuery);
+
+			if($requete->execute())
+			{
+				$nb=0;
+				while($row = $requete->fetch(PDO::FETCH_NUM))
+				{
+					$nb = $row[0];
+				}
+				return $nb+1;
+			}
+			else
+			{
+				die('Erreur sur donneProchainIdentifiant : '+$requete->errorCode());
+			}
+		}
+
+    }
+?>
