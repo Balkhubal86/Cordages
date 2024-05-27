@@ -73,7 +73,7 @@
                 
                 
                 <div class="button-group">
-                    <button type="button" class="btn btn-primary don" onclick="location.href='https://www.helloasso.com/associations/les-ateliers-cord-ages/formulaires/2';">Faire un Don</button>
+                    <button type="button" class="btn btn-primary don" onclick="location.href='https://www.helloasso.com/associations/les-ateliers-cord-ages/formulaires/2';" >Faire un Don</button>
                     <button type="button" class="btn btn-secondary membre">Devenir Membre</button>
                     <button type="button" class="btn btn-success benevole">Devenir Bénévole</button>
                     <button type="button" class="btn btn-danger mecene">Devenir Mécène</button>

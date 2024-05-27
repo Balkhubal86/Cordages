@@ -17,19 +17,19 @@
             {
                 if (strcmp($result, 'Cont') == 0)
                 {
-                    include_once 'app/Containers/'.$class.'.php';
+                    include_once 'site/Containers/'.$class.'.php';
                 }
                 else
                 {
                     if (strcmp($result, 'Acti') == 0)
                     {
-                        include_once 'app/Actions/'.$class.'.php';
+                        include_once 'site/Actions/'.$class.'.php';
                     }
                     else
                     {
                         if (strcmp($result, 'view') == 0)
                         {
-                            include_once 'app/Views/'.$class.'.php';
+                            include_once 'site/Views/'.$class.'.php';
                         }
                     }
                 }

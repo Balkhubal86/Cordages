@@ -3,7 +3,7 @@
 
     class controller
     {
-        // Déclaration des variables privé 
+        // Déclaration des variables privées
 
         private $myBD;
 
@@ -15,7 +15,7 @@
 
         public function displayHeader()
         {
-            include('app/Views/header.php');
+            include('site/Views/header.php');
         }
 
         // Méthode pour afficher la page du site (Contenu central)
@@ -61,7 +61,7 @@
 
         public function displayFooter()
         {
-            include('app/Views/footer.php');
+            include('site/Views/footer.php');
         }
 
         

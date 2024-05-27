@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include('app/Controllers/controller.php');
+    include('site/Controllers/controller.php');
     
     if (!isset($controller))
     {
