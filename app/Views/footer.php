@@ -1,5 +1,5 @@
 <!-- FOOTER -->
-<footer class="mainfooter" role="contentinfo">
+<footer class="mainfooter" role="contentinfo" style="box-shadow: 0px -5px 5px grey;">
   <div class="footer-middle">
   <div class="container">
     <div class="row">

@@ -20,7 +20,7 @@
 
 			<!-- Première Section avec l'image en fond et le texte par dessus -->
 			<section id="welcome" class="section ">
-				<div class="img">
+				<div class="img shadow">
 					<div class="text">
 						<h2>Bienvenue sur le site de l'association des Ateliers Cord'âges </h2>
 					</div>

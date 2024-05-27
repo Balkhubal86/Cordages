@@ -3,8 +3,13 @@
 
     class controller
     {
+        // Déclaration des variables privé 
+
+        private $myBD;
+
         public function __construct()
         {
+            $this->myBD = new AccessDB();
 
         }
 

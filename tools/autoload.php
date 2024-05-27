@@ -11,7 +11,7 @@
         {
             if (strcmp($result, 'Acce') == 0)
             {
-                include_once 'Tools/'.$class.'.php';
+                include_once 'tools/'.$class.'.php';
             }
             else
             {
