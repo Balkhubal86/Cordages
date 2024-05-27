@@ -51,6 +51,9 @@
                     case 'contact':
                         new viewContact;
                         break;
+                    case 'team':
+                        new viewTeam;
+                        break;
                 }
             }
             else

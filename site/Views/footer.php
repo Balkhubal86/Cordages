@@ -61,7 +61,9 @@
       <div class="col-md-3">
         <!--Column1-->
         <div class="footer-pad">
-          <img src="public/img/logo.jpg" alt="logo" style="width: 45%" class="rounded"> 
+          <br>
+          <img src="public/img/logo.jpg" alt="logo" style="width: 45%; max-width: 150px;" class="rounded"> 
+          <br><br>
         </div>
       </div>
 
