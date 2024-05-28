@@ -54,6 +54,12 @@
                     case 'team':
                         new viewTeam;
                         break;
+                    case 'planning':
+                        new viewPlanning;
+                        break;
+                    case 'connexion':
+                        $this->controllerConnexion();
+                        break;
                 }
             }
             else
@@ -67,5 +73,19 @@
             include('site/Views/footer.php');
         }
 
+          
+        // CONTROLLERS
+        public function controllerConnexion()
+        {
+            $view = new viewConnexion;
+
+            if(isset($_GET['action']))
+            {
+                $view->inputUser();
+            }else{
+                
+                $view->displayConnexion();
+            }
+        }
         
     }

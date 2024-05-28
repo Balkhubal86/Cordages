@@ -72,19 +72,20 @@
                         Actualités
                         </button>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.php?view=planning" >Planning</a></li>
                             <li><a class="dropdown-item" href="index.php?view=news#event">Évènement</a></li>
                             <li><a class="dropdown-item" href="index.php?view=news#article">Presse</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?view=contact" style="color : black">Contact</a>
+                        <a class="nav-link" href="index.php?view=connexion" style="color : black">Connexion</a>
                     </li>
                 </ul>
                 
                 
                 <div class="button-group">
                     <button type="button" class="btn btn-primary don" onclick="location.href='https://www.helloasso.com/associations/les-ateliers-cord-ages/formulaires/2';" >Faire un Don</button>
-                    <button type="button" class="btn btn-secondary membre">Devenir Membre</button>
+                    <button type="button" class="btn btn-secondary membre">Devenir Adhérent</button>
                     <button type="button" class="btn btn-success benevole">Devenir Bénévole</button>
                     <button type="button" class="btn btn-danger mecene">Devenir Mécène</button>
                 </div>
