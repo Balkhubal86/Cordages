@@ -25,38 +25,33 @@
 
             <div class="collapse navbar-collapse bg-white rounded " id="navbarNav">
                 <ul class="navbar-nav" style="width: 95%;">
+                    <!-- Section Association -->
                     <li class="nav-item dropdown">
                         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Association
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?view=history">Notre Histoire</a></li>
-                            <li><a class="dropdown-item" href="index.php?view=value">Nos Valeurs</a></li>
-                            <li><a class="dropdown-item" href="index.php?view=mission">Nos Missions</a></li>
-                            <li>
-                                <a class="dropdown-item" href="index.php?view=team">Notre Equipe
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-lg" viewBox="0 0 16 16" style="color: red;">
-                                    <path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0zM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0"/>
-                                </svg></a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="index.php?view=partner">Nos Partenaire
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-lg" viewBox="0 0 16 16" style="color: red;">
-                                    <path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0zM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0"/>
-                                </svg></a>
-                            </li>
+                            <li><a class="dropdown-item" href="index.php?view=history&action=display">Notre Histoire</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=value&action=display">Nos Valeurs</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=mission&action=display">Nos Missions</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=team&action=display">Notre Equipe</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=partner&action=display">Nos Partenaire</a></li>
                         </ul>
                     </li>
+
+                    <!-- Section Service -->
                     <li class="nav-item dropdown">
                         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Services
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?view=service#">La Maison du Lien Social</a></li>
-                            <li><a class="dropdown-item" href="index.php?view=service#">Le Club des Z'aimants</a></li>
-                            <li><a class="dropdown-item" href="index.php?view=service#">Formation</a></li>
+                            <li><a class="dropdown-item" href="#">La Maison du Lien Social</a></li>
+                            <li><a class="dropdown-item" href="#">Le Club des Z'aimants</a></li>
+                            <li><a class="dropdown-item" href="#">Formation</a></li>
                         </ul>   
                     </li>
+
+                    <!-- Section Location -->
                     <li class="nav-item dropdown">
                         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Location
@@ -67,16 +62,20 @@
                             <li><a class="dropdown-item" href="index.php?view=rental#">Vélo</a></li>
                         </ul>
                     </li>
+
+                    <!-- Section Actualités-->
                     <li class="nav-item dropdown">
                         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Actualités
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?view=planning" >Planning</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=planning&action=display">Planning</a></li>
                             <li><a class="dropdown-item" href="index.php?view=news#event">Évènement</a></li>
                             <li><a class="dropdown-item" href="index.php?view=news#article">Presse</a></li>
                         </ul>
                     </li>
+
+                    <!-- Page Connexion -->
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?view=connexion" style="color : black">Connexion</a>
                     </li>
@@ -85,9 +84,9 @@
                 
                 <div class="button-group">
                     <button type="button" class="btn btn-primary don" onclick="location.href='https://www.helloasso.com/associations/les-ateliers-cord-ages/formulaires/2';" >Faire un Don</button>
-                    <button type="button" class="btn btn-secondary membre">Devenir Adhérent</button>
-                    <button type="button" class="btn btn-success benevole">Devenir Bénévole</button>
-                    <button type="button" class="btn btn-danger mecene">Devenir Mécène</button>
+                    <a href=""><button type="button" class="btn btn-secondary membre" >Devenir Adhérent</button></a>
+                    <a href=""><button type="button" class="btn btn-success benevole" href="" >Devenir Bénévole</button></a>
+                    <a href=""><button type="button" class="btn btn-danger mecene" href="" >Devenir Mécène</button></a>
                 </div>
                 <br>
             </div>

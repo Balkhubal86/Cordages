@@ -3,10 +3,7 @@
 	{
 		public function __construct()
 		{
-			$this->displayWelcome();
-            $this->displayAbout();
-			$this->displayTeam();
-            $this->displayPartner();
+			
 		}
 
         // Ces templates sont à utiliser pour réaaliser les sections en fonction de la BD 
@@ -53,21 +50,21 @@
                             <img src="public/img/logo point d'interrogation.jpg" alt="" class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 50%;"><br>
                             <h4>Notre histoire</h4><br>
                             <p><b>En 2015</b>, Marie et Véronique décident de fonder l'association les Ateliers Cord’âges et de concrétiser un projet qu'elles avaient mûrement réfléchi : la création d’une maison de rencontres, de loisirs et de stimulations innovant, centré sur la citoyenneté et le vivre-ensemble...</p><br>
-                            <a href="index.php?view=history">En savoir plus</a>
+                            <a href="index.php?view=history&action=display">En savoir plus</a>
                         </div>
 
                         <div class="col-sm">
                             <img src="public/img/valeur.PNG" alt="" class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 50%;"><br>
                             <h4>Nos valeurs</h4><br>
                             <p><b>Des solutions adaptées </b>: bien plus qu'une maison, un lieu de vie où une famille XXL vous acceuille chaleureusement, nourissant le réconfort à travers l'entraide et la convivialité...</p><br>
-                            <a href="index.php?view=value">En savoir plus</a>
+                            <a href="index.php?view=value&action=display">En savoir plus</a>
                         </div>
 
                         <div class="col-sm">
                             <img src="public/img/logo point d'interrogation.jpg" alt="" class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 50%;"><br>
                             <h4>Nos Missions</h4><br>
                             <p><b>Les Ateliers Cord'âges</b> ont pour mission de promouvoir le bien-être et la socialisation de leurs adhérents en proposant une variété d'activités. Ces activités comprennent des loisirs créatifs, des jeux de société, des sorties culturelles… Offrant ainsi un espace convivial où les participants peuvent se rencontrer, échanger et tisser des liens sociaux...</p><br>
-                            <a href="index.php?view=mission">En savoir plus</a>
+                            <a href="index.php?view=mission&action=display">En savoir plus</a>
                         </div>
                     </div>
                 </div>
@@ -86,7 +83,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3 class="mb-3 text-white"><a href="index.php?view=team" class="link-light text-decoration-none">Notre Equipe</a></h3>
+                <h3 class="mb-3 text-white"><a href="index.php?view=team&action=display" class="link-light text-decoration-none">Notre Equipe</a></h3>
             </div>
             <div class="col-6 text-right">
                 <a class="btn btn-light mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
@@ -215,7 +212,7 @@
         </div>
     </div>
     <div class="text-center">
-        <a href="index.php?view=team" class="link-light">En savoir plus</a>
+        <a href="index.php?view=team&action=display" class="link-light">En savoir plus</a>
     </div>
 </section>
 <?php
@@ -225,7 +222,7 @@
         {
             ?>
             <br>
-            <h4 class="text-center"><a href="index.php?view=partner" class="link-dark text-decoration-none"><i><u>Ils nous soutiennent !</u></i></a></h4>
+            <h4 class="text-center"><a href="index.php?view=partner&action=display" class="link-dark text-decoration-none"><i><u>Ils nous soutiennent !</u></i></a></h4>
             <div class="container">
         <div class="row">
             <div class="col-md-12">

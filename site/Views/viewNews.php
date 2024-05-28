@@ -1,7 +1,9 @@
 <?php
     class viewNews
     {
-        public function __construct()
+        public function __construct(){}
+
+        public function displayNews()
         {
             
         }

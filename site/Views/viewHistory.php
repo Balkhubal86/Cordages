@@ -1,12 +1,9 @@
 <?php
     class viewHistory
     {
-        public function __construct()
-        {
-            $this->displayTitle();
-        }
+        public function __construct(){}
 
-        public function displayTitle()
+        public function displayHistory()
         {
             ?>
             <!-- Première Section avec l'image en fond et le texte par dessus -->

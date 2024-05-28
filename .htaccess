@@ -1,3 +1,14 @@
+<IfModule mod_rewrite.c>
 RewriteEngine On
 
-
+# Bloquer les requêtes contenant des termes SQL couramment utilisés dans les attaques
+RewriteCond %{QUERY_STRING} union [NC,OR]
+RewriteCond %{QUERY_STRING} select [NC,OR]
+RewriteCond %{QUERY_STRING} insert [NC,OR]
+RewriteCond %{QUERY_STRING} update [NC,OR]
+RewriteCond %{QUERY_STRING} delete [NC,OR]
+RewriteCond %{QUERY_STRING} drop [NC,OR]
+RewriteCond %{QUERY_STRING} -- [NC,OR]
+RewriteCond %{QUERY_STRING} benchmark [NC]
+RewriteRule .* - [F,L]
+</IfModule>

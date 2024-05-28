@@ -10,7 +10,6 @@
         public function __construct()
         {
             $this->myBD = new AccessDB();
-
         }
 
         public function displayHeader()
@@ -21,50 +20,55 @@
         // Méthode pour afficher la page du site (Contenu central)
         public function displayBody()
         {
-            if (isset($_GET['view']))
+            if (isset($_GET['view']) && isset($_GET['action']))
             {
                 $view = $_GET['view'];
+                $action = $_GET['action'];
 
                 switch ($view)
                 {
                     case 'value':
-                        new viewValue;
+                        $this->controllerValue($action);
                         break;
                     case 'history':
-                        new viewHistory;
+                        $this->controllerHistory($action);
                         break;
                     case 'mission':
-                        new viewMission;
+                        $this->controllerMission($action);
                         break;
                     case 'partner':
-                        new viewPartner;
+                        $this->controllerPartner($action);
                         break;
                     case 'service':
-                        new viewService;
+                        $this->controllerService($action);
                         break;
                     case 'rental':
-                        new viewRental;
+                        $this->controllerRental($action);
                         break;
                     case 'news':
-                        new viewNews;
+                        $this->controllerNews($action);
                         break;
                     case 'contact':
-                        new viewContact;
+                        $this->controllerContact($action);
                         break;
                     case 'team':
-                        new viewTeam;
+                        $this->controllerTeam($action);
                         break;
                     case 'planning':
-                        new viewPlanning;
+                        $this->controllerPlanning($action);
                         break;
                     case 'connexion':
-                        $this->controllerConnexion();
+                        $this->controllerConnexion($action);
                         break;
                 }
             }
             else
             {
-                new viewHome;
+                $view = new viewHome;
+                $view->displayWelcome();
+                $view->displayAbout();
+			    $view->displayTeam();
+                $view->displayPartner();
             }
         }
 
@@ -73,18 +77,127 @@
             include('site/Views/footer.php');
         }
 
-          
-        // CONTROLLERS
-        public function controllerConnexion()
-        {
-            $view = new viewConnexion;
+        // ---------------------------------------
+        //              CONTROLLERS
+        // ---------------------------------------
 
-            if(isset($_GET['action']))
+        public function controllerValue($action)
+        {
+            switch($action)
             {
-                $view->inputUser();
-            }else{
-                
-                $view->displayConnexion();
+                case 'display':
+                    $view = new viewValue;
+                    $view->displayValue();
+                    break;
+            }
+        }
+
+        public function controllerHistory($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewHistory;
+                    $view->displayHistory();
+                    break;
+            }
+        }
+
+        public function controllerMission($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewMission;
+                    $view->displayMission();
+                    break;
+            }
+        }
+
+        public function controllerPartner($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewPartner;
+                    $view->displayPartner();
+                    break;
+            }
+        }
+
+        public function controllerService($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewService;
+                    $view->displayService();
+                    break;
+            }
+        }
+
+        public function controllerRental($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewRental;
+                    $view->displayRental();
+                    break;
+            }
+        }
+
+        public function controllerNews($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewNews;
+                    $view->displayNews();
+                    break;
+            }
+        }
+
+        public function controllerContact($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewContact;
+                    $view->displayContact();
+                    break;
+            }
+        }
+
+        public function controllerTeam($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewTeam;
+                    $view->displayTeam();
+                    break;
+            }
+        }
+
+        public function controllerPlanning($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewPlanning;
+                    $view->displayPlanning();
+                    break;
+            }
+        }
+
+        public function controllerConnexion($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewConnexion;
+                    $view->displayConnexion();
             }
         }
         

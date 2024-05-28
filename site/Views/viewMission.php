@@ -1,12 +1,9 @@
 <?php
     class viewMission
     {
-        public function __construct()
-        {
-            $this->displayTitle();
-        }
+        public function __construct(){}
 
-        public function displayTitle()
+        public function displayMission()
         {
             ?>
             <!-- Première Section avec l'image en fond et le texte par dessus -->

@@ -42,10 +42,10 @@
           <h4>Accès Rapide</h4>
           <ul class="list-unstyled">
             <li><a href="index.php" class="link-light text-decoration-none">Association</a></li> 
-            <li><a href="index.php?view=service" class="link-light text-decoration-none">Services</a></li> 
-            <li><a href="index.php?view=rental" class="link-light text-decoration-none">Location</a></li> 
-            <li><a href="index.php?view=news" class="link-light text-decoration-none">Actualités</a></li> 
-            <li><a href="index.php?view=contact" class="link-light text-decoration-none">Contact</a></li>
+            <li><a href="index.php?view=service&action=display" class="link-light text-decoration-none">Services</a></li> 
+            <li><a href="index.php?view=rental&action=display" class="link-light text-decoration-none">Location</a></li> 
+            <li><a href="index.php?view=news&action=display" class="link-light text-decoration-none">Actualités</a></li> 
+            <li><a href="index.php?view=contact&action=display" class="link-light text-decoration-none">Contact</a></li>
           </ul>
         </div>
       </div>

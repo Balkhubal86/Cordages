@@ -1,9 +1,7 @@
 <?php
     class viewConnexion
     {
-        public function __construct()
-        {
-        }
+        public function __construct(){}
 
         public function displayConnexion()
         {
@@ -66,6 +64,6 @@
 
         public function inputUser()
         {
-        
+            
         }
     }

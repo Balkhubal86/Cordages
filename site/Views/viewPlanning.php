@@ -1,10 +1,7 @@
 <?php
     class viewPlanning
     {
-        public function __construct()
-        {
-            $this->displayPlanning();
-        }
+        public function __construct(){}
 
         public function displayPlanning()
         {

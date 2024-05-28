@@ -1,12 +1,9 @@
 <?php
     class viewTeam
     {
-        public function __construct()
-        {
-            $this->displayTtile();
-        }
+        public function __construct(){}
 
-        public function displayTtile()
+        public function displayTeam()
         {
             ?>
             <!-- Première Section avec l'image en fond et le texte par dessus -->

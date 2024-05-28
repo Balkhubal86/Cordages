@@ -1,37 +1,26 @@
 <?php
     class viewValue
     {
-        public function __construct()
-        {
-            $this->displayTitle();
-            $this->displayValue();
-        }
+        public function __construct(){}
 
-        public function displayTitle()
+        public function displayValue()
         {
             ?>
             <!-- Première Section avec l'image en fond et le texte par dessus -->
 			<section id="welcome" class="section ">
 				<div class="img">
-					<div class="text">
+					<div class="text"> 
 						<h2>Nos Valeurs </h2>
 					</div>
 				</div>
 				<br>
-    		</section>  
-    		<!-- Fin Première Section -->
-            <?php
-        }
+    		</section>
+            <!-- Fin Première Section -->
 
-        public function displayValue()
-        {
-            ?>
-
-        <section>
-            <div class="container">
-                <h3 class="mb-3 text-center">Aidez-nous à "pansez" l'isolement autrement</h3>
-                
-            </div><br>
+            <section>
+                <div class="container">
+                    <h3 class="mb-3 text-center">Aidez-nous à "pansez" l'isolement autrement</h3>
+                </div><br>
             
             <div class="card mb-3 shadow" style="max-width: 540px; margin: auto">
                 <div class="row g-0">
