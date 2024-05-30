@@ -78,7 +78,7 @@
 
                     <!-- Page Connexion -->
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?view=connexion&action=display" style="color : black">Connexion</a>
+                        <a class="nav-link" href="index.php?view=connexion&action=connexion" style="color : black">Connexion</a>
                     </li>
                 </ul>
                 

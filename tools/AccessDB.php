@@ -21,6 +21,8 @@
 			try
 			{
 				$this->conn = new PDO("mysql:host=".$this->host.";dbname=".$this->dataBase.";charset=utf8", $this->login, $this->password);
+				$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 			}
 			catch(PDOException $e)
 			{
@@ -28,30 +30,71 @@
 			}
         }
 
-		public function logUser($login,$pwd)
+		// Fonction de connexion
+		public function logUser($email,$password)
 		{   
-			//on va mettre le mot de passe saisie en clair par l'utilisateur en crypé MD5 pour pouvoir le comparer à celui dans la base de données.
-			$pwd=MD5($pwd);
-			
-			$requete='SELECT login FROM utilisateur where login = "'.$login.'" and password = "'.$pwd.'" ;';
-			$result=$this->conn->query($requete);
 
-			if ($result)
-    		{
-				if ($result->rowCount()==1)
-				{
-					//on va créer une ligne de log dans notre table logActionUtilisateur
-					//$requete='INSERT INTO logActionUsers (action,temps, idUtilisateur) VALUES (\'connexion\',\''.date('d-m-y h:i:s').'\',\''.$login.'\');';
-					$result=$this->conn->query($requete);
-					
-					return(1);
-				}
-				else
-				{
-					return(0);
-				}
+			// Vérification du mot de passe lors de la connexion
+			$stmt = $pdo->prepare("SELECT password FROM users WHERE email = ?");
+			$stmt->execute([$_POST['username']]);
+			$user = $stmt->fetch();
+
+			if ($user && password_verify($_POST['password'], $user['password'])) {
+    		// Connexion réussie
+    		$_SESSION['username'] = $_POST['username'];
+    		echo "Connexion réussie!";
+			session_start();
+
+			// Redirection sur la page d'admin
+			
+
+			} else {
+    		// Connexion échouée
+    		echo "Nom d'utilisateur ou mot de passe incorrect.";
+			}
+ 
+		}
+
+		// Fonction d'enregistrement
+		public function registerUser($name, $firstname, $email, $password) 
+		{
+			// Hash du mot de passe
+			$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+		
+			// Prépare la requête 
+			$stmt = $this->conn->prepare("INSERT INTO users (id, name, firstname, email, password) VALUES (?, ?, ?, ?, ?)");
+			$stmt->bindValue(1, $this->giveNextId('users'));
+			$stmt->bindValue(2, $name);
+			$stmt->bindValue(3, $firstname);
+			$stmt->bindValue(4, $email);
+			$stmt->bindValue(5, $hashed_password);
+		
+			// Executer la requête
+			if ($stmt->execute()) {
+				// Si la requête est réussi, on met un message de confirmation et un lien pour aller sur la page de connexion
+				echo'Enregistrement réussi !';
+			} else {
+				echo "Erreur: " . $stmt->error;
+				return;
+			}
+
+		}
+
+		// Fonction qui vérifie si l'email est déjà utilisé
+		public function emailExist($email)
+		{
+			$stmt = $this->conn->prepare("SELECT id FROM users WHERE email = :email");
+			$stmt->bindParam(':email', $email);
+			$stmt->execute();
+			// Si un email existe déjà on arrête la fonction
+			if ($stmt->rowCount() > 0) {
+				echo "Cette adresse email est déjà utilisée par un autre utilisateur.";
+				return false;
+			}else{
+				return true;
 			}
 		}
+
 
 		// Fonction qui donne le l'idRole de l'utilisateur connecté
 		public function roleUser() {
@@ -98,8 +141,8 @@
 	    	$uneTable = strtoupper($uneTable);
 	    	switch ($uneTable) 
 			{
-				case '':
-
+				case 'USERS':
+					$stringQuery.='users';
                     break;
 	    		default:
 	    			die('Pas une table valide');
@@ -107,6 +150,7 @@
 	    	return $stringQuery.";";
 	    }
 
+		// Fonction qui donne l'ID suivant de la table 
 		public function giveNextId($table)
 		{
 			$stringQuery = $this->specialCase("SELECT * FROM ",$table);

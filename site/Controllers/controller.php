@@ -195,10 +195,62 @@
         {
             switch($action)
             {
-                case 'display':
+                case 'connexion':
                     $view = new viewConnexion;
                     $view->displayConnexion();
+                    break;
+                case 'register':
+                    $view = new viewConnexion;
+                    $view->displayRegister();
+                    break;
+                case 'inputRegister':
+                    // Vérification des données pour faire appel ensuite à la méthode d'enregistrement dans ma BD
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        // Validation des données
+                        $name = trim($_POST['name']);
+                        $firstname = trim($_POST['firstname']);
+                        $email = trim($_POST['email']);
+                        $password1 = trim($_POST['password1']);
+                        $password2 = trim($_POST['password2']);
+
+                        
+            
+                        // Vérification des mots de passe
+                        if ($password1 != $password2) {
+                            echo "Les mots de passe ne correspondent pas.";
+                            $this->returnRegister();
+                        }else{
+                            $password = $password2;
+
+                            // REGEX pour le mot de passe 
+                            $passwordPattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
+                            if (!preg_match($passwordPattern, $password)) {
+                                echo "Le mot de passe doit contenir au moins 8 caractères, dont au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.";
+                                $this->returnRegister();
+                            }else{
+                                // Vérification de l'email déà utilisé ou non
+                            if($this->myBD->emailExist($email) != false){
+                                $this->returnRegister();
+                                }else{
+                                    $this->myBD->registerUser($name, $firstname, $email, $password);
+                                }   
+                            }
+                        }
+                    }
+                    break;
+                case 'inputConnexion':
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+                        $email = trim($_POST['email']);
+                        $password = trim($_POST['password']);
+                    }
+                    break;
             }
+        }
+
+        // Fonction qui fait retourner à la page d'enregistrement
+        public function returnRegister()
+        {
+            echo'';
         }
         
     }

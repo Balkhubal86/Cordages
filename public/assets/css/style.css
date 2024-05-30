@@ -113,10 +113,149 @@ html {
   text-align: center;
   vertical-align: middle;
 }
-/* Page Histoire */
+/* Page Connexion */
+.btn-modal {
+  margin: 2em;
+}
 
-/* Page Missions */
+.btn {
+  border-radius: 0;
+  border: none;
+  -webkit-transition: background-color ease-out 0.5s;
+  -moz-transition: background-color ease-out 0.5s;
+  -o-transition: background-color ease-out 0.5s;
+  transition: background-color ease-out 0.5s;
+  &:hover {
+    -webkit-transition: box-shadow ease-out 0.3s;
+    -moz-transition: box-shadow ease-out 0.3s;
+    -o-transition: box-shadow ease-out 0.3s;
+    transition: box-shadow ease-out 0.3s;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  }
+}
 
+.btn-grey {
+  background: #797979;
+  color: #fff;
+  &:hover {
+    background: #575757;
+    color: #fff;
+  }
+}
+
+.close {
+  opacity: 0.4;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  z-index: 1;
+}
+
+.form-control {
+  border-radius: 0;
+  box-shadow: none;
+  &:focus {
+    box-shadow: none;
+    border-color: #999;
+  }
+}
+
+#myModal {
+  .modal-dialog {
+    /* max-width: 580px; */
+  }
+  .modal-content {
+    border-radius: 0;
+    border: none;
+    form {
+      label {
+        font-weight: normal;
+        margin-bottom: 2px;
+      }
+    }
+  }
+  .modal-footer {
+    text-align: left;
+  }
+}
+
+.nav-tabs {
+  &>li {
+    width: 50%;
+    a {
+      margin: 0;
+      border-radius: 0;
+      text-align: center;
+      font-weight: 600;
+    }
+  }
+}
+
+
+
+/* Optional Styling */
+.nav-tabs>li>a {
+  background-color: #ccc;
+  color: #666;
+}
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus {
+  background-color: #f7f7f7;
+  color: #5a5a5a;
+}
+.modal-content {
+  background-color: #f7f7f7;
+}
+/*.form-control {
+  border: none;
+}
+*/
+
+/* Form validation */
+.parsley-error {
+  border-color: #c00;
+  color: #c00;
+  background-color: #FFD9D9;
+}
+
+/* Forgot Password Section */
+#forgot-password-collapse {
+  border-top: 2px dashed #999;
+  margin-top: 30px;
+  h5 {
+    margin-top: 15px;
+  }
+  form {
+    margin-top: 20px;
+  }
+}
+
+.existing-customer {
+  display: none;
+}
+
+
+/* Enregistrement */
+.gradient-custom-3 {
+  /* fallback for old browsers */
+  background: #84fab0;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+  }
+  .gradient-custom-4 {
+  /* fallback for old browsers */
+  background: #84fab0;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+  }
 
 
 
