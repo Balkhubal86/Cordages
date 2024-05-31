@@ -35,25 +35,67 @@
 		{   
 
 			// Vérification du mot de passe lors de la connexion
-			$stmt = $pdo->prepare("SELECT password FROM users WHERE email = ?");
-			$stmt->execute([$_POST['username']]);
+			$stmt = $this->conn->prepare("SELECT password FROM users WHERE email = ?");
+			$stmt->execute([$_POST['email']]);
 			$user = $stmt->fetch();
 
 			if ($user && password_verify($_POST['password'], $user['password'])) {
     		// Connexion réussie
-    		$_SESSION['username'] = $_POST['username'];
-    		echo "Connexion réussie!";
-			session_start();
+    		?>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-red">Connexion Réussi ! </h5><br>
+                                <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
+                                <p class="card-text">Revenez sur la page pour continuer ou revenez sur l'acceuil</p>
+                                <a href="index.php" class="card-link">Acceuil</a>
+                                <a href="index.php?view=connexion&action=deconnect" class="card-link">Déconnexion</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>   
+            </div>
+            <br>
+            <?php
 
-			// Redirection sur la page d'admin
-			
+			// On commence la session et on créer des variables sessions qui pourront parcourir le site durant la navigation
+			$_SESSION['email'] = $email;
+			$_SESSION['idRole'] = $this->roleUser();
 
 			} else {
     		// Connexion échouée
-    		echo "Nom d'utilisateur ou mot de passe incorrect.";
+			?>
+    		<br>
+            <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-red">Connexion Echoué ! </h5><br>
+                                <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
+                                <p class="card-text">Réessayer ou connecter-vous ultérieurement.</p>
+                                <a href="index.php" class="card-link">Acceuil</a>
+                                <a href="index.php?view=connexion&action=connexion" class="card-link">Connexion</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>   
+            </div>
+            <br>
+            <?php
+
 			}
- 
+
 		}
+
+
 
 		// Fonction d'enregistrement
 		public function registerUser($name, $firstname, $email, $password) 
@@ -62,17 +104,19 @@
 			$hashed_password = password_hash($password, PASSWORD_BCRYPT);
 		
 			// Prépare la requête 
-			$stmt = $this->conn->prepare("INSERT INTO users (id, name, firstname, email, password) VALUES (?, ?, ?, ?, ?)");
+			$stmt = $this->conn->prepare("INSERT INTO users (id, name, firstname, email, password, idRole) VALUES (?, ?, ?, ?, ?, ?)");
 			$stmt->bindValue(1, $this->giveNextId('users'));
 			$stmt->bindValue(2, $name);
 			$stmt->bindValue(3, $firstname);
 			$stmt->bindValue(4, $email);
 			$stmt->bindValue(5, $hashed_password);
+			$stmt->bindValue(6, 2);
 		
 			// Executer la requête
 			if ($stmt->execute()) {
 				// Si la requête est réussi, on met un message de confirmation et un lien pour aller sur la page de connexion
-				echo'Enregistrement réussi !';
+				echo'Enregistrement réussi ! <br>';
+				echo'<a href=index.php?view=connexion&action=connexion>Connexion</a>';
 			} else {
 				echo "Erreur: " . $stmt->error;
 				return;
@@ -86,21 +130,20 @@
 			$stmt = $this->conn->prepare("SELECT id FROM users WHERE email = :email");
 			$stmt->bindParam(':email', $email);
 			$stmt->execute();
-			// Si un email existe déjà on arrête la fonction
+
 			if ($stmt->rowCount() > 0) {
-				echo "Cette adresse email est déjà utilisée par un autre utilisateur.";
-				return false;
+				return false;		// On retourne FALSE si il existe déjà
 			}else{
-				return true;
+				return true;		// On retourne TRUE si il n'existe pas
 			}
 		}
 
 
 		// Fonction qui donne le l'idRole de l'utilisateur connecté
 		public function roleUser() {
-			$login = $_SESSION['login'];
+			$email = $_SESSION['email'];
 			$idRole=null;
-			$request = $this->conn->prepare('SELECT idRole FROM utilisateur WHERE login = "'.$login.'";');
+			$request = $this->conn->prepare('SELECT idRole FROM users WHERE email = "'.$email.'";');
 			if(!$request->execute())
 			{
 				die("Erreur dans le Role de l'utilisateur : ".$request->errorCode());
@@ -110,6 +153,32 @@
 				$idRole = $request->fetchAll();
 			}
 			return $idRole;	
+		}
+
+		// Fonction de message en fonction du message
+		public function messageCard($message)
+		{
+			?>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-red">Erreur d'enregistrement !</h5><br>
+                                <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo $error;?></h6>
+                                <p class="card-text">Revenez sur la page pour continuer ou revenez sur l'acceuil</p>
+                                <a href="index.php" class="card-link">Acceuil</a>
+                                <a href="index.php?view=connexion&action=register" class="card-link">Revenir</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>   
+            </div>
+            <br>
+            <?php
 		}
 
         // Fonction Chargement des tables dans la BD

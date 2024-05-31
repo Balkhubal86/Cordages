@@ -16,7 +16,7 @@
           <div class="card-body p-5 text-center">
 
             <div class="mb-md-5 mt-md-4 pb-5">
-
+            <form action="index.php?view=connexion&action=inputConnexion" method="post">
               <h2 class="fw-bold mb-2 text-uppercase">Connexion</h2>
               <p class="text-white-50 mb-5">Entrez votre Email et Mot de passe !</p>
 
@@ -33,6 +33,7 @@
               <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Mot de Passe Oublié ?</a></p>
 
               <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Connexion</button>
+              </form>
 
 
             </div>
@@ -58,7 +59,7 @@
             ?>
             <br><br>
             <section>
-            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="mask d-flex align-items-center h-100">
 
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -105,7 +106,7 @@
                     <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">S'enregistrer</button>
                 </div>
 
-                <p class="text-center mt-5 mb-0 text-light">Déjà un compte ? <a href=""
+                <p class="text-center mt-5 mb-0 text-light">Déjà un compte ? <a href="index.php?view=connexion&action=connexion"
                     class="text-light fw-bold "><u>Connexion</u></a></p>
             <?php
               

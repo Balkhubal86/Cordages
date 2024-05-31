@@ -77,9 +77,26 @@
                     </li>
 
                     <!-- Page Connexion -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?view=connexion&action=connexion" style="color : black">Connexion</a>
-                    </li>
+                    <?php
+                    if (isset($_SESSION['email']))
+                    {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?view=connexion&action=deconnect" style="color : red">Déconnexion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.php?view=dashboard&action=display" class="nav-link" style="color: grey;">DashBoard</a>
+                        </li>
+                        <?php
+                    }else{
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?view=connexion&action=connexion" style="color : black">Connexion</a>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                    
                 </ul>
                 
                 
