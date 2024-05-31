@@ -77,7 +77,11 @@
 
         public function displayFooter()
         {
-            include('site/Views/footer.php');
+            if(isset($_GET['view']) && $_GET['view'] != 'dashbord')
+            {
+                include('site/Views/footer.php');
+            }
+            
         }
 
         // ------------------------------------------------------------------------------
@@ -284,7 +288,7 @@
             {
                 case 'display':
                     $view = new viewDashboard;
-                    $view->displayDashboard();
+                    $view->displayDashboardHome();
                     break;
             }
         }

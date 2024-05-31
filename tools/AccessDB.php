@@ -51,9 +51,9 @@
                             <div class="card-body">
                                 <h5 class="card-title text-red">Connexion Réussi ! </h5><br>
                                 <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
-                                <p class="card-text">Revenez sur la page pour continuer ou revenez sur l'acceuil</p>
-                                <a href="index.php" class="card-link">Acceuil</a>
-								<a href="index.php?view=dashboard&action=display">Dashboard</a>
+                                <p class="card-text">Dashboard disponible ou revenez à l'acceuil</p>
+                                <a href="index.php" class="card-link">Acceuil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="index.php?view=dashboard&action=display">Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="index.php?view=connexion&action=deconnect" class="card-link text-danger">Déconnexion</a>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
 		}
 
 
-		// Fonction qui donne le l'idRole de l'utilisateur connecté
+		// Fonction qui donne le l'idRole de l'utilisateur connecté (en fonction de l'email)
 		public function roleUser() {
 			$email = $_SESSION['email'];
 			$idRole=null;
@@ -151,9 +151,9 @@
 			}
 			else
 			{
-				$idRole = $request->fetchAll();
+				$idRole = $request->fetchAll(PDO::FETCH_ASSOC);
 			}
-			return $idRole;	
+			return $idRole[0];	
 		}
 
 		// Fonction de message en fonction du message
