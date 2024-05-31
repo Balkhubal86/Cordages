@@ -47,13 +47,14 @@
                 <div class="row">
                     <div class="col"></div>
                     <div class="col">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" style="width: 20rem;">
                             <div class="card-body">
                                 <h5 class="card-title text-red">Connexion Réussi ! </h5><br>
                                 <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
                                 <p class="card-text">Revenez sur la page pour continuer ou revenez sur l'acceuil</p>
                                 <a href="index.php" class="card-link">Acceuil</a>
-                                <a href="index.php?view=connexion&action=deconnect" class="card-link">Déconnexion</a>
+								<a href="index.php?view=dashboard&action=display">Dashboard</a>
+                                <a href="index.php?view=connexion&action=deconnect" class="card-link text-danger">Déconnexion</a>
                             </div>
                         </div>
                     </div>
