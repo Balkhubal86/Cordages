@@ -15,15 +15,15 @@
             }
             else
             {
-                if (strcmp($result, 'Cont') == 0)
+                if (strcmp($result, 'cont') == 0)
                 {
                     include_once 'site/Containers/'.$class.'.php';
                 }
                 else
                 {
-                    if (strcmp($result, 'Acti') == 0)
+                    if (strcmp($result, 'acti') == 0)
                     {
-                        include_once 'site/Actions/'.$class.'.php';
+                        include_once 'site/Models/'.$class.'.php';
                     }
                     else
                     {

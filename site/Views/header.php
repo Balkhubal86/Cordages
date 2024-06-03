@@ -89,7 +89,7 @@
                         {
                         ?>
                             <li class="nav-item">
-                                <a href="index.php?view=dashboard&action=display" class="nav-link" style="color: grey;">DashBoard</a>
+                                <a href="index.php?view=dashboard&action=home&manage=display" class="nav-link" style="color: grey;">DashBoard</a>
                             </li>
                         <?php
                         }else{

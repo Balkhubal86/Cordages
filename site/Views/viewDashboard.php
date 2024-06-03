@@ -11,7 +11,7 @@
             if($_SESSION['idRole']['idRole'] == 1){
                 ?>
 
-<div class="container-fluid">
+    <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -21,7 +21,7 @@
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <!-- Acceuil-->
                         <li class="nav-item">
-                            <a href="#" class="nav-link align-middle px-0">
+                            <a href="index.php?view=dashboard&action=home&manage=display" class="nav-link align-middle px-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                                 <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
                             </svg>
@@ -57,10 +57,10 @@
                             <span class="ms-1 d-none d-sm-inline">Partenaire</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> - Liste Partenaire </span></a>
+                                    <a href="index.php?view=dashboard&action=partner&manage=display" class="nav-link px-0"> - Liste Logo </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> - Modifier </span></a>
+                                    <a href="index.php?view=dashboard&action=partner&manage=add" class="nav-link px-0"> - Ajouter </a>
                                 </li>
                             </ul>
                         </li>
@@ -111,15 +111,120 @@
                     </ul>
                 </div>
             </div>
-        </div>
-    </div>            
+        
+                
                 <?php
             }else{
-                
+
             }
         }
 
         public function displayDashboardHome()
+        {
+            ?>
+            <div>
+                
+            </div>
+            <?php
+        }
+
+        /* Section Partenaire  */
+        public function displayPartner($listLogo)
+        {
+            ?>
+            <div class="col py-3">
+                <?php 
+                $list = explode("|",$listLogo);
+
+                echo '<table class="table table-striped table-bordered table-sm ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nom du fichier</th>
+                                <th scope="col">Chemin du logo</th>
+                                <th scope="col">Date de téléchargement</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                $nbE=0;
+                while ($nbE<sizeof($list))
+                {	
+                    $i=0;
+                    while (($i<4) && ($nbE<sizeof($list)))
+                    {
+                        echo '<td scope>';
+                        echo trim($list[$nbE]);
+                        $i++;
+                        $nbE++;
+                        echo '</td>';
+                    }
+                    if($nbE<sizeof($list))
+                    {
+                        echo'<td scope="col">
+                            <form action="index.php?view=dashboard&action=partner&manage=erase" method="post">
+                            <input type="hidden" name="id" value="'. $list[$nbE-4] . '">
+                            <input type="hidden" name="path" value="'. $list[$nbE-2] .'">
+                            <button type="submit">Supprimer</button>
+                            </form></td>';
+                    }
+                    echo '</tr>';
+                }
+                echo '</tbody>';
+                echo '</table>';
+                ?>
+                
+                <br><h3>Les Logos</h3>
+                <?php
+                // Affichage de tout les logos
+                $j=2;
+                while($j<sizeof($list))
+                {
+                    echo'<img src="'.$list[$j].'" alt="'.$list[$j-1].'" style="width:100px;"><br>';
+                    $j+=4;
+                }
+                ?>
+
+            </div>
+        </div>
+        </div>
+            <?php
+
+        }
+
+        public function addPartner()
+        {
+            ?>
+            <div class="col py-3">
+                <form action="index.php?view=dashboard&action=partner&manage=inputPartner" method="post" enctype="multipart/form-data">
+                    <label for="logo">Choisissez un logo (formats autorisés : jpg, jpeg, png, gif) :</label>
+                    <input type="file" name="logo" id="logo" accept="image/*" required>
+                    <button type="submit">Télécharger</button>
+                </form>
+            </div>
+        </div>
+        </div>
+            <?php
+
+        }
+
+        public function erasePartner()
+        {
+
+        }
+
+        /* Section Equipe */
+        public function displayTeam()
+        {
+
+        }
+
+        public function addTeam()
+        {
+
+        }
+
+        public function eraseTeam()
         {
 
         }

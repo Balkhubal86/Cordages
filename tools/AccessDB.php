@@ -33,7 +33,6 @@
 		// Fonction de connexion
 		public function logUser($email,$password)
 		{   
-
 			// Vérification du mot de passe lors de la connexion
 			$stmt = $this->conn->prepare("SELECT password FROM users WHERE email = ?");
 			$stmt->execute([$_POST['email']]);
@@ -214,6 +213,9 @@
 				case 'USERS':
 					$stringQuery.='users';
                     break;
+				case 'LOGOS':
+					$stringQuery.='logos';
+					break;
 	    		default:
 	    			die('Pas une table valide');
 	    	}
@@ -241,5 +243,85 @@
 			}
 		}
 
+		// Fonction pour Ajouter un LOGO
+		public function uploadLogo()
+		{
+			$targetDir = "uploads/logos/";
+			$uploadOk = 1;
+			$fileType = strtolower(pathinfo($_FILES["logo"]["name"], PATHINFO_EXTENSION));
+
+			// Vérifiez les types de fichiers autorisés (ici pour les logos on limite en JPG, JPEG, PNG)
+			$allowedTypes = ['jpg', 'jpeg', 'png'];
+			if (!in_array($fileType, $allowedTypes)) {
+    			echo "Désolé, seuls les fichiers JPG, JPEG, PNG sont autorisés.";
+    			$uploadOk = 0;
+			}
+
+			// Vérifiez si le fichier existe déjà
+			$targetFile = $targetDir . uniqid() . "." . $fileType;
+			if (file_exists($targetFile)) {
+			    echo "Désolé, le fichier existe déjà.";
+			    $uploadOk = 0;
+			}
+
+			// Limitez la taille du fichier (par exemple, 5MB maximum)
+			if ($_FILES["logo"]["size"] > 5000000) {
+			    echo "Désolé, votre fichier est trop volumineux.";
+			    $uploadOk = 0;
+			}
+
+			// Vérifiez si $uploadOk est à 0 à cause d'une erreur
+			if ($uploadOk == 0) 
+			{
+				echo "Désolé, votre fichier n'a pas été téléchargé.";
+				// Si tout est ok, essayez de télécharger le fichier
+			} else {
+			    if (move_uploaded_file($_FILES["logo"]["tmp_name"], $targetFile)) 
+				{
+        			echo "Le fichier ". htmlspecialchars( basename( $_FILES["logo"]["name"])). " a été téléchargé. <br>";
+
+        			// Prépare une déclaration SQL
+        			$stmt = $this->conn->prepare("INSERT INTO logos (name, path) VALUES (?, ?)");
+        
+        			// Définir les paramètres et exécuter
+        			$filename = basename($_FILES["logo"]["name"]);
+        			$filepath = $targetFile;
+
+					$stmt->bindValue(1, $filename);
+					$stmt->bindValue(2, $filepath);
+        			$stmt->execute();
+        
+        			echo "Les informations du fichier ont été sauvegardées dans la base de données.";
+
+    			} else {
+        			echo "Désolé, une erreur est survenue lors du téléchargement de votre fichier.";
+   				}
+			}
+		}
+
+		// Fonction pour SUPPRIMER un LOGO
+		public function eraseLogo()
+		{
+			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+				$id = $_POST['id'];
+				$path = $_POST['path'];
+			
+				// Supprimer le fichier du serveur
+				if (file_exists($path)) {
+					unlink($path);
+				}
+			
+				// Prépare une déclaration SQL pour supprimer l'enregistrement
+				$stmt = $this->conn->prepare("DELETE FROM logos WHERE id = ?");
+				$stmt->bindValue(1, $id);
+			
+				// Exécute la déclaration
+				if ($stmt->execute()) {
+					echo "Logo supprimé avec succès.";
+				} else {
+					echo "Erreur lors de la suppression du logo : " . $conn->error;
+				}
+			}
+		}
     }
 ?>

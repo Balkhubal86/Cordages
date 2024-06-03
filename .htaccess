@@ -12,3 +12,5 @@ RewriteCond %{QUERY_STRING} -- [NC,OR]
 RewriteCond %{QUERY_STRING} benchmark [NC]
 RewriteRule .* - [F,L]
 </IfModule>
+
+php_value memory_limit 256M

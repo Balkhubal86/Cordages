@@ -7,9 +7,15 @@
 
         private $myBD;
 
+        private $allLogos;
+
         public function __construct()
         {
             $this->myBD = new AccessDB();
+
+            $this->allLogos = new containerLogo;
+            $this->loadLogo();
+
         }
 
         public function displayHeader()
@@ -77,8 +83,10 @@
 
         public function displayFooter()
         {
-            if(isset($_GET['view']) && $_GET['view'] != 'dashbord')
+            if((isset($_GET['view']) && $_GET['view'] == 'dashboard') || (isset($_GET['view']) && $_GET['view'] == 'connexion'))
             {
+                
+            }else{
                 include('site/Views/footer.php');
             }
             
@@ -284,17 +292,63 @@
 
         public function controllerDashboard($action)
         {
-            switch($action)
-            {
-                case 'display':
-                    $view = new viewDashboard;
-                    $view->displayDashboardHome();
-                    break;
-            }
+            $view = new viewDashboard;
+
+            if(isset($_GET['manage'])){
+                $manage = $_GET['manage'];
+
+                switch($action)
+                {
+                    case 'home':
+                        $view->displayDashboardHome();
+                        break;
+                    case 'partner':
+                        switch($manage)
+                        {
+                            case 'display':
+                                $listLogo = $this->allLogos->listLogo();
+                                $view->displayPartner($listLogo);
+                                break;
+                            case 'add':
+                                $view->addPartner();
+                                break;
+                            case 'erase':
+                                $this->myBD->eraseLogo();
+                                break;
+                            case 'inputPartner':
+                                $this->myBD->uploadLogo();
+                        }
+                        break;
+                    case 'team':
+                        switch($manage)
+                        {
+                            case 'display':
+                                $view->displayTeam();
+                                break;
+                        }
+                        break;
+                }
+            }    
         }
 
         // ------------------------------------ FIN CONTROLLER ---------------------------------------
 
+
+        // ------------------------------------------------------------------------------
+        //                          Chargement des Conteneurs
+        // ------------------------------------------------------------------------------
+
+        public function loadLogo()
+        {
+            $resultLogo = $this->myBD->Load('logos');
+            $nbE = 0;
+            while ($nbE<sizeof($resultLogo))
+            {
+                $dateLogo = $this->stringToDateTime($resultLogo[$nbE][3]);
+                $this->allLogos->addLogo($resultLogo[$nbE][0],$resultLogo[$nbE][1],$resultLogo[$nbE][2],$dateLogo);
+                $nbE++;
+            }
+        }
         
 
         // ------------------------------------------------------------------------------
@@ -325,6 +379,21 @@
             </div>
             <br>
             <?php
+        }
+
+        // Fonction qui convertit en DATETIME : aaaa-mm-jj 
+        function stringToDateTime($dateString, $format = 'Y-m-d H:i:s') {
+            // Crée un objet DateTime à partir de la chaîne en utilisant le format spécifié
+            $dateTime = DateTime::createFromFormat($format, $dateString);
+            
+            // Vérifie si la conversion a réussi
+            if ($dateTime === false) {
+                // Si la conversion a échoué, retourne un message d'erreur
+                throw new Exception("La chaîne de date/heure n'est pas au format attendu : " . $format);
+            }
+            
+            // Retourne l'objet DateTime
+            return $dateTime;
         }
         
     }
