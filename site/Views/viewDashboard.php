@@ -102,7 +102,7 @@
 
                         <!-- Compte -->
                         <li>
-                            <a href="#" class="nav-link px-0 align-middle">
+                            <a href="index.php?view=dashboard&action=account&manage=display" class="nav-link px-0 align-middle">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-gear" viewBox="0 0 16 16">
                             <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
                             </svg>
@@ -115,7 +115,7 @@
                 
                 <?php
             }else{
-
+                
             }
         }
 
@@ -227,6 +227,85 @@
 
         public function eraseTeam()
         {
+
+        }
+
+        /* Section Compte Personnel */
+        public function displayAccount($listInfoUser, $listRole)
+        {
+            // On récupère le libelle du Rôle de l'utilisateur
+            $allRole = explode("|",$listRole);
+            $nbE = 0;
+            while($nbE<sizeof($allRole))
+            {
+                if($allRole[$nbE] == $listInfoUser['idRole'])
+                {
+                    $libRole = $allRole[$nbE+1];
+                }
+                $nbE++;
+            }
+            // On récupère les autre infos directement dans la liste des informations
+            $idUser = $listInfoUser['id'];
+            $name = $listInfoUser['name'];
+            $firstname = $listInfoUser['firstname'];
+            $email = $listInfoUser['email'];
+                       
+
+            ?>
+            <link rel="stylesheet" href="public/assets/css/profile.css">
+            <div class="page-content page-container" id="page-content">
+                <div class="padding">
+                    <div class="row container d-flex justify-content-center">
+                        <div class="col-xl-6 col-md-12">
+                                                <div class="card user-card-full shadow">
+                                                    <div class="row m-l-0 m-r-0">
+                                                        <div class="col-sm-4 bg-team user-profile">
+                                                            <div class="card-block text-center text-white">
+                                                                <div class="m-b-25">
+                                                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                                                </div>
+                                                                <h6 class="f-w-600">Profil du Compte</h6>
+                                                                <a href="" class="text-light">Modifier</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <div class="card-block">
+                                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Prénom</p>
+                                                                        <h6 class="text-muted f-w-400"><?php echo $name ?></h6>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Nom</p>
+                                                                        <h6 class="text-muted f-w-400"><?php echo $firstname ?></h6>
+                                                                    </div>
+                                                                </div>
+                                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Email</p>
+                                                                        <h6 class="text-muted f-w-400"><?php echo $email ?></h6>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Droit</p>
+                                                                        <h6 class="text-muted f-w-400"><?php echo $libRole ?></h6>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="social-link list-unstyled m-t-40 m-b-10">
+                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
+                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
+                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             </div>
+                                                </div>
+                                            </div>
+            <?php
 
         }
     }

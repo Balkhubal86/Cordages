@@ -52,7 +52,7 @@
                                 <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
                                 <p class="card-text">Dashboard disponible ou revenez à l'acceuil</p>
                                 <a href="index.php" class="card-link">Acceuil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="index.php?view=dashboard&action=display">Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="index.php?view=dashboard&action=home">Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="index.php?view=connexion&action=deconnect" class="card-link text-danger">Déconnexion</a>
                             </div>
                         </div>
@@ -155,6 +155,27 @@
 			return $idRole[0];	
 		}
 
+		// Fonction pour récupérer les informations de l'utilisateur par email
+		public function getUserInfo($email) {
+			// Définition de la requête SQL
+			$request = "SELECT * FROM users WHERE email = :email";
+	
+			// Préparation de la requête pour éviter les injections SQL
+			$stmt = $this->conn->prepare($request);
+	
+			// Liaison du paramètre :email à la valeur de l'email fourni
+			$stmt->bindParam(':email', $email, PDO::PARAM_STR);
+	
+			// Exécution de la requête
+			$stmt->execute();
+	
+			// Récupération du résultat sous forme de tableau associatif
+			$userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+	
+			// Retourne les informations de l'utilisateur ou false si l'utilisateur n'est pas trouvé
+			return $userInfo;
+		}
+
 		// Fonction de message en fonction du message
 		public function messageCard($message)
 		{
@@ -215,6 +236,9 @@
                     break;
 				case 'LOGOS':
 					$stringQuery.='logos';
+					break;
+				case 'ROLE':
+					$stringQuery.='role';
 					break;
 	    		default:
 	    			die('Pas une table valide');

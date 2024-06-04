@@ -8,6 +8,7 @@
         private $myBD;
 
         private $allLogos;
+        private $allRoles;
 
         public function __construct()
         {
@@ -17,8 +18,12 @@
             // Temps de connexion à la session
             $this->verifierSessionExpiree();
 
+            // Chargement des containers
             $this->allLogos = new containerLogo;
             $this->loadLogo();
+
+            $this->allRoles = new containerRole;
+            $this->loadRole();
 
         }
 
@@ -331,6 +336,16 @@
                                 break;
                         }
                         break;
+                    case 'account':
+                        switch($manage)
+                        {
+                            case 'display':
+                                $listInfoUser = $this->myBD->getUserInfo($_SESSION['email']);
+                                $listRole = $this->allRoles->listRole();
+                                $view->displayAccount($listInfoUser, $listRole);
+                                break;
+                        }
+                        break;
                 }
             }    
         }
@@ -353,13 +368,24 @@
                 $nbE++;
             }
         }
+
+        public function loadRole()
+        {
+            $resultRole = $this->myBD->Load('role');
+            $nbE = 0;
+            while ($nbE<sizeof($resultRole))
+            {
+                $this->allRoles->addRole($resultRole[$nbE][0],$resultRole[$nbE][1]);
+                $nbE++;
+            }
+        }
         
 
         // ------------------------------------------------------------------------------
         //                              FONCTIONS UTILES
         // ------------------------------------------------------------------------------
 
-        // Fonction qui fait retourner à la page d'enregistrement 
+        // Fonction qui fait retourner à la page d'enregistrement si une erreur existe lors de l'enregistrement
         public function returnRegister($error)
         {
             ?>
@@ -402,18 +428,19 @@
 
         // Fonction pour le temps de Connexion
         private function verifierSessionExpiree() {
-            // Définir la durée de vie de la session en secondes (ici, 30 minutes)
-            $duration = 30 * 60;
+            if(isset($_SESSION['email'])){
+                // Définir la durée de vie de la session en secondes (30 minutes)
+                $duration = 30 * 60;
     
-            // Définir la date d'expiration de la session
-            $_SESSION['expiration'] = time() + $duration;
+                // Définir la date d'expiration de la session
+                $_SESSION['expiration'] = time() + $duration;
     
-            // Vérifier si la session est expirée à chaque chargement de page
-            if (time() > $_SESSION['expiration']) {
-                // Détruire la session et déconnecter l'utilisateur
-                session_destroy();
-                header('Location: /deconnexion');
-                exit();
-            }v
-        
+                // Vérifier si la session est expirée à chaque chargement de page
+                if (time() > $_SESSION['expiration']) {
+                    // Détruire la session et déconnecter l'utilisateur
+                    header('Location: index.php?view=connexion&action=deconnect');
+                    exit();
+                }
+            }
+        }
     }

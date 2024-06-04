@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Ateliers Cord'âges</title>
+    <script src="public/assets/js/timedeconnect.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
 
     <link rel="stylesheet" href="public/assets/css/style.css">
 
-    <script src="public/assets/js/timedeconnect.js"></script>
 </head>
 <body>
     
@@ -97,7 +97,7 @@
                         }else{
                             ?>
                             <li class="nav-item">
-                                <a href="index.php?view=dashboard&action=display" class="nav-link" style="color: grey;">Compte</a>
+                                <a href="index.php?view=dashboard&action=account&manage=display" class="nav-link" style="color: grey;">Compte</a>
                             </li>
                         <?php
                         }
@@ -115,10 +115,10 @@
                 
                 
                 <div class="button-group">
-                    <button type="button" class="btn btn-primary don" onclick="location.href='https://www.helloasso.com/associations/les-ateliers-cord-ages/formulaires/2';" >Faire un Don</button>
-                    <a href=""><button type="button" class="btn btn-secondary membre" >Devenir Adhérent</button></a>
-                    <a href=""><button type="button" class="btn btn-success benevole" href="" >Devenir Bénévole</button></a>
-                    <a href=""><button type="button" class="btn btn-danger mecene" href="" >Devenir Mécène</button></a>
+                    <button type="button" class="btn btn-primary don rounded" onclick="location.href='https://www.helloasso.com/associations/les-ateliers-cord-ages/formulaires/2';" >Faire un Don</button>
+                    <a href=""><button type="button" class="btn btn-secondary membre rounded" >Devenir Adhérent</button></a>
+                    <a href=""><button type="button" class="btn btn-success benevole rounded" href="" >Devenir Bénévole</button></a>
+                    <a href=""><button type="button" class="btn btn-danger mecene rounded" href="" >Devenir Mécène</button></a>
                 </div>
                 <br>
             </div>
