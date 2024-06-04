@@ -11,7 +11,11 @@
 
         public function __construct()
         {
+            // Création Accès Base de Donnée
             $this->myBD = new AccessDB();
+
+            // Temps de connexion à la session
+            $this->verifierSessionExpiree();
 
             $this->allLogos = new containerLogo;
             $this->loadLogo();
@@ -273,7 +277,7 @@
                             <div class="col">
                                 <div class="card" style="width: 18rem;">
                                     <div class="card-body">
-                                        <h5 class="card-title text-red">Vous vous êtes déconnecter !</h5><br>
+                                        <h5 class="card-title text-red">Vous avez été déconnecté !</h5><br>
                                         <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
                                         <p class="card-text">Revenez à l'acceuil ou reconnectez vous.</p>
                                         <a href="index.php" class="card-link">Acceuil</a>
@@ -395,5 +399,21 @@
             // Retourne l'objet DateTime
             return $dateTime;
         }
+
+        // Fonction pour le temps de Connexion
+        private function verifierSessionExpiree() {
+            // Définir la durée de vie de la session en secondes (ici, 30 minutes)
+            $duration = 30 * 60;
+    
+            // Définir la date d'expiration de la session
+            $_SESSION['expiration'] = time() + $duration;
+    
+            // Vérifier si la session est expirée à chaque chargement de page
+            if (time() > $_SESSION['expiration']) {
+                // Détruire la session et déconnecter l'utilisateur
+                session_destroy();
+                header('Location: /deconnexion');
+                exit();
+            }v
         
     }

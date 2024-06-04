@@ -175,16 +175,17 @@
                 ?>
                 
                 <br><h3>Les Logos</h3>
+                <div class="container">
                 <?php
                 // Affichage de tout les logos
                 $j=2;
                 while($j<sizeof($list))
                 {
-                    echo'<img src="'.$list[$j].'" alt="'.$list[$j-1].'" style="width:100px;"><br>';
+                    echo'<img src="'.$list[$j].'" alt="'.$list[$j-1].'" style="width:100px;">';
                     $j+=4;
                 }
                 ?>
-
+                </div>
             </div>
         </div>
         </div>

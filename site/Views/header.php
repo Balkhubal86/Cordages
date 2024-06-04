@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
 
     <link rel="stylesheet" href="public/assets/css/style.css">
+
+    <script src="public/assets/js/timedeconnect.js"></script>
 </head>
 <body>
     
