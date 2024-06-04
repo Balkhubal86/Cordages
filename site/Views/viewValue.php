@@ -69,15 +69,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0 text-light" style="text-align: justify;">
-                        <h3 class="mb-3"><u>Lorem</u></h3><br>
+                        <h3 class="mb-3"><u>Des valeurs Unique et Indispensable</u></h3><br>
                         <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut modi asperiores maiores ipsam quia magnam minima assumenda esse atque nostrum quod sint facere iure odio voluptatibus nemo, sit, eveniet optio?
-                        Nihil quaerat obcaecati ipsa ea vitae quibusdam architecto incidunt explicabo totam deleniti iste necessitatibus voluptates quasi quis cum, facere et quos quae temporibus harum vero! Eaque officia consectetur non voluptate.
-                        Esse adipisci similique magnam tempore animi, dolore reprehenderit tenetur ea reiciendis neque debitis nihil. Dolorem consectetur nostrum repellendus laborum, aliquid aliquam excepturi dolorum nihil maxime debitis accusantium. Consectetur, esse eligendi.
+                        Les Ateliers Cord'âges se consacrent à la lutte contre l'isolement et la précarité des personnes vulnérables, incluant les personnes âgées, celles en situation de handicap, ou souffrant de maladies telles que l'Alzheimer. Fondée sur des valeurs de solidarité, de respect et de convivialité, l'association vise à abolir les étiquettes sociales et médicales. En proposant un large éventail d'activités, comme des ateliers créatifs, des séances de relaxation (yoga, shiatsu), des sorties culturelles, des ateliers cuisine, des activités physiques adaptées, et bien d'autres, elle favorise le vivre-ensemble intergénérationnel. Ces activités permettent de créer des liens sociaux solides et de promouvoir l'autonomie et le développement personnel des participants.
                         </p>
                     </div>
                     <div class="col-sm-5 col-md-6">
-                        <img src="public/img/valeur2.PNG" alt="" class="img-fluid rounded" style="max-width: 75%">
+                        <img src="public/img/valeur2.PNG" alt="" class="img-fluid rounded" style="max-width: 65%">
                     </div>
                 </div>
             </div>
@@ -85,8 +83,8 @@
 
         <section>
             <div class="container shadow" style="text-align: justify;">
-                <br><h3>LOREM</h3><br>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci ea laudantium corrupti reprehenderit cum excepturi minus quisquam, earum quos quod tempore, quae reiciendis fuga? Nulla fugit libero dolorum cumque nisi.</p><br>
+                <br><br><h3 class="mb-3 text-center">Lutte contre l'isolement et inclusion intergénérationnelle</h3><br>
+                <p>L'association est particulièrement fière de son ambiance chaleureuse et inclusive, où les bénévoles et les bénéficiaires, âgés de 18 à 94 ans, peuvent se rencontrer et partager des moments de convivialité. Les bénévoles, formés et accompagnés, jouent un rôle clé en complétant l'équipe de professionnels. Des réunions d'équipe régulières et des formations spécifiques sont organisées pour garantir un accompagnement de qualité. Les Ateliers Cord'âges se veulent un lieu où chacun peut trouver sa place et s'épanouir, loin des discours stigmatisants, en favorisant des rencontres et des activités qui enrichissent la vie sociale et culturelle des participants. Grâce à cette approche, l'association réussit à créer une dynamique communautaire où les différences sont respectées et valorisées</p><br>
             </div>
         </section>
             <?php
