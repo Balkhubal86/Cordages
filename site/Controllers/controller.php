@@ -384,6 +384,7 @@
         // ------------------------------------------------------------------------------
         //                              FONCTIONS UTILES
         // ------------------------------------------------------------------------------
+        
 
         // Fonction qui fait retourner à la page d'enregistrement si une erreur existe lors de l'enregistrement
         public function returnRegister($error)

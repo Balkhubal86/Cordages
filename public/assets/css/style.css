@@ -53,9 +53,6 @@ html {
   opacity: 1;
   transform: translateX(0);
 }
-.container {
-  margin-top: 100vh; /* Juste pour la démonstration */
-}
 
 /* Home */
 .img {

@@ -20,7 +20,7 @@
 					</div>
 				</div>
 				<br>
-				<div class="container shadow">
+				<div class="container-xxl shadow">
 					<div class="row"></div>
                 		<div class="col text-center">
                     		<br><h3 class="mb-3">Présentation</h3>
@@ -43,8 +43,8 @@
             ?>
             <br>
             <section>
-                <div class="container text-center ">
-                    <div class="row animated-element">
+                <div class="container-xxl text-center ">
+                    <div class="row">
 
                     <div class="col-sm animated-element">
                             <img src="public/img/logo point d'interrogation.jpg" alt="" class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 50%;"><br>
@@ -81,7 +81,7 @@
 			<br>
 			<!-- Partie Equipe -->
     <section id="team" class="pt-5 pb-5 bg-team">
-    <div class="container">
+    <div class="container-xxl">
         <div class="row">
             <div class="col-6">
                 <h3 class="mb-3 text-white"><a href="index.php?view=team&action=display" class="link-light text-decoration-none">Notre Equipe</a></h3>
@@ -222,9 +222,8 @@
         public function displayPartner()
         {
             ?>
-            <br>
             <h4 class="text-center"><a href="index.php?view=partner&action=display" class="link-dark text-decoration-none"><i><u>Ils nous soutiennent !</u></i></a></h4>
-            <div class="container">
+            <div class="container-xxl">
         <div class="row">
             <div class="col-md-12">
                 <div class="lc-block">
