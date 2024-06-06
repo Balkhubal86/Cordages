@@ -222,6 +222,7 @@
         public function displayPartner()
         {
             ?>
+            <br><br>
             <h4 class="text-center"><a href="index.php?view=partner&action=display" class="link-dark text-decoration-none"><i><u>Ils nous soutiennent !</u></i></a></h4>
             <div class="container-xxl">
         <div class="row">
