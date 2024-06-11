@@ -74,7 +74,6 @@
                         Actualités
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?view=planning&action=display">Planning</a></li>
                             <li><a class="dropdown-item" href="index.php?view=news&action=display">Évènement</a></li>
                             <li><a class="dropdown-item" href="index.php?view=news#article">Presse</a></li>
                         </ul>

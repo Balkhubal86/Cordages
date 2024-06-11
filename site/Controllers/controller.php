@@ -69,9 +69,6 @@
                     case 'team':
                         $this->controllerTeam($action);
                         break;
-                    case 'planning':
-                        $this->controllerPlanning($action);
-                        break;
                     case 'connexion':
                         $this->controllerConnexion($action);
                         break;
@@ -86,7 +83,8 @@
                 $view->displayWelcome();
                 $view->displayAbout();
 			    $view->displayTeam();
-                $view->displayPartner();
+                $listLogo = $this->allLogos->listLogo();
+                $view->displayPartner($listLogo);
             }
         }
 
@@ -200,17 +198,6 @@
                 case 'display':
                     $view = new viewTeam;
                     $view->displayTeam();
-                    break;
-            }
-        }
-
-        public function controllerPlanning($action)
-        {
-            switch($action)
-            {
-                case 'display':
-                    $view = new viewPlanning;
-                    $view->displayPlanning();
                     break;
             }
         }

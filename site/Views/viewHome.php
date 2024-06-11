@@ -20,7 +20,7 @@
 					</div>
 				</div>
 				<br>
-				<div class="container-xxl shadow">
+				<div class="container-xxl shadow animated-element">
 					<div class="row"></div>
                 		<div class="col text-center">
                     		<br><h3 class="mb-3">Présentation</h3>
@@ -219,8 +219,18 @@
 <?php
 		}
 
-        public function displayPartner()
+        public function displayPartner($listLogo)
         {
+            $logos = explode('|', $listLogo);
+
+            // On créer une liste avec les chemins des logos directement via le conteneurs logos
+            $partners = array();
+            for ($i = 1; $i < count($logos); $i += 4) {
+                $partners[] = array('logo_path' => $logos[$i + 1]);
+            }
+
+            var_dump($partners);
+
             ?>
             <br><br>
             <h4 class="text-center"><a href="index.php?view=partner&action=display" class="link-dark text-decoration-none"><i><u>Ils nous soutiennent !</u></i></a></h4>
@@ -231,61 +241,23 @@
                     <div id="carouselLogos" class="carousel slide pt-5 pb-4" data-bs-ride="carousel">
 
                         <div class="carousel-inner px-5">
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-6 col-lg-2 align-self-center">
-                                        <img class="d-block w-100 px-3 mb-3" src="public/partners/l'escale.png" alt="">
-                                    </div>
-                                    <div class="col-6 col-lg-2  align-self-center">
-                                        <img class="d-block w-100 px-3  mb-3" src="public/partners/henri laborit.jpeg" alt="">
-                                    </div>
-                                    <div class="col-6 col-lg-2  align-self-center">
-                                        <img class="d-block w-100 px-3  mb-3" src="public/partners/les peps.png" alt="">
-                                    </div>
-                                    <div class="col-6 col-lg-2  align-self-center">
-                                        <img class="d-block w-100 px-3  mb-3" src="public/partners/audacia.png" alt="">
-                                    </div>
-                                    <div class="col-6 col-lg-2  align-self-center">
-                                        <img class="d-block w-100 px-3  mb-3" src="public/partners/balata.jpeg" alt="">
-                                    </div>
-                                    <div class="col-6 col-lg-2  align-self-center">
-                                        <img class="d-block w-100 px-3  mb-3" src="public/partners/ekidom.png" alt="">
+                        <!-- Boucle séparant par groupe de 6 logo pour l'affichage -->
+                        <?php $i = 0; ?>
+                        <?php foreach ($partners as $partner) { ?>
+                            <?php if ($i % 6 == 0) { ?>
+                                <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
+                                    <div class="row">
+                            <?php } ?>
+                                <div class="col-6 col-lg-2 align-self-center">
+                                    <img class="d-block w-100 px-3 mb-3" src="<?= $partner['logo_path'] ?>" alt="">
+                                </div>
+                            <?php if (($i + 1) % 6 == 0 || $i == count($partners) - 1) { ?>
                                     </div>
                                 </div>
-
+                            <?php } ?>
+                            <?php $i++; ?>
+                        <?php } ?>
                             </div>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-6 col-lg-2 align-self-center">
-                                        <img class="d-block w-100 px-3 mb-3" src="public/partners/esat essor.jpeg" alt="">
-                                    </div>
-                                    <div class="col-6 col-lg-2  align-self-center">
-                                        <img class="d-block w-100 px-3  mb-3" src="public/partners/france alzheimer.png" alt="">
-                                    </div>
-                                    <div class="col-6 col-lg-2  align-self-center">
-                                        <img class="d-block w-100 px-3  mb-3" src="public/partners/un chez soi d'abord.png" alt="">
-                                    </div>
-                                    <div class="col-6 col-lg-2  align-self-center">
-                                        <img class="d-block w-100 px-3  mb-3" src="public/partners/univ-poitiers.png" alt="">
-                                    </div>
-                                    <div class="col-6 col-lg-2  align-self-center">
-                                        <img class="d-block w-100 px-3  mb-3" src="public/partners/pari.jpeg" alt="">
-                                    </div>
-                                    <div class="col-6 col-lg-2  align-self-center">
-                                        <img class="d-block w-100 px-3  mb-3" src="public/partners/udaf.png" alt="">
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <!--
-	<ol class="carousel-indicators list-unstyled position-relative mt-3">
-		<li data-bs-target="#carouselLogos" data-bs-slide-to="0" class="active bg-dark carousel-control-prev-icon"></li>
-		<li data-bs-target="#carouselLogos" data-bs-slide-to="1" class="bg-dark"></li>
-	</ol>
-	-->
 
                         <div class="w-100 px-3 text-center mt-4">
                             <a class="carousel-control-prev position-relative d-inline me-4" href="#carouselLogos" data-bs-slide="prev">
