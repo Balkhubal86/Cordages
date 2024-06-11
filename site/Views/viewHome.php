@@ -229,8 +229,6 @@
                 $partners[] = array('logo_path' => $logos[$i + 1]);
             }
 
-            var_dump($partners);
-
             ?>
             <br><br>
             <h4 class="text-center"><a href="index.php?view=partner&action=display" class="link-dark text-decoration-none"><i><u>Ils nous soutiennent !</u></i></a></h4>

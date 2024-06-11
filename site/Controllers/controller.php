@@ -217,20 +217,19 @@
                 case 'inputRegister':
                     // Vérification des données pour faire appel ensuite à la méthode d'enregistrement dans ma BD
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                        // Validation des données
+                        // Récupération des informations de l'utilisateur
                         $name = trim($_POST['name']);
                         $firstname = trim($_POST['firstname']);
                         $email = trim($_POST['email']);
                         $password1 = trim($_POST['password1']);
                         $password2 = trim($_POST['password2']);
 
-                        // Vérification des mots de passe
+                        // Vérification des 2 mots de passe
                         if ($password1 != $password2) {
                             $error = "Les mots de passe ne correspondent pas.";
                             $this->returnRegister($error);
                         }else{
                             $password = $password2;
-
                             // REGEX pour le mot de passe 
                             $passwordPattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
                             if (!preg_match($passwordPattern, $password)) {
@@ -252,7 +251,6 @@
                     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         $email = trim($_POST['email']);
                         $password = trim($_POST['password']);
-
                         $this->myBD->logUser($email, $password);
                     }
                     break;

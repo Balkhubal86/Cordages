@@ -39,35 +39,63 @@
 			$user = $stmt->fetch();
 
 			if ($user && password_verify($_POST['password'], $user['password'])) {
-    		// Connexion réussie
-    		?>
-            <br>
-            <div class="container">
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col">
-                        <div class="card" style="width: 20rem;">
-                            <div class="card-body">
-                                <h5 class="card-title text-red">Connexion Réussi ! </h5><br>
-                                <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
-                                <p class="card-text">Dashboard disponible ou revenez à l'acceuil</p>
-                                <a href="index.php" class="card-link">Acceuil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="index.php?view=dashboard&action=home">Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="index.php?view=connexion&action=deconnect" class="card-link text-danger">Déconnexion</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col"></div>
-                </div>   
-            </div>
-            <br>
-            <?php
+				// On commence la session et on créer des variables sessions qui pourront parcourir le site durant la navigation
+				$_SESSION['email'] = $email;
+				$_SESSION['idRole'] = $this->roleUser();
 
-			// On commence la session et on créer des variables sessions qui pourront parcourir le site durant la navigation
-			$_SESSION['email'] = $email;
-			$_SESSION['idRole'] = $this->roleUser();
+				if($_SESSION['idRole'] == 1 ){
+				
+				// Card avec message de connexion réussi (Parti Admin)
+    			?>
+            	<br>
+            	<div class="container">
+                	<div class="row">
+                    	<div class="col"></div>
+                    	<div class="col">
+                        	<div class="card" style="width: 20rem;">
+                            	<div class="card-body">
+                                	<h5 class="card-title text-red">Connexion Réussi ! </h5><br>
+                                	<h6 class="card-subtitle mb-2 text-body-secondary"></h6>
+                                	<p class="card-text">Dashboard disponible ou revenez à l'acceuil</p>
+                                	<a href="index.php" class="card-link">Acceuil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="index.php?view=dashboard&action=home">Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                	<a href="index.php?view=connexion&action=deconnect" class="card-link text-danger">Déconnexion</a>
+                            	</div>
+                        	</div>
+                    	</div>
+                    	<div class="col"></div>
+                	</div>   
+            	</div>
+            	<br>
+            	<?php
+				}else{
 
+				// Card avec message de connexion réussi (Parti utilisateur Simple)
+				?>
+				<br>
+				<div class="container">
+					<div class="row">
+						<div class="col"></div>
+						<div class="col">
+							<div class="card" style="width: 20rem;">
+								<div class="card-body">
+									<h5 class="card-title text-red">Connexion Réussi ! </h5><br>
+									<h6 class="card-subtitle mb-2 text-body-secondary"></h6>
+									<p class="card-text">Information compte disponible ou revenez à l'acceuil</p>
+									<a href="index.php" class="card-link">Acceuil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="index.php?view=dashboard&action=account&manage=display">Compte</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="index.php?view=connexion&action=deconnect" class="card-link text-danger">Déconnexion</a>
+								</div>
+							</div>
+						</div>
+						<div class="col"></div>
+					</div>   
+				</div>
+				<br>
+				<?php
+				}
 			} else {
+
     		// Connexion échouée
 			?>
     		<br>
@@ -90,12 +118,8 @@
             </div>
             <br>
             <?php
-
 			}
-
 		}
-
-
 
 		// Fonction d'enregistrement
 		public function registerUser($name, $firstname, $email, $password) 

@@ -98,7 +98,7 @@
                 <div class="form-check d-flex justify-content-center mb-5">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" required/>
                   <label class="form-check-label" for="form2Example3g">
-                    J'ai lu et j'accepte les <a href="#!" class="text-light"><u>CGU/CGU</u></a>
+                    J'ai lu et j'accepte les <a href="index.php#" class="text-light" target="_blank"><u>Conditions Générales d'Utilisation</u></a>
                   </label>
                 </div>
 
