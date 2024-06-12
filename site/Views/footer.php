@@ -82,6 +82,6 @@
 <!-- FIN FOOTER-->
 
 
-
+<script src="public/assets/js/animation.js"></script>
 </body>
 </html>

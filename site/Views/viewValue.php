@@ -19,10 +19,10 @@
 
             <section>
                 <div class="container">
-                    <h3 class="mb-3 text-center">Aidez-nous à "pansez" l'isolement autrement</h3>
+                    <h3 class="mb-3 text-center"><u>Aidez-nous à "pansez" l'isolement autrement</u></h3>
                 </div><br>
             
-            <div class="card mb-3 shadow" style="max-width: 540px; margin: auto">
+            <div class="card mb-3 shadow animated-element" style="max-width: 540px; margin: auto">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="public/img/logo ampoule.jpg" class="img-fluid rounded-start" alt="...">
@@ -36,7 +36,7 @@
                 </div>
             </div>  
 
-            <div class="card mb-3 shadow" style="max-width: 540px; margin: auto">
+            <div class="card mb-3 shadow animated-element" style="max-width: 540px; margin: auto">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="public/img/poignée de main.png" class="img-fluid rounded-start" alt="...">
@@ -50,7 +50,7 @@
                 </div>
             </div>  
 
-            <div class="card mb-3 shadow" style="max-width: 540px; margin: auto">
+            <div class="card mb-3 shadow animated-element" style="max-width: 540px; margin: auto">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="public/img/coeur.png" class="img-fluid rounded-start" alt="...">
@@ -87,6 +87,8 @@
                 <p>L'association est particulièrement fière de son ambiance chaleureuse et inclusive, où les bénévoles et les bénéficiaires, âgés de 18 à 94 ans, peuvent se rencontrer et partager des moments de convivialité. Les bénévoles, formés et accompagnés, jouent un rôle clé en complétant l'équipe de professionnels. Des réunions d'équipe régulières et des formations spécifiques sont organisées pour garantir un accompagnement de qualité. Les Ateliers Cord'âges se veulent un lieu où chacun peut trouver sa place et s'épanouir, loin des discours stigmatisants, en favorisant des rencontres et des activités qui enrichissent la vie sociale et culturelle des participants. Grâce à cette approche, l'association réussit à créer une dynamique communautaire où les différences sont respectées et valorisées</p><br>
             </div>
         </section>
+
+
             <?php
         }
     }

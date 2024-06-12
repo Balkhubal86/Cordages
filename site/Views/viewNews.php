@@ -13,6 +13,7 @@
                         <h4 class="text-center">Restez connecté avec Cord’âges en suivant notre page Facebook officielle !</h4><br>
                         <p style="text-justify: auto;">L’isolement social est un défi croissant dans nos communautés, et Cord’âges propose des solutions pour y remédier. Notre objectif est de renforcer les échanges intergénérationnels à travers des activités enrichissantes qui créent des souvenirs partagés et favorisent la compréhension mutuelle. Grâce à cette page nous vous partageons régulièrement les activitées de notre association !</p>
                         <hr>
+                        <p>Tableau avec toutes les activités qui ont été proposées pour l’année 2022 </p>
                         <div class="text-center"><img src="public/img/activités.png" alt="" style="width: 100%; "></div><br><br>
                     </div><br>
 
