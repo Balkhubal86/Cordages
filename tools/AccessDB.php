@@ -280,6 +280,9 @@
 				case 'ROLE':
 					$stringQuery.='role';
 					break;
+				case 'TYPE_PDF':
+					$stringQuery.='type_pdf';
+					break;
 				case 'PDF':
 					$stringQuery.='pdf';
 					break;
@@ -432,14 +435,16 @@
 			        echo "Le fichier ". htmlspecialchars( basename( $_FILES["pdf"]["name"])). " a été téléchargé. <br>";
 
         		// Prépare une déclaration SQL
-        		$stmt = $this->conn->prepare("INSERT INTO pdf (name, path) VALUES (?, ?)");
+        		$stmt = $this->conn->prepare("INSERT INTO pdf (name, path, id_type_pdf) VALUES (?, ?, ?)");
         
         		// Définir les paramètres et exécuter
+				$idTypePdf = $_POST['typePdf'];
         		$filename = basename($_FILES["pdf"]["name"]);
         		$filepath = $targetFile;
 
 				$stmt->bindValue(1, $filename);
 				$stmt->bindValue(2, $filepath);
+				$stmt->bindValue(3, $idTypePdf);
         		$stmt->execute();
         
         		echo "Les informations du fichier ont été sauvegardées dans la base de données.";

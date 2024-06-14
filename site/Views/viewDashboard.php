@@ -247,6 +247,7 @@
                                 <th scope="col">Nom du fichier</th>
                                 <th scope="col">Chemin du PDF</th>
                                 <th scope="col">Date de téléchargement</th>
+                                <th scope="col">Type Pdf</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -255,7 +256,7 @@
                 while ($nbE<sizeof($list))
                 {	
                     $i=0;
-                    while (($i<4) && ($nbE<sizeof($list)))
+                    while (($i<5) && ($nbE<sizeof($list)))
                     {
                         echo '<td scope>';
                         echo trim($list[$nbE]);
@@ -267,8 +268,8 @@
                     {
                         echo'<td scope="col">
                             <form action="index.php?view=dashboard&action=pdf&manage=erase" method="post">
-                            <input type="hidden" name="id" value="'. $list[$nbE-4] . '">
-                            <input type="hidden" name="path" value="'. $list[$nbE-2] .'">
+                            <input type="hidden" name="id" value="'. $list[$nbE-5] . '">
+                            <input type="hidden" name="path" value="'. $list[$nbE-3] .'">
                             <button type="submit">Supprimer</button>
                             </form></td>';
                     }
@@ -284,13 +285,27 @@
             <?php
         }
 
-        public function addPdf()
+        public function addPdf($listTypePdf)
         {
+            $typePdf = explode('|', $listTypePdf);
+
             ?>
 
             <form action="index.php?view=dashboard&action=pdf&manage=inputPdf" method="post" enctype="multipart/form-data">
                 <label for="pdf">Choisissez un fichier PDF :</label>
-                <input type="file" name="pdf" id="pdf" accept="application/pdf" required>
+                <input type="file" name="pdf" id="pdf" accept="application/pdf" required><br>
+
+                <label for="page">Choisissez la page pour le PDF</label>
+                <select name="typePdf" id="typePdf">
+                <?php
+                    $nbE = 1;
+                    while ($nbE<sizeof($typePdf))
+                    {
+                        echo '<option value="'.$typePdf[$nbE-1].'">'.$typePdf[$nbE].'</option>';
+                        $nbE+=2;
+                    }
+                ?>
+                </select>
                 <button type="submit">Télécharger</button>
             </form>
 

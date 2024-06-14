@@ -9,6 +9,7 @@
 
         private $allLogos;
         private $allRoles;
+        private $allTypePdf;
         private $allPdf;
 
         public function __construct()
@@ -25,6 +26,9 @@
 
             $this->allRoles = new containerRole;
             $this->loadRole();
+
+            $this->allTypePdf = new containerTypePdf;
+            $this->loadTypePdf();
 
             $this->allPdf = new containerPdf;
             $this->loadPdf();
@@ -344,7 +348,8 @@
                                 $view->displayPdf($listPdf);
                                 break;
                             case 'add':
-                                $view->addPdf();
+                                $listTypePdf = $this->allTypePdf->listTypePdf();
+                                $view->addPdf($listTypePdf);
                                 break;
                             case 'erase':
                                 $this->myBD->erasePdf();
@@ -387,14 +392,27 @@
             }
         }
 
+        public function loadTypePdf()
+        {
+            $resultTypePdf = $this->myBD->Load('type_pdf');
+            $nbE = 0;
+            while ($nbE<sizeof($resultTypePdf))
+            {
+                $this->allTypePdf->addTypePdf($resultTypePdf[$nbE][0],$resultTypePdf[$nbE][1]);
+                $nbE++;
+            }
+        }
+
         public function loadPdf()
         {
             $resultPdf = $this->myBD->Load('pdf');
             $nbE = 0;
             while ($nbE<sizeof($resultPdf))
             {
+                $objectTypePdf = $this->allTypePdf->giveTypePdfById($resultPdf[$nbE][4]);
+
                 $datePdf = $this->stringToDateTime($resultPdf[$nbE][3]);
-                $this->allPdf->addPdf($resultPdf[$nbE][0],$resultPdf[$nbE][1],$resultPdf[$nbE][2],$datePdf);
+                $this->allPdf->addPdf($resultPdf[$nbE][0],$resultPdf[$nbE][1],$resultPdf[$nbE][2],$datePdf,$objectTypePdf);
                 $nbE++;
             }
         }

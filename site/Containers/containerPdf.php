@@ -9,9 +9,9 @@
             $this->pdfs = new ArrayObject();
         }
 
-        public function addPdf($id, $name, $path, $uploaded_at)
+        public function addPdf($id, $name, $path, $uploaded_at, $typePdf)
         {
-            $this->pdfs->append(new actionPdf($id, $name, $path, $uploaded_at));
+            $this->pdfs->append(new actionPdf($id, $name, $path, $uploaded_at,$typePdf));
         }
 
         public function listPdf()
