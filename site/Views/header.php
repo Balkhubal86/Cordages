@@ -62,9 +62,9 @@
                         Location
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?view=rental#">Salle</a></li>
-                            <li><a class="dropdown-item" href="index.php?view=rental#">Exposition</a></li>
-                            <li><a class="dropdown-item" href="index.php?view=rental#">Vélo</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=rental&action=display">Salle</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=rental&action=display">Exposition</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=rental&action=display">Vélo</a></li>
                         </ul>
                     </li>
 
@@ -74,7 +74,7 @@
                         Actualités
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?view=news&action=display">Évènement</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=news&action=display">Réseaux Sociaux</a></li>
                             <li><a class="dropdown-item" href="index.php?view=news#article">Presse</a></li>
                         </ul>
                     </li>

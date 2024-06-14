@@ -30,6 +30,10 @@
 			}
         }
 
+		// ----------------------------------------------------------------------
+		//							Connexion Utilisateur
+		// ----------------------------------------------------------------------
+
 		// Fonction de connexion
 		public function logUser($email,$password)
 		{   
@@ -42,6 +46,8 @@
 				// On commence la session et on créer des variables sessions qui pourront parcourir le site durant la navigation
 				$_SESSION['email'] = $email;
 				$_SESSION['idRole'] = $this->roleUser();
+
+
 
 				if($_SESSION['idRole'] == 1 ){
 				
@@ -121,6 +127,10 @@
 			}
 		}
 
+		// ----------------------------------------------------------------------
+		//							Enregistrement Utilisateur
+		// ----------------------------------------------------------------------
+
 		// Fonction d'enregistrement
 		public function registerUser($name, $firstname, $email, $password) 
 		{
@@ -161,6 +171,10 @@
 				return true;		// On retourne TRUE si il n'existe pas
 			}
 		}
+
+		// ----------------------------------------------------------------------
+		//							Gestion Utilisateur
+		// ----------------------------------------------------------------------
 
 
 		// Fonction qui donne le l'idRole de l'utilisateur connecté (en fonction de l'email)
@@ -226,7 +240,9 @@
             <?php
 		}
 
-        // Fonction Chargement des tables dans la BD
+        // ----------------------------------------------------------------------
+		//							Container
+		// ----------------------------------------------------------------------
 
         public function Load($uneTable)
 	    {
@@ -264,6 +280,9 @@
 				case 'ROLE':
 					$stringQuery.='role';
 					break;
+				case 'PDF':
+					$stringQuery.='pdf';
+					break;
 	    		default:
 	    			die('Pas une table valide');
 	    	}
@@ -290,6 +309,10 @@
 				die('Erreur sur donneProchainIdentifiant : '+$requete->errorCode());
 			}
 		}
+
+		// ----------------------------------------------------------------------
+		//							Gestion LOGO
+		// ----------------------------------------------------------------------
 
 		// Fonction pour Ajouter un LOGO
 		public function uploadLogo()
@@ -366,10 +389,102 @@
 				// Exécute la déclaration
 				if ($stmt->execute()) {
 					echo "Logo supprimé avec succès.";
+					// On inscrit l'action dans la table "LOGACTUS" -> 'log action user'
+					//$this->actionLogUser("Supression Logo", $_SESSION[])
 				} else {
 					echo "Erreur lors de la suppression du logo : " . $conn->error;
 				}
 			}
+		}
+
+		// ----------------------------------------------------------------------
+		//							Gestion PDF
+		// ----------------------------------------------------------------------
+
+		// Téléchargement PDF
+		public function uploadPdf()
+		{
+			$targetDir = "uploads/pdf/";
+			$uploadOk = 1;
+			$fileType = strtolower(pathinfo($_FILES["pdf"]["name"], PATHINFO_EXTENSION));
+
+			// Vérifiez le type de fichier (PDF uniquement)
+			if ($fileType != "pdf") {
+    			echo "Désolé, seuls les fichiers PDF sont autorisés.";
+    			$uploadOk = 0;
+			}
+
+			// Vérifiez si le fichier existe déjà
+			$targetFile = $targetDir . uniqid() . "-" . basename($_FILES["pdf"]["name"]);
+
+			// Limitez la taille du fichier (par exemple, 5MB maximum)
+			if ($_FILES["pdf"]["size"] > 5000000) {
+			    echo "Désolé, votre fichier est trop volumineux.";
+			    $uploadOk = 0;
+			}
+
+			// Vérifiez si $uploadOk est à 0 à cause d'une erreur
+			if ($uploadOk == 0) {
+			    echo "Désolé, votre fichier n'a pas été téléchargé.";
+			// Si tout est ok, essayez de télécharger le fichier
+			} else {
+			    if (move_uploaded_file($_FILES["pdf"]["tmp_name"], $targetFile)) {
+			        echo "Le fichier ". htmlspecialchars( basename( $_FILES["pdf"]["name"])). " a été téléchargé. <br>";
+
+        		// Prépare une déclaration SQL
+        		$stmt = $this->conn->prepare("INSERT INTO pdf (name, path) VALUES (?, ?)");
+        
+        		// Définir les paramètres et exécuter
+        		$filename = basename($_FILES["pdf"]["name"]);
+        		$filepath = $targetFile;
+
+				$stmt->bindValue(1, $filename);
+				$stmt->bindValue(2, $filepath);
+        		$stmt->execute();
+        
+        		echo "Les informations du fichier ont été sauvegardées dans la base de données.";
+    			} else {
+        			echo "Désolé, une erreur est survenue lors du téléchargement de votre fichier.";
+    			}
+			}
+		}
+
+		// Suppression PDF
+		public function erasePdf()
+		{
+			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+				$id = $_POST['id'];
+				$path = $_POST['path'];
+			
+				// Supprimer le fichier du serveur
+				if (file_exists($path)) {
+					unlink($path);
+				}
+			
+				// Prépare une déclaration SQL pour supprimer l'enregistrement
+				$stmt = $this->conn->prepare("DELETE FROM pdf WHERE id = ?");
+				$stmt->bindValue(1, $id);
+			
+				// Exécute la déclaration
+				if ($stmt->execute()) {
+					echo "Fichier PDF supprimé avec succès.";
+				} else {
+					echo "Erreur lors de la suppression du fichier PDF : " . $this->conn->error;
+				}
+			}
+		}
+
+
+
+		// ----------------------------------------------------------------------
+		//							Action Utilisateur
+		// ----------------------------------------------------------------------
+		// Log Action User
+		public function actionLogUser($action, $idUser)
+		{
+			$stmt = $this->conn->prepare("INSERT INTO logactus (action, idUser) VALUES (?, ?)");
+			$stmt->bindValue(1, $action);
+			$stmt->bindValue(2, $idUSer);
 		}
     }
 ?>

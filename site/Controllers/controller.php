@@ -9,6 +9,7 @@
 
         private $allLogos;
         private $allRoles;
+        private $allPdf;
 
         public function __construct()
         {
@@ -24,6 +25,9 @@
 
             $this->allRoles = new containerRole;
             $this->loadRole();
+
+            $this->allPdf = new containerPdf;
+            $this->loadPdf();
 
         }
 
@@ -141,8 +145,9 @@
             switch($action)
             {
                 case 'display':
+                    $listLogo = $this->allLogos->listLogo();
                     $view = new viewPartner;
-                    $view->displayPartner();
+                    $view->displayPartner($listLogo);
                     break;
             }
         }
@@ -331,6 +336,23 @@
                                 break;
                         }
                         break;
+                    case 'pdf':
+                        switch($manage)
+                        {
+                            case 'display':
+                                $listPdf = $this->allPdf->listPdf();
+                                $view->displayPdf($listPdf);
+                                break;
+                            case 'add':
+                                $view->addPdf();
+                                break;
+                            case 'erase':
+                                $this->myBD->erasePdf();
+                                break;
+                            case 'inputPdf':
+                                $this->myBD->uploadPdf();
+                                break;
+                        }
                 }
             }    
         }
@@ -361,6 +383,18 @@
             while ($nbE<sizeof($resultRole))
             {
                 $this->allRoles->addRole($resultRole[$nbE][0],$resultRole[$nbE][1]);
+                $nbE++;
+            }
+        }
+
+        public function loadPdf()
+        {
+            $resultPdf = $this->myBD->Load('pdf');
+            $nbE = 0;
+            while ($nbE<sizeof($resultPdf))
+            {
+                $datePdf = $this->stringToDateTime($resultPdf[$nbE][3]);
+                $this->allPdf->addPdf($resultPdf[$nbE][0],$resultPdf[$nbE][1],$resultPdf[$nbE][2],$datePdf);
                 $nbE++;
             }
         }
