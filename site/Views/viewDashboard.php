@@ -91,12 +91,6 @@
                             </svg>
                             <span class="ms-1 d-none d-sm-inline">Actualités</span> </a>
                                 <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> - Liste Événement</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> - Modifier Événement</a>
-                                </li>
                                 <li>
                                     <a href="#" class="nav-link px-0"> - Liste Presse</a>
                                 </li>
@@ -247,7 +241,7 @@
                                 <th scope="col">Nom du fichier</th>
                                 <th scope="col">Chemin du PDF</th>
                                 <th scope="col">Date de téléchargement</th>
-                                <th scope="col">Type Pdf</th>
+                                <th scope="col">Utilisation Pdf</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -290,12 +284,12 @@
             $typePdf = explode('|', $listTypePdf);
 
             ?>
-
+            <div class="container"><br><br>
             <form action="index.php?view=dashboard&action=pdf&manage=inputPdf" method="post" enctype="multipart/form-data">
                 <label for="pdf">Choisissez un fichier PDF :</label>
                 <input type="file" name="pdf" id="pdf" accept="application/pdf" required><br>
 
-                <label for="page">Choisissez la page pour le PDF</label>
+                <label for="page">Choisissez l'utilisation du PDF (pour quoi)</label>
                 <select name="typePdf" id="typePdf">
                 <?php
                     $nbE = 1;
@@ -305,10 +299,10 @@
                         $nbE+=2;
                     }
                 ?>
-                </select>
-                <button type="submit">Télécharger</button>
+                </select><br>
+                <button type="submit">Validez</button>
             </form>
-
+            </div>
             <?php
         }
 

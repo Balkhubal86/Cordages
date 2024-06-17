@@ -117,9 +117,9 @@
                 
                 <div class="button-group">
                     <button type="button" class="btn btn-primary don rounded" onclick="location.href='https://www.helloasso.com/associations/les-ateliers-cord-ages/formulaires/2';" >Faire un Don</button>
-                    <a href=""><button type="button" class="btn btn-secondary membre rounded" >Devenir Adhérent</button></a>
-                    <a href=""><button type="button" class="btn btn-success benevole rounded" href="" >Devenir Bénévole</button></a>
-                    <a href=""><button type="button" class="btn btn-danger mecene rounded" href="" >Devenir Mécène</button></a>
+                    <a href="index.php?view=member&action=display"><button type="button" class="btn btn-secondary membre rounded" >Devenir Adhérent</button></a>
+                    <a href="index.php?view=volunteer&action=display"><button type="button" class="btn btn-success benevole rounded" href="" >Devenir Bénévole</button></a>
+                    <a href="index.php?view=sponsor&action=display"><button type="button" class="btn btn-danger mecene rounded" href="" >Devenir Mécène</button></a>
                 </div>
                 <br>
             </div>

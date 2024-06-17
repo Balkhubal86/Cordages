@@ -83,6 +83,12 @@
                     case 'dashboard':
                         $this->controllerDashboard($action);
                         break;
+                    case 'member':
+                        $this->controllerMember($action);
+                        break;
+                    case 'volunteer':
+                        $this->controllerVolunteer($action);
+                        break;
                 }
             }
             else
@@ -360,6 +366,47 @@
                         }
                 }
             }    
+        }
+
+        public function controllerMember($action)
+        {
+            $view = new viewMember;
+            switch($action)
+            {
+                case 'display':
+                    $listPdf = $this->allPdf->listPdf();
+                    $view->displayMember($listPdf);
+
+                    break;
+                case 'download':
+                    
+                    
+                    
+                    
+                    break;
+            }
+        }
+
+        public function controllerVolunteer($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewVolunteer;
+                    $view->displayVolunteer();
+                    break;
+            }
+        }
+
+        public function controllerSponsor()
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewSponsor;
+                    $view->displaySponsor();
+                    break;
+            }
         }
 
         // ------------------------------------ FIN CONTROLLER ---------------------------------------
