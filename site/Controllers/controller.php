@@ -376,13 +376,6 @@
                 case 'display':
                     $listPdf = $this->allPdf->listPdf();
                     $view->displayMember($listPdf);
-
-                    break;
-                case 'download':
-                    
-                    
-                    
-                    
                     break;
             }
         }
@@ -392,8 +385,9 @@
             switch($action)
             {
                 case 'display':
+                    $listPdf = $this->allPdf->listPdf();
                     $view = new viewVolunteer;
-                    $view->displayVolunteer();
+                    $view->displayVolunteer($listPdf);
                     break;
             }
         }
