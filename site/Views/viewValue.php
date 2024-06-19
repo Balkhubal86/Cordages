@@ -79,14 +79,14 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section><br>
 
         <section>
-            <div class="container shadow" style="text-align: justify;">
+            <div class="container shadow animated-element" style="text-align: justify;">
                 <br><br><h3 class="mb-3 text-center">Lutte contre l'isolement, et inclusion social</h3><br>
                 <p>L'association est particulièrement fière de son ambiance chaleureuse et inclusive, où les bénévoles et les bénéficiaires, âgés de 18 à 94 ans, peuvent se rencontrer et partager des moments de convivialité. Les bénévoles, formés et accompagnés, jouent un rôle clé en complétant l'équipe de professionnels. Des réunions d'équipe régulières et des formations spécifiques sont organisées pour garantir un accompagnement de qualité. Les Ateliers Cord'âges se veulent un lieu où chacun peut trouver sa place et s'épanouir, loin des discours stigmatisants, en favorisant des rencontres et des activités qui enrichissent la vie sociale et culturelle des participants. Grâce à cette approche, l'association réussit à créer une dynamique communautaire où les différences sont respectées et valorisées</p><br>
             </div>
-        </section>
+        </section><br>
 
             <?php
         }

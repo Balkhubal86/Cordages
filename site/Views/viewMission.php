@@ -51,7 +51,7 @@
 			</section>
 
 			<section>
-				<div class="container">
+				<div class="container shadow animated-element">
 					<div class="row">
 						<div class="col"></div>
 						<div class="col"></div>

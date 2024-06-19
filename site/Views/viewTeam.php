@@ -84,13 +84,32 @@
         							<br><h5 class="card-title">Adhérent</h5><hr>
         							<p class="card-text">Les adhérents des Ateliers Cord'âges constituent la pierre angulaire de notre association. En rejoignant notre communauté, nos adhérents s'engagent à soutenir notre mission de promouvoir la lutte contre l'isolement et de créer des liens durables entre les différentes générations de Poitiers. Chaque adhérent apporte une contribution précieuse, que ce soit par sa participation active aux activités, par ses idées novatrices ou simplement par son soutien moral. Leur implication permet de renforcer notre impact et d'élargir la portée de nos projets.</p>
 									<p class="card-text">Mais être adhérent, c'est aussi intégrer un réseau solidaire et dynamique. Vous aurez l'occasion de rencontrer des personnes de tous âges et horizons, de tisser des liens significatifs et de participer à des projets collectifs qui font une différence. Nos adhérents sont souvent à l'origine de nouvelles initiatives et leur enthousiasme est une source d'inspiration pour tous. En nous rejoignant, vous devenez non seulement un membre actif de notre association, mais aussi un acteur clé dans la promotion de la solidarité. Ensemble, nous bâtissons un avenir où chaque génération peut apprendre, grandir et s'épanouir aux côtés des autres.</p>
-									<a href=""><button type="button" class="btn btn-outline-success rounded bg-success text-light">Devenir Adhérent</button></a>
+									<a href="index.php?view=member&action=display"><button type="button" class="btn btn-outline-success rounded bg-success text-light">Devenir Adhérent</button></a>
       							</div>
     						</div>
   						</div>
 					</div>
 				</div>
-				<br>				
+				<br>	
+				
+				<div class="container text-center animated-element">
+					<div class="card shadow" style="">
+  						<div class="row g-0">
+    						<div class="col-md-4">
+      							<img src="public/img/sponsor.jpeg" class="img-fluid rounded-start" alt="sponsor">
+    						</div>
+    						<div class="col-md-8">
+      							<div class="card-body">
+        							<br><h5 class="card-title">Mécène</h5><hr>
+        							<p class="card-text">En devenant mécène des Ateliers Cord'âges, vous bénéficiez d'une visibilité accrue et d'une image de marque renforcée. Nous mettons en avant nos partenaires à travers nos divers canaux de communication : site internet, réseaux sociaux, événements publics et publications. Votre entreprise sera reconnue comme un acteur clé et responsable dans le soutien de la cohésion sociale et du développement communautaire. De plus, nous offrons à nos mécènes des opportunités de collaboration sur des projets spécifiques, vous permettant de démontrer concrètement votre engagement envers la responsabilité sociale et l'impact positif dans la communauté.</p>
+									<p class="card-text">Le partenariat avec les Ateliers Cord'âges est également une occasion unique de mobiliser vos employés autour de valeurs partagées. Nous proposons des activités de bénévolat d'entreprise, des ateliers de team-building intergénérationnels et des événements exclusifs qui renforcent l'esprit d'équipe et l'engagement sociétal de vos collaborateurs. Ensemble, nous pouvons créer des expériences enrichissantes qui non seulement bénéficient à la communauté, mais aussi inspirent et motivent votre équipe. En soutenant les Ateliers Cord'âges, vous faites un investissement durable dans le bien-être social et le développement de Poitiers, tout en renforçant votre position en tant qu'entreprise responsable et engagée. Rejoignez-nous et faites partie de ce mouvement pour un avenir meilleur.</p>
+									<a href="index.php?view=sponsor&action=display"><button type="button" class="btn btn-danger mecene rounded bg-danger text-light">Devenir Mécène</button></a>
+      							</div>
+    						</div>
+  						</div>
+					</div>
+				</div>
+				<br>
 			</section>
             <?php
         }
