@@ -11,6 +11,7 @@
         private $allRoles;
         private $allTypePdf;
         private $allPdf;
+        private $allArticles;
 
         public function __construct()
         {
@@ -32,6 +33,9 @@
 
             $this->allPdf = new containerPdf;
             $this->loadPdf();
+
+            $this->allArticles = new containerArticle;
+            $this->loadArticle();
 
         }
 
@@ -364,6 +368,25 @@
                                 $this->myBD->uploadPdf();
                                 break;
                         }
+                        break;
+                    case 'press':
+                        switch($manage)
+                        {
+                            case 'display':
+                                $listArticle = $this->allArticles->listArticle();
+                                $view->displayArticle($listArticle);
+                                break;
+                            case 'add':
+                                $view->addArticle();
+                                break;
+                            case 'erase':
+
+                                break;
+                            case 'inputArticle':
+                                $this->myBD->
+                                break;
+
+                        }
                 }
             }    
         }
@@ -450,14 +473,25 @@
             $nbE = 0;
             while ($nbE<sizeof($resultPdf))
             {
-                $objectTypePdf = $this->allTypePdf->giveTypePdfById($resultPdf[$nbE][4]);
-
+                $objectTypePdf = $this->allTypePdf->giveTypePdfById($resultPdf[$nbE][4]); // On récupère l'object Type De PDF
                 $datePdf = $this->stringToDateTime($resultPdf[$nbE][3]);
                 $this->allPdf->addPdf($resultPdf[$nbE][0],$resultPdf[$nbE][1],$resultPdf[$nbE][2],$datePdf,$objectTypePdf);
                 $nbE++;
             }
         }
         
+        public function loadArticle()
+        {
+            $resultArticle = $this->myBD->Load('article');
+            $nbE = 0;
+            while ($nbE<sizeof($resultArticle))
+            {
+                $dateCreated = $this->stringToDateTime($resultArticle[$nbE][5]);
+                $dateUpdate = $this->stringToDateTime($resultArticle[$nbE][6]);
+                $this->allArticles->addArticle($resultArticle[$nbE][0],$resultArticle[$nbE][1],$resultArticle[$nbE][2],$dateCreated, $dateUpdate,$resultArticle[$nbE][3],$resultArticle[$nbE][4]);
+                $nbE++;
+            }
+        }
 
         // ------------------------------------------------------------------------------
         //                              FONCTIONS UTILES

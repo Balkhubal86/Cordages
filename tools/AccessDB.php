@@ -47,10 +47,10 @@
 				$_SESSION['email'] = $email;
 				$_SESSION['idRole'] = $this->roleUser();
 
-
+				// Enregistrement de l'action dans la BD
+				$this->actionLogUser("Connexion Utilisateur (email : ".$email.")");
 
 				if($_SESSION['idRole'] == 1 ){
-				
 				// Card avec message de connexion réussi (Parti Admin)
     			?>
             	<br>
@@ -74,7 +74,7 @@
             	</div>
             	<br>
             	<?php
-				}else{
+				}else {
 
 				// Card avec message de connexion réussi (Parti utilisateur Simple)
 				?>
@@ -150,6 +150,10 @@
 			if ($stmt->execute()) {
 				// Si la requête est réussi, on met un message de confirmation et un lien pour aller sur la page de connexion
 				echo'Enregistrement réussi ! <br>';
+
+				// Enregistrement de l'action dans la BD
+				$this->actionLogUser("Création nouveau Compte : ".$email);
+
 				echo'<a href=index.php?view=connexion&action=connexion>Connexion</a>';
 			} else {
 				echo "Erreur: " . $stmt->error;
@@ -286,6 +290,9 @@
 				case 'PDF':
 					$stringQuery.='pdf';
 					break;
+				case 'ARTICLE':
+					$stringQuery.='article';
+					break;
 	    		default:
 	    			die('Pas une table valide');
 	    	}
@@ -367,6 +374,9 @@
         
         			echo "Les informations du fichier ont été sauvegardées dans la base de données.";
 
+					// Enregistrement de l'action dans la BD
+					$this->actionLogUser("Ajout LOGO : ".$filename);
+
     			} else {
         			echo "Désolé, une erreur est survenue lors du téléchargement de votre fichier.";
    				}
@@ -392,8 +402,9 @@
 				// Exécute la déclaration
 				if ($stmt->execute()) {
 					echo "Logo supprimé avec succès.";
-					// On inscrit l'action dans la table "LOGACTUS" -> 'log action user'
-					//$this->actionLogUser("Supression Logo", $_SESSION[])
+
+					// Enregistrement de l'action dans la BD
+					$this->actionLogUser("Suppression LOGO (Id pdf: ".$id.")");
 				} else {
 					echo "Erreur lors de la suppression du logo : " . $conn->error;
 				}
@@ -448,6 +459,9 @@
         		$stmt->execute();
         
         		echo "Les informations du fichier ont été sauvegardées dans la base de données.";
+
+				// Enregistrement de l'action dans la BD
+				$this->actionLogUser("Ajout PDF ".$filename);
     			} else {
         			echo "Désolé, une erreur est survenue lors du téléchargement de votre fichier.";
     			}
@@ -473,23 +487,54 @@
 				// Exécute la déclaration
 				if ($stmt->execute()) {
 					echo "Fichier PDF supprimé avec succès.";
+
+					// Enregistrement de l'action dans la BD
+					$this->actionLogUser("Suppression PDF (Id pdf: ".$id.")");
 				} else {
 					echo "Erreur lors de la suppression du fichier PDF : " . $this->conn->error;
 				}
 			}
 		}
 
+		// ----------------------------------------------------------------------
+		//							Gestion Article
+		// ----------------------------------------------------------------------
+
+		public function addArticle()
+		{
+			if ($_SERVER["REQUEST_METHOD"] == "POST"){
+				if($_POST['image']){$this->addImageArticle();}
+			}
+		}
+
+		public function addImageArticle()
+		{
+			
+		}
+
+		public function eraseArticle()
+		{
+
+		}
 
 
 		// ----------------------------------------------------------------------
 		//							Action Utilisateur
 		// ----------------------------------------------------------------------
 		// Log Action User
-		public function actionLogUser($action, $idUser)
+		public function actionLogUser($action)
 		{
-			$stmt = $this->conn->prepare("INSERT INTO logactus (action, idUser) VALUES (?, ?)");
+			$email = $_SESSION['email'];
+
+			$stmt = $this->conn->prepare("INSERT INTO logactus (action, email) VALUES (?, ?)");
 			$stmt->bindValue(1, $action);
-			$stmt->bindValue(2, $idUSer);
+			$stmt->bindValue(2, $email);
+
+			// Exécute la déclaration
+			if ($stmt->execute()) {
+			} else {
+				echo "Erreur lors de l'enregistrement de l'action réalisé : " . $this->conn->error;
+			}
 		}
     }
 ?>

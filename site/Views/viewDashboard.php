@@ -92,10 +92,10 @@
                             <span class="ms-1 d-none d-sm-inline">Actualités</span> </a>
                                 <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 <li>
-                                    <a href="#" class="nav-link px-0"> - Liste Presse</a>
+                                    <a href="index.php?view=dashboard&action=press&manage=display" class="nav-link px-0"> - Liste Presse</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> - Modifier Presse</a>
+                                    <a href="index.php?view=dashboard&action=press&manage=add" class="nav-link px-0"> - Ajouter Presse</a>
                                 </li>
                             </ul>
                         </li>
@@ -304,6 +304,106 @@
             </form>
             </div>
             <?php
+        }
+
+        
+        /* ------------------------- */
+        /* Section Article de Presse */
+        /* ------------------------- */
+
+        public function displayArticle($listArticle)
+        {
+            ?>
+            <div class="col py-3">
+                <?php 
+                $list = explode("|",$listArticle);
+
+                echo '<table class="table table-striped table-bordered table-sm ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Titre</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Lien</th>
+                                <th scope="col">Création</th>
+                                <th scope="col">Mis à jour</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                $nbE=0;
+                while ($nbE<sizeof($list))
+                {	
+                    $i=0;
+                    while (($i<7) && ($nbE<sizeof($list)))
+                    {
+                        echo '<td scope>';
+                        echo trim($list[$nbE]);
+                        $i++;
+                        $nbE++;
+                        echo '</td>';
+                    }
+                    if($nbE<sizeof($list))
+                    {
+                        echo'<td scope="col">
+                            <form action="index.php?view=dashboard&action=press&manage=erase" method="post">
+                            <input type="hidden" name="id" value="'. $list[$nbE-5] . '">
+                            <input type="hidden" name="path" value="'. $list[$nbE-3] .'">
+                            <button type="submit">Supprimer</button>
+                            </form>
+                            
+                            </td>';
+                    }
+                    echo '</tr>';
+                }
+                echo '</tbody>';
+                echo '</table>';
+                ?>
+                </div>
+            </div>
+        </div>
+        </div>
+            <?php
+
+        }
+
+        public function addArticle()
+        {
+            var_dump($_SESSION);
+            ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8"><br>
+                        <h4 class="text-center"><u><b>Ajouter un article de presse</b></u></h4><br>
+
+                        <form method="post" enctype="multipart/form-data" action="index.php?view=dashboard&action=press&manage=inputArticle">
+                            <div class="form-group">
+                                <label for="title">Titre de l'article</label>
+                                <input type="text" id="title" name="title" class="form-control" required>
+                            </div><br>
+
+                            <div class="form-group">
+                                <label for="description">Description de l'article</label>
+                                <textarea id="description" name="description" class="form-control" required></textarea>
+                            </div><br>
+
+                            <div class="form-group">
+                                <label for="image">Image de l'article (facultatif)</label>
+                                <input type="file" id="image" name="image" class="form-control">
+                            </div><br>
+
+                            <div class="form-group">
+                                <label for="link">Lien vers l'article (facultatif)</label>
+                                <input type="url" id="link" name="link" class="form-control">
+                            </div><br>
+
+                            <button type="submit" class="btn btn-primary">Ajouter l'article</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?php
         }
 
         
