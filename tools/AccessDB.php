@@ -503,18 +503,126 @@
 		public function addArticle()
 		{
 			if ($_SERVER["REQUEST_METHOD"] == "POST"){
-				if($_POST['image']){$this->addImageArticle();}
+				if(isset($_POST['title']) && isset($_POST['description']))
+				{
+					// Prépare une déclaration SQL
+					$stmt = $this->conn->prepare("INSERT INTO article (title, description, image, link) VALUES (?, ?, ?, ?)");
+
+					// Définition des paramètres
+					$title = $_POST['title'];
+					$description = $_POST['description'];
+
+					// Vérifie si un fichier a été soumis via POST
+					if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image'])) {
+						$uploadResult = $this->uploadImage($_FILES['image']);
+						$image = $uploadResult;
+					} else {
+						echo "Pas d'image téléchargé.";
+						$image = null;
+					}
+					
+
+					if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['link'])){
+						$link = $_POST['link'];
+					}else{
+						$link = null;
+					}
+
+					$stmt->bindValue(1, $title);
+					$stmt->bindValue(2, $description);
+					$stmt->bindValue(3, $image);
+					$stmt->bindValue(4, $link);
+
+					// Exécute la déclaration
+					if ($stmt->execute()) {
+						?>
+						<div class="continer">
+							Article enregistré avec succès
+							<br><a href="index.php?view=dashboard&action=press&manage=display">Retour à la liste des article</a>
+						</div>
+						<?php
+
+						// Enregistrement de l'action dans la BD
+						$this->actionLogUser("Ajout article (titre : ".$title.")");
+					} else {
+					echo "Erreur lors de l'enregistrement de l'article : " . $this->conn->error;
+					}
+				}
 			}
 		}
 
-		public function addImageArticle()
-		{
-			
+		// Téléchargement de l'image
+		public function uploadImage($file, $targetDir = 'uploads/article/') {
+			// Vérifie si le fichier a été téléchargé sans erreur
+			if ($file['error'] == UPLOAD_ERR_OK) {
+				// Vérifie si le répertoire de destination existe, sinon le crée
+				if (!is_dir($targetDir)) {
+					mkdir($targetDir, 0777, true);
+				}
+		
+				// Obtenir des informations sur le fichier
+				$fileName = basename($file['name']);
+				$targetFilePath = $targetDir . $fileName;
+				$fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+		
+				// Vérifie l'extension du fichier
+				$allowedTypes = array('jpg', 'png', 'jpeg');
+				if (in_array($fileType, $allowedTypes)) {
+					// Déplacer le fichier téléchargé vers le répertoire cible
+					if (move_uploaded_file($file['tmp_name'], $targetFilePath)) {
+						return $targetFilePath; // Retourner le chemin du fichier téléchargé
+					} else {
+						echo 'Erreur: Une erreur est survenue lors du téléchargement du fichier<br>';
+						return null;
+					}
+				} else {
+					echo 'Erreur : Extension du fichier non valide. (JPG, JPEG, PNG autorisé)<br>';
+					return null;
+				}
+			} else {
+				echo 'Erreur: ' . $file['error'].'<br>';
+				return null;
+			}
 		}
+		
+
 
 		public function eraseArticle()
 		{
+			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+				$id = $_POST['id'];
+				$path = $_POST['path'];
+			
+				// Supprimer le fichier du serveur
+				if (file_exists($path)) {
+					unlink($path);
+				}
+			
+				// Prépare une déclaration SQL pour supprimer l'enregistrement
+				$stmt = $this->conn->prepare("DELETE FROM article WHERE id = ?");
+				$stmt->bindValue(1, $id);
+			
+				// Exécute la déclaration
+				if ($stmt->execute()) {
+					?>
+					<div class="continer">
+						Article supprimé avec succès.
+						<br><a href="index.php?view=dashboard&action=press&manage=display">Retour à la liste des article</a>
+					</div>
+					<?php
 
+					// Enregistrement de l'action dans la BD
+					$this->actionLogUser("Suppression Article (Id Article: ".$id.")");
+				} else {
+					echo "Erreur lors de la suppression de l'article : " . $conn->error;
+				}
+			}
+		}
+
+		public function updateArticle()
+		{
+			var_dump($_POST);
+			echo 'méthode update';
 		}
 
 

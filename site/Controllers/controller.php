@@ -380,10 +380,17 @@
                                 $view->addArticle();
                                 break;
                             case 'erase':
-
+                                $this->myBD->eraseArticle();
                                 break;
                             case 'inputArticle':
-                                $this->myBD->
+                                $this->myBD->addArticle();
+                                break;
+                            case 'change':
+                                $listArticle = $this->allArticles->listArticle();
+                                $view->changeArticle($listArticle);
+                                break;
+                            case 'inputChange':
+                                $this->myBD->updateArticle();
                                 break;
 
                         }

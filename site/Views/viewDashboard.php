@@ -29,24 +29,6 @@
                             </a>
                         </li>
 
-                        <!-- Equipe-->
-                        <li>
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
-                                  <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5z"/>
-                                </svg>
-                                <span class="ms-1 d-none d-sm-inline">Equipe</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> - Liste Equipe</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> - Modifier</a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <!-- Partenaire-->
                         <li>
                             <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
@@ -92,10 +74,10 @@
                             <span class="ms-1 d-none d-sm-inline">Actualités</span> </a>
                                 <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 <li>
-                                    <a href="index.php?view=dashboard&action=press&manage=display" class="nav-link px-0"> - Liste Presse</a>
+                                    <a href="index.php?view=dashboard&action=press&manage=display" class="nav-link px-0"> - Liste Article</a>
                                 </li>
                                 <li>
-                                    <a href="index.php?view=dashboard&action=press&manage=add" class="nav-link px-0"> - Ajouter Presse</a>
+                                    <a href="index.php?view=dashboard&action=press&manage=add" class="nav-link px-0"> - Ajouter Article</a>
                                 </li>
                             </ul>
                         </li>
@@ -348,11 +330,15 @@
                     {
                         echo'<td scope="col">
                             <form action="index.php?view=dashboard&action=press&manage=erase" method="post">
-                            <input type="hidden" name="id" value="'. $list[$nbE-5] . '">
-                            <input type="hidden" name="path" value="'. $list[$nbE-3] .'">
+                            <input type="hidden" name="id" value="'. $list[$nbE-7] . '">
+                            <input type="hidden" name="path" value="'. $list[$nbE-4] .'">
                             <button type="submit">Supprimer</button>
                             </form>
-                            
+
+                            <form action="index.php?view=dashboard&action=press&manage=change" method="post">
+                            <input type="hidden" name="id" value="'.$list[$nbE-7].'">
+                            <button type="submit">Mettre à jour</button>
+                            </form>
                             </td>';
                     }
                     echo '</tr>';
@@ -370,7 +356,6 @@
 
         public function addArticle()
         {
-            var_dump($_SESSION);
             ?>
             <div class="container">
                 <div class="row">
@@ -400,6 +385,61 @@
 
                             <button type="submit" class="btn btn-primary">Ajouter l'article</button>
                         </form>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+
+        public function changeArticle($listArticle)
+        {
+            $id = $_POST['id'];
+
+            $list = explode("|", $listArticle);
+            $nbE = 0;
+            while($nbE<sizeof($list))
+            {
+                if($list[$nbE] == $id)
+                {
+                    $title = $list[$nbE+1];
+                    $description = $list[$nbE+2];
+                    $image = $list[$nbE+3];
+                    $link = $list[$nbE+4];
+                }
+                $nbE++;
+            }
+
+            ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                    <h4>Mettre à jour les informations de l'article</h4><br>
+                    <form action="index.php?view=dashboard&action=press&manage=inputChange" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="title">Titre : </label>
+                            <input type="text" name="title" id="title" value="<?php echo $title ?>">
+                        </div><br>
+
+                        <div class="form-group">
+                            <label for="description">Description: </label>
+                            <textarea name="description" id="description"><?php echo $description; ?></textarea>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label for="image">Image: </label>
+                            <input type="file" name="image" id="image"><br>
+                            <?php if ($image != ''): ?>
+                                <img src="<?php echo $image; ?>" alt="Article Image" width="100">
+                            <?php endif; ?>
+                        </div><br>
+                        
+                        <div class="form-group">
+                            <label for="link">Lien: </label>
+                            <input type="text" name="link" id="link" value="<?php echo $link; ?>">
+                        </div><br>
+                        
+                        <button type="submit">Mettre à jour</button>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -436,55 +476,54 @@
                 <div class="padding">
                     <div class="row container d-flex justify-content-center">
                         <div class="col-xl-6 col-md-12">
-                                                <div class="card user-card-full shadow">
-                                                    <div class="row m-l-0 m-r-0">
-                                                        <div class="col-sm-4 bg-team user-profile">
-                                                            <div class="card-block text-center text-white">
-                                                                <div class="m-b-25">
-                                                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
-                                                                </div>
-                                                                <h6 class="f-w-600">Profil du Compte</h6>
-                                                                <a href="" class="text-light">Modifier</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <div class="card-block">
-                                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                                                                <div class="row">
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Prénom</p>
-                                                                        <h6 class="text-muted f-w-400"><?php echo $name ?></h6>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Nom</p>
-                                                                        <h6 class="text-muted f-w-400"><?php echo $firstname ?></h6>
-                                                                    </div>
-                                                                </div>
-                                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
-                                                                <div class="row">
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Email</p>
-                                                                        <h6 class="text-muted f-w-400"><?php echo $email ?></h6>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Droit</p>
-                                                                        <h6 class="text-muted f-w-400"><?php echo $libRole ?></h6>
-                                                                    </div>
-                                                                </div>
-                                                                <ul class="social-link list-unstyled m-t-40 m-b-10">
-                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                            <div class="card user-card-full shadow">
+                                <div class="row m-l-0 m-r-0">
+                                    <div class="col-sm-4 bg-team user-profile">
+                                        <div class="card-block text-center text-white">
+                                            <div class="m-b-25">
+                                                <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                            </div>
+                                            <h6 class="f-w-600">Profil du Compte</h6>
+                                            <a href="" class="text-light">Modifier</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="card-block">
+                                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Prénom</p>
+                                                    <h6 class="text-muted f-w-400"><?php echo $name ?></h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Nom</p>
+                                                    <h6 class="text-muted f-w-400"><?php echo $firstname ?></h6>
                                                 </div>
                                             </div>
-                                             </div>
-                                                </div>
+                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Email</p>
+                                                <h6 class="text-muted f-w-400"><?php echo $email ?></h6>
                                             </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Droit</p>
+                                                <h6 class="text-muted f-w-400"><?php echo $libRole ?></h6>
+                                            </div>
+                                        </div>
+                                        <ul class="social-link list-unstyled m-t-40 m-b-10">
+                                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
+                                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
             <?php
-
         }
     }
