@@ -621,8 +621,45 @@
 
 		public function updateArticle()
 		{
-			var_dump($_POST);
-			echo 'méthode update';
+			// Récupérer les nouvelles données du formulaire
+			$id = $_POST['id'];
+			$title = $_POST['title'];
+			$description = $_POST['description'];
+			$link = $_POST['link'];
+
+			// Gérer le téléchargement de la nouvelle image si elle est fournie
+			$imagePath = NULL;
+			if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
+    			$imagePath = $this->uploadImage($_FILES['image']);
+			}
+
+			// Préparer les requêtes en fonction de si l'image à été mis à jour ou non
+			if ($imagePath !== NULL) {
+				$sql = "UPDATE article SET title = ?, description = ?, image = ?, link = ? WHERE id = ?";
+				$stmt = $this->conn->prepare($sql);
+				$stmt->bindValue(1, $title);
+				$stmt->bindValue(2, $description);
+				$stmt->bindValue(3, $imagePath);
+				$stmt->bindValue(4, $link);
+				$stmt->bindValue(5, $id);
+
+			} else {
+				$sql = "UPDATE article SET title = ?, description = ?, link = ? WHERE id = ?";
+				$stmt = $conn->prepare($sql);
+				$stmt->bindValue(1, $title);
+				$stmt->bindValue(2, $description);
+				$stmt->bindValue(3, $link);
+				$stmt->bindValue(4, $id);
+			}
+			
+			if ($stmt->execute()) {
+				echo "Mise à jour de l'article Réussi !";
+
+				// Enregristrement de l'action dans la table
+				$this->actionLogUser("Mise à jour de l'article (id :".$id.")");
+			} else {
+				echo "Erreur dans la mise à jour de l'article " . $stmt->error;
+			}
 		}
 
 

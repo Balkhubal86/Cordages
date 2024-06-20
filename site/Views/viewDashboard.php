@@ -438,6 +438,7 @@
                             <input type="text" name="link" id="link" value="<?php echo $link; ?>">
                         </div><br>
                         
+                        <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
                         <button type="submit">Mettre à jour</button>
                     </form>
                     </div>
