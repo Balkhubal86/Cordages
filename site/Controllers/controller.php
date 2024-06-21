@@ -395,7 +395,15 @@
                             case 'inputChange':
                                 $this->myBD->updateArticle();
                                 break;
-
+                        }
+                        break;
+                    case 'usermanagement':
+                        switch($manage)
+                        {
+                            case 'display':
+                                $listUsers = $this->myBD->displayUsersInfo();
+                                $view->displayUserManagement($listUsers);
+                                break;
                         }
                 }
             }    

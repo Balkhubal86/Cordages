@@ -677,6 +677,31 @@
 		}
 
 
+		public function displayUsersInfo()
+		{
+			// Requête pour récupérer toutes les informations de la table 'users'
+			$sql = "SELECT * FROM users";
+			$stmt = $this->conn->prepare($sql);
+			$stmt->execute();
+	
+			// Vérifier s'il y a des résultats
+			if ($stmt->rowCount() > 0) {
+				$usersList = [];
+				while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+					// Convertir chaque ligne en une chaîne de caractères
+					$userData = implode("|", $row);
+					$usersList[] = $userData;
+				}
+				// Joindre toutes les lignes en une seule chaîne de caractères
+				$allUsersString = implode("\n", $usersList);
+			} else {
+				$allUsersString = "No users found.";
+			}
+	
+			return $allUsersString;
+		}
+
+
 		// ----------------------------------------------------------------------
 		//							Action Utilisateur
 		// ----------------------------------------------------------------------
