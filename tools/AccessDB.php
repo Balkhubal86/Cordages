@@ -627,10 +627,23 @@
 			$description = $_POST['description'];
 			$link = $_POST['link'];
 
+			// Récupérer le chemin de l'ancienne image
+			$sql = "SELECT image FROM article WHERE id = ?";
+			$stmt = $this->conn->prepare($sql);
+			$stmt->bindValue(1, $id);
+			$stmt->execute();
+			$oldImagePath = $stmt->fetch();
+
 			// Gérer le téléchargement de la nouvelle image si elle est fournie
 			$imagePath = NULL;
 			if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
-    			$imagePath = $this->uploadImage($_FILES['image']);
+			    $imagePath = $this->uploadImage($_FILES['image']);
+			    if ($imagePath !== NULL && $oldImagePath !== NULL) {
+			        // Supprimer l'ancienne image
+			        if (file_exists($oldImagePath[0])) {
+			            unlink($oldImagePath[0]);
+			        }
+			    }
 			}
 
 			// Préparer les requêtes en fonction de si l'image à été mis à jour ou non
@@ -652,11 +665,12 @@
 				$stmt->bindValue(4, $id);
 			}
 			
+			// Exécution de la requête
 			if ($stmt->execute()) {
-				echo "Mise à jour de l'article Réussi !";
-
 				// Enregristrement de l'action dans la table
 				$this->actionLogUser("Mise à jour de l'article (id :".$id.")");
+
+				echo "Mise à jour de l'article Réussi !";
 			} else {
 				echo "Erreur dans la mise à jour de l'article " . $stmt->error;
 			}

@@ -93,6 +93,9 @@
                     case 'volunteer':
                         $this->controllerVolunteer($action);
                         break;
+                    case 'press':
+                        $this->controllerPress($action);
+                        break;
                 }
             }
             else
@@ -433,6 +436,17 @@
             }
         }
 
+        public function controllerPress($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewPress;
+                    $listArticle = $this->allArticles->listArticle();
+                    $view->displayPress($listArticle);
+                    break;
+            }
+        }
         // ------------------------------------ FIN CONTROLLER ---------------------------------------
 
 

@@ -57,6 +57,7 @@
                     </li>
 
                     <!-- Section Location -->
+                <!--
                     <li class="nav-item dropdown">
                         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Location
@@ -67,6 +68,7 @@
                             <li><a class="dropdown-item" href="index.php?view=rental&action=display">Vélo</a></li>
                         </ul>
                     </li>
+                -->
 
                     <!-- Section Actualités-->
                     <li class="nav-item dropdown">
@@ -75,7 +77,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="index.php?view=news&action=display">Réseaux Sociaux</a></li>
-                            <li><a class="dropdown-item" href="index.php?view=news#article">Presse</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=press&action=display">Presse</a></li>
                         </ul>
                     </li>
 
