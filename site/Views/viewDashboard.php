@@ -630,15 +630,14 @@
                     <h4><u>Modifier les informations de l'utilisateur</u></h4><br>
 
                     <form action="index.php?view=dashboard&action=usermanagement&manage=inputChange" method="post">
-
                         <label for="nom">Nom :</label><br>
-                        <input type="text" name="name" id="name" value="<?php echo $name?>"><br><br>
+                        <input type="text" name="name" id="name" value="<?php echo $name?>" required><br><br>
 
                         <label for="prenom">Prénom :</label><br>
-                        <input type="text" name="firstname" id="firstname" value="<?php echo $firstname ?>"><br><br>
+                        <input type="text" name="firstname" id="firstname" value="<?php echo $firstname ?>" required><br><br>
 
                         <label for="email">Email :</label><br>
-                        <input type="email" name="email" id="email" value="<?php echo $email ?>"><br><br>
+                        <input type="email" name="email" id="email" value="<?php echo $email ?>" required><br><br>
 
                         <label for="role">Rôle :</label><br>
                         <select name="role">
@@ -647,11 +646,13 @@
                         while($nbE<sizeof($allRole))
                         {
                             ?>
-                            <option value="<?php echo $allRole[$nbE];?>" <?php if($allRole[$nbE]==$libRole){echo 'selected';}?>><?php echo $allRole[$nbE];?></option>
+                            <option value="<?php echo $allRole[$nbE];?>" <?php if($allRole[$nbE]==$libRole){echo 'selected';}?> required><?php echo $allRole[$nbE];?></option>
                             <?php
                             $nbE+=2;
                         }
                         ?>
+
+                        <input type="hidden" name="id" id="id" value="<?php echo $idUser?>">
                         </select><br><br>
 
                         <input type="submit" value="Modifier">

@@ -414,6 +414,8 @@
                                 $view->changeUser($infoUser, $listRole);
                                 break;
                             case 'inputChange':
+                                $listRole = $this->allRoles->listRole();
+                                $this->myBD->updateUser($listRole);
                                 break;
 
                         }

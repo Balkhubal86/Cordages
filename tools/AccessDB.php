@@ -290,9 +290,44 @@
 		}
 
 		// Mise à jour d'un utilisateur
-		public function updateUser()
+		public function updateUser($listRole)
 		{
+			// Récupération des données
+			$id = $_POST['id'];
+			$name = $_POST['name'];
+			$firstname = $_POST['firstname'];
+			$email = $_POST['email'];
+			$libRole = $_POST['role'];
 
+			// Id rôle 
+			$list = explode('|', $listRole);
+			$nbE=0;
+			while($nbE<sizeof($list))
+			{
+				if($libRole == $list[$nbE])
+				{
+					$idRoleUSer = $list[$nbE-1];
+				}
+				$nbE++;
+			}
+
+			// Préparation de la requête
+			$stmt = $this->conn->prepare("UPDATE users SET name = ?, firstname = ?, email = ?, idRole = ? WHERE id = ?");
+			$stmt->bindValue(1, $name);
+			$stmt->bindValue(2, $firstname);
+			$stmt->bindValue(3, $email);
+			$stmt->bindValue(4, $idRoleUSer);
+			$stmt->bindValue(5, $id);
+
+			// Exécution de la requête 
+			if ($stmt->execute()) {
+				echo "Changement des données utilisateur avec succès.";
+
+				// Enregistrement de l'action dans la BD
+				$this->actionLogUser("Changement des données utilisateur (Id Utilisateur: ".$id.")");
+			} else {
+				echo "Erreur lors du changement des données utilisateur : " . $conn->error;
+			}
 		}
 
         // ----------------------------------------------------------------------
