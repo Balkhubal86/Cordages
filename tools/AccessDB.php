@@ -218,7 +218,7 @@
 			return $userInfo;
 		}
 
-		// Fonction de message en fonction du message
+		// Fonction de message après enregistrement (en fonction d'un message en entrée)
 		public function messageCard($message)
 		{
 			?>
@@ -242,6 +242,57 @@
             </div>
             <br>
             <?php
+		}
+
+		// Récupération de toutes les infos utilisateurs
+		public function displayUsersInfo()
+		{
+			// Requête pour récupérer toutes les informations de la table 'users'
+			$sql = "SELECT * FROM users";
+			$stmt = $this->conn->prepare($sql);
+			$stmt->execute();
+	
+			// Vérifier s'il y a des résultats
+			if ($stmt->rowCount() > 0) {
+				$usersList = [];
+				while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+					// Convertir chaque ligne en une chaîne de caractères
+					$userData = implode("|", $row);
+					$usersList[] = $userData;
+				}
+				// Joindre toutes les lignes en une seule chaîne de caractères
+				$allUsersString = implode("|", $usersList);
+			} else {
+				$allUsersString = "No users found.";
+			}
+	
+			return $allUsersString;
+		}
+
+		// Suppression d'un utilisateur
+		public function eraseUser()
+		{
+			$id = $_POST['id'];
+
+			// Préparation de la requête
+			$stmt = $this->conn->prepare("DELETE FROM users WHERE id = ?");
+			$stmt->bindValue(1, $id);
+
+			// Exécute la déclaration
+			if ($stmt->execute()) {
+				echo "Utilisateur supprimé avec succès.";
+
+				// Enregistrement de l'action dans la BD
+				$this->actionLogUser("Suppression de l'utilisateur (Id Utilisateur: ".$id.")");
+			} else {
+				echo "Erreur lors de la suppression de l'utilisateur : " . $conn->error;
+			}
+		}
+
+		// Mise à jour d'un utilisateur
+		public function updateUser()
+		{
+
 		}
 
         // ----------------------------------------------------------------------
@@ -675,60 +726,6 @@
 				echo "Erreur dans la mise à jour de l'article " . $stmt->error;
 			}
 		}
-
-
-		public function displayUsersInfo()
-		{
-			// Requête pour récupérer toutes les informations de la table 'users'
-			$sql = "SELECT * FROM users";
-			$stmt = $this->conn->prepare($sql);
-			$stmt->execute();
-	
-			// Vérifier s'il y a des résultats
-			if ($stmt->rowCount() > 0) {
-				$usersList = [];
-				while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-					// Convertir chaque ligne en une chaîne de caractères
-					$userData = implode("|", $row);
-					$usersList[] = $userData;
-				}
-				// Joindre toutes les lignes en une seule chaîne de caractères
-				$allUsersString = implode("|", $usersList);
-			} else {
-				$allUsersString = "No users found.";
-			}
-	
-			return $allUsersString;
-		}
-
-		// ----------------------------------------------------------------------
-		//							Gestion Utilisateur
-		// ----------------------------------------------------------------------
-
-		public function eraseUser()
-		{
-			$id = $_POST['id'];
-
-			// Préparation de la requête
-			$stmt = $this->conn->prepare("DELETE FROM users WHERE id = ?");
-			$stmt->bindValue(1, $id);
-
-			// Exécute la déclaration
-			if ($stmt->execute()) {
-				echo "Utilisateur supprimé avec succès.";
-
-				// Enregistrement de l'action dans la BD
-				$this->actionLogUser("Suppression de l'utilisateur (Id Utilisateur: ".$id.")");
-			} else {
-				echo "Erreur lors de la suppression de l'utilisateur : " . $conn->error;
-			}
-		}
-
-		public function updateUser()
-		{
-			
-		}
-
 
 		// ----------------------------------------------------------------------
 		//							Action Utilisateur

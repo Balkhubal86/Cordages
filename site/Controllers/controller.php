@@ -409,7 +409,9 @@
                                 $this->myBD->eraseUser();
                                 break;
                             case 'change':
-                                $view->changeUser();
+                                $infoUser = $this->myBD->getUserInfo($_POST['email']);
+                                $listRole = $this->allRoles->listRole();
+                                $view->changeUser($infoUser, $listRole);
                                 break;
                             case 'inputChange':
                                 break;

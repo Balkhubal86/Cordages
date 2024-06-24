@@ -536,6 +536,7 @@
         public function displayUserManagement($listUsers, $listRole)
         {
             ?>
+            <div class="col py-3">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10"><br><br>
@@ -585,7 +586,7 @@
                             </form>
 
                             <form action="index.php?view=dashboard&action=usermanagement&manage=change" method="post">
-                            <input type="hidden" name="id" value="'.$fields[$i].'">
+                            <input type="hidden" name="email" value="'.$fields[$i+3].'">
                             <button type="submit">Mettre à jour</button>
                             </form>
                             </td>'; 
@@ -599,11 +600,65 @@
             </div>
             </div>
         </div>
+        </div>
             <?php
         }
 
-        public function changerUser()
+        public function changeUser($listInfoUser, $listRole)
         {
+            // On récupère le libelle du Rôle de l'utilisateur
+            $allRole = explode("|",$listRole);
+            $nbE = 0;
+            while($nbE<sizeof($allRole))
+            {
+                if($allRole[$nbE] == $listInfoUser['idRole'])
+                {
+                    $libRole = $allRole[$nbE+1];
+                }
+                $nbE++;
+            }
+            // On récupère les autre infos directement dans la liste des informations
+            $idUser = $listInfoUser['id'];
+            $name = $listInfoUser['name'];
+            $firstname = $listInfoUser['firstname'];
+            $email = $listInfoUser['email'];
             
+            ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto">
+                    <h4><u>Modifier les informations de l'utilisateur</u></h4><br>
+
+                    <form action="index.php?view=dashboard&action=usermanagement&manage=inputChange" method="post">
+
+                        <label for="nom">Nom :</label><br>
+                        <input type="text" name="name" id="name" value="<?php echo $name?>"><br><br>
+
+                        <label for="prenom">Prénom :</label><br>
+                        <input type="text" name="firstname" id="firstname" value="<?php echo $firstname ?>"><br><br>
+
+                        <label for="email">Email :</label><br>
+                        <input type="email" name="email" id="email" value="<?php echo $email ?>"><br><br>
+
+                        <label for="role">Rôle :</label><br>
+                        <select name="role">
+                        <?php 
+                        $nbE = 1;
+                        while($nbE<sizeof($allRole))
+                        {
+                            ?>
+                            <option value="<?php echo $allRole[$nbE];?>" <?php if($allRole[$nbE]==$libRole){echo 'selected';}?>><?php echo $allRole[$nbE];?></option>
+                            <?php
+                            $nbE+=2;
+                        }
+                        ?>
+                        </select><br><br>
+
+                        <input type="submit" value="Modifier">
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <?php
         }
     }
