@@ -528,8 +528,82 @@
             <?php
         }
 
-        public function displayUserManagement($listUsers)
+        /* --------------------------- */
+        /* Section Gestion Utilisateur */
+        /* --------------------------- */
+
+
+        public function displayUserManagement($listUsers, $listRole)
         {
-            var_dump($listUsers);
+            ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10"><br><br>
+            <?php
+
+            $fields = explode("|", $listUsers);
+            $roles = explode("|", $listRole);
+
+            echo '<table class="table table-striped table-bordered table-sm ">
+                    <thead>';
+            echo '  <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Rôle</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>';
+                    
+                    
+            for ($i = 0; $i < count($fields); $i += 6) {
+                echo "<tr>";
+                echo "<td scope>". $fields[$i]. "</td>";
+                echo "<td scope>". $fields[$i+1]. "</td>";
+                echo "<td scope>". $fields[$i+2]. "</td>";
+                echo "<td scope>". $fields[$i+3]. "</td>";
+                echo "<td scope>";
+
+                $nbE = 0;
+                while($nbE<sizeof($roles))
+                {
+                    if (isset($fields[$i+5]) && isset($roles[$nbE])){
+                        if($fields[$i+5] == $roles[$nbE]){
+                            
+                            echo $roles[$nbE+1];
+                        } 
+                    }
+                    $nbE++;
+                }
+                echo"</td>";
+                echo'<td scope>
+                            <form action="index.php?view=dashboard&action=usermanagement&manage=erase" method="post">
+                            <input type="hidden" name="id" value="'. $fields[$i] . '">
+                            <button type="submit">Supprimer</button>
+                            </form>
+
+                            <form action="index.php?view=dashboard&action=usermanagement&manage=change" method="post">
+                            <input type="hidden" name="id" value="'.$fields[$i].'">
+                            <button type="submit">Mettre à jour</button>
+                            </form>
+                            </td>'; 
+                
+                echo "</tr>";
+            }
+            echo '</tbody>';
+            echo "</table>";
+
+            ?>
+            </div>
+            </div>
+        </div>
+            <?php
+        }
+
+        public function changerUser()
+        {
+            
         }
     }

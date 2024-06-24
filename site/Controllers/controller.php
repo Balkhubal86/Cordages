@@ -401,9 +401,19 @@
                         switch($manage)
                         {
                             case 'display':
+                                $listRole = $this->allRoles->listRole();
                                 $listUsers = $this->myBD->displayUsersInfo();
-                                $view->displayUserManagement($listUsers);
+                                $view->displayUserManagement($listUsers,$listRole);
                                 break;
+                            case 'erase':
+                                $this->myBD->eraseUser();
+                                break;
+                            case 'change':
+                                $view->changeUser();
+                                break;
+                            case 'inputChange':
+                                break;
+
                         }
                 }
             }    

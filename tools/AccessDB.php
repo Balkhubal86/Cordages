@@ -693,12 +693,40 @@
 					$usersList[] = $userData;
 				}
 				// Joindre toutes les lignes en une seule chaîne de caractères
-				$allUsersString = implode("\n", $usersList);
+				$allUsersString = implode("|", $usersList);
 			} else {
 				$allUsersString = "No users found.";
 			}
 	
 			return $allUsersString;
+		}
+
+		// ----------------------------------------------------------------------
+		//							Gestion Utilisateur
+		// ----------------------------------------------------------------------
+
+		public function eraseUser()
+		{
+			$id = $_POST['id'];
+
+			// Préparation de la requête
+			$stmt = $this->conn->prepare("DELETE FROM users WHERE id = ?");
+			$stmt->bindValue(1, $id);
+
+			// Exécute la déclaration
+			if ($stmt->execute()) {
+				echo "Utilisateur supprimé avec succès.";
+
+				// Enregistrement de l'action dans la BD
+				$this->actionLogUser("Suppression de l'utilisateur (Id Utilisateur: ".$id.")");
+			} else {
+				echo "Erreur lors de la suppression de l'utilisateur : " . $conn->error;
+			}
+		}
+
+		public function updateUser()
+		{
+			
 		}
 
 
