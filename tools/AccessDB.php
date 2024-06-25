@@ -379,6 +379,9 @@
 				case 'ARTICLE':
 					$stringQuery.='article';
 					break;
+				case 'RAPPORT':
+					$stringQuery.='rapport';
+					break;
 	    		default:
 	    			die('Pas une table valide');
 	    	}

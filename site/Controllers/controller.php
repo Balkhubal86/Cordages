@@ -12,6 +12,7 @@
         private $allTypePdf;
         private $allPdf;
         private $allArticles;
+        private $allRapport;
 
         public function __construct()
         {
@@ -36,6 +37,9 @@
 
             $this->allArticles = new containerArticle;
             $this->loadArticle();
+
+            $this->allRapport = new containerRapport;
+            $this->loadRapport();
 
         }
 
@@ -98,6 +102,9 @@
                         break;
                     case 'sponsor':
                         $this->controllerSponsor($action);
+                        break;
+                    case 'rapport':
+                        $this->controllerRapport($action);
                         break;
                 }
             }
@@ -420,7 +427,18 @@
                                 $listRole = $this->allRoles->listRole();
                                 $this->myBD->updateUser($listRole);
                                 break;
-
+                        }
+                    case 'rapport':
+                        switch($manage)
+                        {
+                            case 'display':
+                                $listRapport = $this->allRapport->listRapport();
+                                $view->displayRapport($listRapport);
+                                break;
+                            case 'erase':
+                                break;
+                            case 'add':
+                                break;
                         }
                 }
             }    
@@ -473,6 +491,18 @@
                     break;
             }
         }
+
+        public function controllerRapport($action)
+        {
+            switch($action)
+            {
+                case 'display':
+                    $view = new viewRapport;
+                    $listRapport = $this->allRapport->listRapport();
+                    $view->displayRapport($listRapport);
+            }
+        }
+
         // ------------------------------------ FIN CONTROLLER ---------------------------------------
 
 
@@ -536,6 +566,17 @@
                 $dateCreated = $this->stringToDateTime($resultArticle[$nbE][5]);
                 $dateUpdate = $this->stringToDateTime($resultArticle[$nbE][6]);
                 $this->allArticles->addArticle($resultArticle[$nbE][0],$resultArticle[$nbE][1],$resultArticle[$nbE][2],$dateCreated, $dateUpdate,$resultArticle[$nbE][3],$resultArticle[$nbE][4]);
+                $nbE++;
+            }
+        }
+
+        public function loadRapport()
+        {
+            $resultRapport = $this->myBD->Load('rapport');
+            $nbE = 0;
+            while ($nbE<sizeof($resultRapport))
+            {
+                $this->allRapport->addRapport($resultRapport[$nbE][0],$resultRapport[$nbE][1],$resultRapport[$nbE][2],$resultRapport[$nbE][3]);
                 $nbE++;
             }
         }

@@ -78,6 +78,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="index.php?view=news&action=display">Réseaux Sociaux</a></li>
                             <li><a class="dropdown-item" href="index.php?view=press&action=display">Presse</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=rapport&action=display">Rapports d'activités</a></li>
                         </ul>
                     </li>
 
