@@ -7,7 +7,7 @@
         {
             ?>
             <div class="container text-center">
-                <br><h4><u>Retrouvez nos articles sur Cord'âges</u></h4><br>
+                <br><h4><u>Retrouvez nos articles de presse sur Cord'âges</u></h4><br>
             </div>
             <?php
 
@@ -29,7 +29,7 @@
                                 <a href="<?php echo $list[$nbE + 4]; ?>" class="btn btn-primary" target="_blank">En savoir plus...</a>
                             </div>
                             <div class="card-footer text-body-secondary">
-                            Partagé sur notre site le : <?php echo $list[$nbE + 6]; ?>
+                                <i>Partagé sur notre site le : <?php echo $list[$nbE + 6]; ?> </i>
                             </div>
                         </div>
                     </div>

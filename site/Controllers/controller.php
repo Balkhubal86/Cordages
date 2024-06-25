@@ -96,6 +96,9 @@
                     case 'press':
                         $this->controllerPress($action);
                         break;
+                    case 'sponsor':
+                        $this->controllerSponsor($action);
+                        break;
                 }
             }
             else
@@ -447,7 +450,7 @@
             }
         }
 
-        public function controllerSponsor()
+        public function controllerSponsor($action)
         {
             switch($action)
             {
