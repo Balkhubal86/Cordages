@@ -3,7 +3,7 @@
     {
         public function __construct(){}
 
-        public function displaySponsor()
+        public function displaySponsor($listPdf)
         {
             ?>
              <section id="welcome" class="section ">
@@ -30,15 +30,36 @@
                     <hr><br>
                     <div class="row">
                         <div class="col">
-                            <p class="text-center">Enfin, en soutenant les Ateliers Cord'âges, vous faites un investissement durable dans le bien-être social et le développement de Poitiers. Votre mécénat permet de pérenniser nos actions et d'étendre notre impact, en offrant des programmes de haute qualité qui répondent aux besoins des différentes générations. Rejoignez-nous et faites partie de ce mouvement pour un avenir meilleur, où chaque génération peut apprendre, grandir et s'épanouir aux côtés des autres. Ensemble, nous pouvons bâtir une société plus inclusive et solidaire, et votre soutien est crucial pour atteindre cet objectif.</p>
+                            <p class="text-center">Enfin, en soutenant <b>les Ateliers Cord'âges</b>, vous faites un investissement durable dans le bien-être social et le développement de Poitiers. Votre mécénat permet de pérenniser nos actions et d'étendre notre impact, en offrant des programmes de haute qualité qui répondent aux besoins des différentes générations. Rejoignez-nous et faites partie de ce mouvement pour un avenir meilleur, où chaque génération peut apprendre, grandir et s'épanouir aux côtés des autres. Ensemble, nous pouvons bâtir une société plus inclusive et solidaire, et votre soutien est crucial pour atteindre cet objectif.</p>
                         </div>
                         <div class="col">
-                            <h4 class="text-center"></h4>
+                            <h4 class="text-center"><u>Documents essentiels au mécénat à télécharger:</u></h4>
+                            <?php $this->downloadPdf($listPdf);?>
                         </div>
                     </div><br>
                 </div>
             </section>
 
             <?php
+        }
+
+        public function downloadPdf($listPdf)
+        {
+            // Lien de Téléchargement des PDF en fonction du type spécifié (ici : Inscription Bénévole)
+            $pdf = explode('|',$listPdf);
+
+            $typePdf = 'Document Mécène';
+            $nbE = 4;
+            echo'<ul>';
+            while($nbE<sizeof($pdf)){
+                if($pdf[$nbE] == $typePdf){
+                    $filePath= $pdf[$nbE-2];
+                    $fileName= $pdf[$nbE-3];
+
+                    echo'<li>'.htmlspecialchars($fileName).' <a href="'.$filePath.'" target="_blank" download>Télécharger</a><br></li>';
+                }
+                $nbE += 5;
+            }
+            echo'</ul>';
         }
     }

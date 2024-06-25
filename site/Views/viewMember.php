@@ -45,7 +45,7 @@
                     $filePath= $pdf[$nbE-2];
                     $fileName= $pdf[$nbE-3];
 
-                    echo'- <a href="'.$filePath.'" target="_blank" download>'.htmlspecialchars($fileName).'</a><br>';
+                    echo'<li>'.htmlspecialchars($fileName).' <a href="'.$filePath.'" target="_blank" download>Télécharger</a><br></li>';
                 }
                 $nbE += 5;
             }

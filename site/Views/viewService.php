@@ -37,6 +37,15 @@
                 </div>
             </section>
 
+            <section id="formation"><br>
+                <div class="container shadow">
+                    <br><h4 class="text-center">Nos Formations</h4>
+                    <div class="row">
+                        
+                    </div>
+                </div>
+            </section>
+
             <?php
         }
     }

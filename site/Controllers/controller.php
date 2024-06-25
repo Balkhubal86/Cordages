@@ -455,8 +455,9 @@
             switch($action)
             {
                 case 'display':
+                    $listPdf = $this->allPdf->listPdf();
                     $view = new viewSponsor;
-                    $view->displaySponsor();
+                    $view->displaySponsor($listPdf);
                     break;
             }
         }

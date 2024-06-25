@@ -40,7 +40,7 @@
                             <li><a class="dropdown-item" href="index.php?view=value&action=display">Nos Valeurs</a></li>
                             <li><a class="dropdown-item" href="index.php?view=mission&action=display">Nos Missions</a></li>
                             <li><a class="dropdown-item" href="index.php?view=team&action=display">Notre Equipe</a></li>
-                            <li><a class="dropdown-item" href="index.php?view=partner&action=display">Nos Partenaire</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=partner&action=display">Nos Partenaires</a></li>
                         </ul>
                     </li>
 
@@ -52,12 +52,12 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="index.php?view=service&action=display#social-link">La Maison du Lien Social</a></li>
                             <li><a class="dropdown-item" href="index.php?view=service&action=display#aimant">Le Club des Z'aimants</a></li>
-                            <li><a class="dropdown-item" href="#">Formation</a></li>
+                            <li><a class="dropdown-item" href="index.php?view=service&action=display#formation">Formation</a></li>
                         </ul>   
                     </li>
 
                     <!-- Section Location -->
-                <!--
+                
                     <li class="nav-item dropdown">
                         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Location
@@ -68,7 +68,7 @@
                             <li><a class="dropdown-item" href="index.php?view=rental&action=display">Vélo</a></li>
                         </ul>
                     </li>
-                -->
+                
 
                     <!-- Section Actualités-->
                     <li class="nav-item dropdown">
