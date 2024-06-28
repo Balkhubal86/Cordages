@@ -382,6 +382,12 @@
 				case 'RAPPORT':
 					$stringQuery.='rapport';
 					break;
+				case 'TYPE_RENTAL':
+					$stringQuery.='type_rental';
+					break;
+				case 'RENTAL':
+					$stringQuery.='rental';
+					break;
 	    		default:
 	    			die('Pas une table valide');
 	    	}

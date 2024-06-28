@@ -13,6 +13,8 @@
         private $allPdf;
         private $allArticles;
         private $allRapport;
+        private $allTypeRental;
+        private $allRental;
 
         public function __construct()
         {
@@ -40,6 +42,12 @@
 
             $this->allRapport = new containerRapport;
             $this->loadRapport();
+
+            $this->allTypeRental = new containerTypeRental;
+            $this->loadTypeRental();
+
+            $this->allRental = new containerRental;
+            $this->loadRental(); 
 
         }
 
@@ -195,8 +203,11 @@
             switch($action)
             {
                 case 'display':
+                    $listRentalSalle = $this->allRental->listRentalByIdTypeRental('1');
+                    $listRentalExpo = $this->allRental->listRentalByIdTypeRental('2');
+                    $listRentalVelo = $this->allRental->listRentalByIdTypeRental('3');
                     $view = new viewRental;
-                    $view->displayRental();
+                    $view->displayRental($listRentalSalle, $listRentalExpo, $listRentalVelo);   
                     break;
             }
         }
@@ -445,6 +456,15 @@
                                 $this->myBD->addRapport();
                                 break;
                         }
+                        break;
+                    case 'rental':
+                        switch($manage)
+                        {
+                            case 'display':
+                                $listRental = $this->allRental->listRental();
+                                $view->displayRental($listRental);
+                                break;
+                        }
                 }
             }    
         }
@@ -507,6 +527,8 @@
                     $view->displayRapport($listRapport);
             }
         }
+
+        
 
         // ------------------------------------ FIN CONTROLLER ---------------------------------------
 
@@ -586,6 +608,29 @@
             }
         }
 
+        public function loadTypeRental()
+        {
+            $resultTypeRental = $this->myBD->Load('type_rental');
+            $nbE = 0;
+            while ($nbE<sizeof($resultTypeRental))
+            {
+                $this->allTypeRental->addTypeRental($resultTypeRental[$nbE][0], $resultTypeRental[$nbE][1]);
+                $nbE++;
+            }
+        }
+
+        public function loadRental()
+        {
+            $resultRental = $this->myBD->Load('rental');
+            $nbE = 0;
+            while ($nbE<sizeof($resultRental))
+            {
+                $typeRental = $this->allTypeRental->giveTypeRentalById($resultRental[$nbE][3]);
+                $datePosted_at = $this->stringToDateTime($resultRental[$nbE][2]);
+                $this->allRental->addRental($resultRental[$nbE][0], $resultRental[$nbE][1], $datePosted_at, $typeRental, $resultRental[$nbE][4], $resultRental[$nbE][5]);
+                $nbE++;
+            }
+        }
         // ------------------------------------------------------------------------------
         //                              FONCTIONS UTILES
         // ------------------------------------------------------------------------------

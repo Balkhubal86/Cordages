@@ -34,14 +34,14 @@
                 if($year == $list[$nbE]){
                     if($groupByYear==false){
                         ?>
-                        <br><div class="container shadow"><br>
+                        <br><div class="container shadow rounded"><br>
                             <h4 class="text-center"><u>Rapport d'activité de l'année <?php echo $year; ?></u></h4><br>
                         
                         <?php
                         }
                     ?>
                     <div class="row">
-                        <div class="col">
+                        <div class="col text-center">
                         <?php echo'<li>'.htmlspecialchars($list[$nbE-1]).' <a href="'.$list[$nbE+1].'" target="_blank" download>Télécharger</a><br></li>';?>
                         </div>
                     </div>
