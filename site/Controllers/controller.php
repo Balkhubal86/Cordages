@@ -436,8 +436,13 @@
                                 $view->displayRapport($listRapport);
                                 break;
                             case 'erase':
+                                $this->myBD->eraseRapport();
                                 break;
                             case 'add':
+                                $view->addRapport();
+                                break;
+                            case 'inputRapport':
+                                $this->myBD->addRapport();
                                 break;
                         }
                 }

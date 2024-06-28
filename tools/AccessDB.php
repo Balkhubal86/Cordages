@@ -766,6 +766,96 @@
 		}
 
 		// ----------------------------------------------------------------------
+		//							Gestion Rapport
+		// ----------------------------------------------------------------------
+
+		public function addRapport()
+		{
+			$targetDir = "uploads/rapport/";
+			$uploadOk = 1;
+			$fileType = strtolower(pathinfo($_FILES["pdf"]["name"], PATHINFO_EXTENSION));
+
+			// Vérifiez le type de fichier (PDF uniquement)
+			if ($fileType != "pdf") {
+    			echo "Désolé, seuls les fichiers PDF sont autorisés.";
+    			$uploadOk = 0;
+			}
+
+			// Vérifiez si le fichier existe déjà
+			$targetFile = $targetDir . uniqid() . "-" . basename($_FILES["pdf"]["name"]);
+
+			// Limitez la taille du fichier (par exemple, 5MB maximum)
+			if ($_FILES["pdf"]["size"] > 5000000) {
+			    echo "Désolé, votre fichier est trop volumineux.";
+			    $uploadOk = 0;
+			}
+
+			// Vérifiez si $uploadOk est à 0 à cause d'une erreur
+			if ($uploadOk == 0) {
+			    echo "Désolé, votre fichier n'a pas été téléchargé.";
+			// Si tout est ok, essayez de télécharger le fichier
+			} else {
+			    if (move_uploaded_file($_FILES["pdf"]["tmp_name"], $targetFile)) {
+			        echo "Le fichier ". htmlspecialchars( basename( $_FILES["pdf"]["name"])). " a été téléchargé. <br>";
+
+        			// Prépare une déclaration SQL
+        			$stmt = $this->conn->prepare("INSERT INTO rapport (name, year, path) VALUES (?, ?, ?)");
+        
+        			// Définir les paramètres et exécuter
+					$year = $_POST['year'];
+        			$filename = basename($_FILES["pdf"]["name"]);
+        			$filepath = $targetFile;
+
+					$stmt->bindValue(1, $filename);
+					$stmt->bindValue(2, $year);
+					$stmt->bindValue(3, $filepath);
+        		
+					// Exécution de la requête
+					if ($stmt->execute()) {
+						// Enregristrement de l'action dans la table
+						$this->actionLogUser("Ajout Rapport (nom :".$filename.")");
+
+						echo "Ajout du rapport réussi !";
+					} else {
+					echo "Désolé, une erreur est survenue lors du téléchargement de votre fichier : " . $stmt->error;
+					}
+				}
+			}
+		}
+
+		public function eraseRapport()
+		{
+			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+				$id = $_POST['id'];
+				$path = $_POST['path'];
+			
+				// Supprimer le fichier du serveur
+				if (file_exists($path)) {
+					unlink($path);
+				}
+			
+				// Prépare une déclaration SQL pour supprimer l'enregistrement
+				$stmt = $this->conn->prepare("DELETE FROM rapport WHERE id = ?");
+				$stmt->bindValue(1, $id);
+			
+				// Exécute la déclaration
+				if ($stmt->execute()) {
+					?>
+					<div class="continer">
+						Rapport PDF supprimé avec succès.
+						<br><a href="index.php?view=dashboard&action=rapport&manage=display">Retour à la liste des rapport</a>
+					</div>
+					<?php
+
+					// Enregistrement de l'action dans la BD
+					$this->actionLogUser("Suppression Rapport (Id Rapport: ".$id.")");
+				} else {
+					echo "Erreur lors de la suppression de l'article : " . $conn->error;
+				}
+			}
+		}
+
+		// ----------------------------------------------------------------------
 		//							Action Utilisateur
 		// ----------------------------------------------------------------------
 		// Log Action User

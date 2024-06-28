@@ -713,9 +713,9 @@
                     if($nbE<sizeof($list))
                     {
                         echo'<td scope="col">
-                            <form action="index.php?view=dashboard&action=pdf&manage=erase" method="post">
-                            <input type="hidden" name="id" value="'. $list[$nbE-3] . '">
-                            <input type="hidden" name="path" value="'. $list[$nbE-1] .'">
+                            <form action="index.php?view=dashboard&action=rapport&manage=erase" method="post">
+                            <input type="hidden" name="id" value="'. $list[$nbE-4] . '">
+                            <input type="hidden" name="path" value="'. $list[$nbE] .'">
                             <button type="submit">Supprimer</button>
                             </form></td>';
                     }
@@ -724,10 +724,42 @@
                 echo '</tbody>';
                 echo '</table>';
                 ?>
+                <div class="container text-center">
+                    <a href="index.php?view=dashboard&action=rapport&manage=add"><button type="submit">Ajouter</button></a>
+                </div>
                 </div>
             </div>
+            
         </div>
         </div>
+            <?php
+        }
+
+        public function addRapport()
+        {
+            ?>
+            <div class="container">
+                <div class="col py-3">
+                    <h4><u>Ajouter un nouveau rapport</u></h4><br>
+                <form action="index.php?view=dashboard&action=rapport&manage=inputRapport" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="name">Nom du rapport :</label>
+            <input type="text" id="name" name="name" value="Nom du fichier" required>
+        </div><br>
+        <div>
+            <label for="year">Année :</label>
+            <input type="number" id="year" name="year" value="2024" required>
+        </div><br>
+        <div>
+            <label for="pdf">Fichier PDF :</label>
+            <input type="file" id="pdf" name="pdf" accept="application/pdf" required>
+        </div><br>
+        <div>
+            <button type="submit">Ajouter</button>
+        </div>
+    </form>
+                </div>
+            </div>
             <?php
         }
     }
