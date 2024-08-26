@@ -19,7 +19,7 @@
             $liste = '';
 		    foreach ($this->typeRentals as $typeRental)
 		    	{	
-                    $liste = $liste.$typeRental->displayTypePdf();
+                    $liste = $liste.$typeRental->displayTypeRental();
 		    	}
 		    return $liste;
         }

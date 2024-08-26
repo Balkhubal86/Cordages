@@ -439,6 +439,7 @@
                                 $this->myBD->updateUser($listRole);
                                 break;
                         }
+                        break;
                     case 'rapport':
                         switch($manage)
                         {
@@ -463,6 +464,13 @@
                             case 'display':
                                 $listRental = $this->allRental->listRental();
                                 $view->displayRental($listRental);
+                                break;
+                            case 'add':
+                                $listTypeRental = $this->allTypeRental->listTypeRental();
+                                $view->addRental($listTypeRental);
+                                break;
+                            case 'inputRental':
+                                $this->myBD->addRental();
                                 break;
                         }
                 }

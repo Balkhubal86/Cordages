@@ -819,8 +819,10 @@
                             </form>
 
                             </td>';
+                            
                     }
                     echo '</tr>';
+                    
                 }
                 echo '</tbody>';
                 echo '</table>';
@@ -836,8 +838,51 @@
 
         }
 
-        public function addRental()
+        public function addRental($listTypeRental)
         {
+            ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8"><br>
+                        <h4 class="text-center"><u><b>Ajouter une Location</b></u></h4><br>
+
+                        <form method="post" enctype="multipart/form-data" action="index.php?view=dashboard&action=rental&manage=inputRental">
+                            <div class="form-group">
+                                <label for="name">Nom de la Location</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div><br>
+
+                            <div class="form-group">
+                                <label for="description">Description de l'article</label>
+                                <textarea id="description" name="description" class="form-control" required></textarea>
+                            </div><br>
+
+                            <div class="form-group">
+                                <label for="image">Image de la Location (facultatif)</label>
+                                <input type="file" id="image" name="image" class="form-control">
+                            </div><br>
+
+                            <label for="typeRental">Type de Location :</label><br>
+                                <select name="typeRental">
+                                    <?php 
+                                    $allTypeRental = explode('|', $listTypeRental);
+                                    $nbE = 1;
+                                    while($nbE<sizeof($allTypeRental))
+                                    {
+                                        ?>
+                                        <option value="<?php echo $allTypeRental[$nbE-1];?>"  required><?php echo $allTypeRental[$nbE];?></option>
+                                        <?php
+                                        $nbE+=2;
+                                    }
+                                    ?>
+
+                                </select><br><br>
+                            <button type="submit" class="btn btn-primary">Ajouter la location</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <?php
 
         }
 
