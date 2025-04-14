@@ -548,96 +548,126 @@
         public function loadLogo()
         {
             $resultLogo = $this->myBD->Load('logos');
-            $nbE = 0;
-            while ($nbE<sizeof($resultLogo))
+            if (is_array($resultLogo) && !empty($resultLogo)) 
             {
-                $dateLogo = $this->stringToDateTime($resultLogo[$nbE][3]);
-                $this->allLogos->addLogo($resultLogo[$nbE][0],$resultLogo[$nbE][1],$resultLogo[$nbE][2],$dateLogo);
-                $nbE++;
+                $nbE = 0;
+                while ($nbE < sizeof($resultLogo)) {
+                    $dateLogo = $this->stringToDateTime($resultLogo[$nbE][3]);
+                    $this->allLogos->addLogo($resultLogo[$nbE][0], $resultLogo[$nbE][1], $resultLogo[$nbE][2], $dateLogo);
+                    $nbE++;
+                }
             }
         }
 
         public function loadRole()
         {
             $resultRole = $this->myBD->Load('role');
-            $nbE = 0;
-            while ($nbE<sizeof($resultRole))
+            if (is_array($resultRole) && !empty($resultRole))
             {
-                $this->allRoles->addRole($resultRole[$nbE][0],$resultRole[$nbE][1]);
-                $nbE++;
+                $nbE = 0;
+                while ($nbE<sizeof($resultRole))
+                {
+                    $this->allRoles->addRole($resultRole[$nbE][0],$resultRole[$nbE][1]);
+                    $nbE++;
+                }
             }
+            
         }
 
         public function loadTypePdf()
         {
             $resultTypePdf = $this->myBD->Load('type_pdf');
-            $nbE = 0;
-            while ($nbE<sizeof($resultTypePdf))
+            if (is_array($resultTypePdf) && !empty($resultRole))
             {
-                $this->allTypePdf->addTypePdf($resultTypePdf[$nbE][0],$resultTypePdf[$nbE][1]);
-                $nbE++;
+                $nbE = 0;
+                while ($nbE<sizeof($resultTypePdf))
+                {
+                    $this->allTypePdf->addTypePdf($resultTypePdf[$nbE][0],$resultTypePdf[$nbE][1]);
+                    $nbE++;
+                }
             }
+            
         }
 
         public function loadPdf()
         {
             $resultPdf = $this->myBD->Load('pdf');
-            $nbE = 0;
-            while ($nbE<sizeof($resultPdf))
+            if (is_array($resultPdf) && !empty($resultPdf))
             {
-                $objectTypePdf = $this->allTypePdf->giveTypePdfById($resultPdf[$nbE][4]); // On récupère l'object Type De PDF
-                $datePdf = $this->stringToDateTime($resultPdf[$nbE][3]);
-                $this->allPdf->addPdf($resultPdf[$nbE][0],$resultPdf[$nbE][1],$resultPdf[$nbE][2],$datePdf,$objectTypePdf);
-                $nbE++;
+                $nbE = 0;
+                while ($nbE<sizeof($resultPdf))
+                {
+                    $objectTypePdf = $this->allTypePdf->giveTypePdfById($resultPdf[$nbE][4]); // On récupère l'object Type De PDF
+                    $datePdf = $this->stringToDateTime($resultPdf[$nbE][3]);
+                    $this->allPdf->addPdf($resultPdf[$nbE][0],$resultPdf[$nbE][1],$resultPdf[$nbE][2],$datePdf,$objectTypePdf);
+                    $nbE++;
+                }
             }
+            
         }
         
         public function loadArticle()
         {
             $resultArticle = $this->myBD->Load('article');
-            $nbE = 0;
-            while ($nbE<sizeof($resultArticle))
+            if (is_array($resultArticle) && !empty($resultArticle))
             {
-                $dateCreated = $this->stringToDateTime($resultArticle[$nbE][5]);
-                $dateUpdate = $this->stringToDateTime($resultArticle[$nbE][6]);
-                $this->allArticles->addArticle($resultArticle[$nbE][0],$resultArticle[$nbE][1],$resultArticle[$nbE][2],$dateCreated, $dateUpdate,$resultArticle[$nbE][3],$resultArticle[$nbE][4]);
-                $nbE++;
+                $nbE = 0;
+                while ($nbE<sizeof($resultArticle))
+                {
+                    $dateCreated = $this->stringToDateTime($resultArticle[$nbE][5]);
+                    $dateUpdate = $this->stringToDateTime($resultArticle[$nbE][6]);
+                    $this->allArticles->addArticle($resultArticle[$nbE][0],$resultArticle[$nbE][1],$resultArticle[$nbE][2],$dateCreated, $dateUpdate,$resultArticle[$nbE][3],$resultArticle[$nbE][4]);
+                    $nbE++;
+                }
             }
+            
         }
 
         public function loadRapport()
         {
             $resultRapport = $this->myBD->Load('rapport');
-            $nbE = 0;
-            while ($nbE<sizeof($resultRapport))
+            if (is_array($resultRapport) && !empty($resultRapport))
             {
-                $this->allRapport->addRapport($resultRapport[$nbE][0],$resultRapport[$nbE][1],$resultRapport[$nbE][2],$resultRapport[$nbE][3]);
-                $nbE++;
+                $nbE = 0;
+                while ($nbE<sizeof($resultRapport))
+                {
+                    $this->allRapport->addRapport($resultRapport[$nbE][0],$resultRapport[$nbE][1],$resultRapport[$nbE][2],$resultRapport[$nbE][3]);
+                    $nbE++;
+                }
             }
+            
         }
 
         public function loadTypeRental()
         {
             $resultTypeRental = $this->myBD->Load('type_rental');
-            $nbE = 0;
-            while ($nbE<sizeof($resultTypeRental))
+            if (is_array($resultTypeRental) && !empty($resultTypeRental))
             {
-                $this->allTypeRental->addTypeRental($resultTypeRental[$nbE][0], $resultTypeRental[$nbE][1]);
-                $nbE++;
+                $nbE = 0;
+                while ($nbE<sizeof($resultTypeRental))
+                {
+                    $this->allTypeRental->addTypeRental($resultTypeRental[$nbE][0], $resultTypeRental[$nbE][1]);
+                    $nbE++;
+                }
             }
+            
         }
 
         public function loadRental()
         {
             $resultRental = $this->myBD->Load('rental');
-            $nbE = 0;
-            while ($nbE<sizeof($resultRental))
+            if (is_array($resultRental) && !empty($resultRental))
             {
-                $typeRental = $this->allTypeRental->giveTypeRentalById($resultRental[$nbE][3]);
-                $datePosted_at = $this->stringToDateTime($resultRental[$nbE][2]);
-                $this->allRental->addRental($resultRental[$nbE][0], $resultRental[$nbE][1], $datePosted_at, $typeRental, $resultRental[$nbE][4], $resultRental[$nbE][5]);
-                $nbE++;
+                $nbE = 0;
+                while ($nbE<sizeof($resultRental))
+                {
+                    $typeRental = $this->allTypeRental->giveTypeRentalById($resultRental[$nbE][3]);
+                    $datePosted_at = $this->stringToDateTime($resultRental[$nbE][2]);
+                    $this->allRental->addRental($resultRental[$nbE][0], $resultRental[$nbE][1], $datePosted_at, $typeRental, $resultRental[$nbE][4], $resultRental[$nbE][5]);
+                    $nbE++;
+                }
             }
+            
         }
         // ------------------------------------------------------------------------------
         //                              FONCTIONS UTILES

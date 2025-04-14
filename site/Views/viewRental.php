@@ -10,7 +10,7 @@
                 <?php
                 $listSalle = explode('|', $listRentalSalle);
 
-                var_dump($listSalle);
+                var_dump($listSalle); #DEBUG
                 ?>
             </section>
 
@@ -18,7 +18,7 @@
                 <?php
                 $listExpo = explode('|', $listRentalExpo);
 
-                var_dump($listExpo);
+                var_dump($listExpo); #DEBUG
                 ?>
             </section>
 
@@ -26,7 +26,7 @@
                 <?php
                 $listVelo = explode('|', $listRentalVelo);
 
-                var_dump($listVelo);
+                var_dump($listVelo); #DEBUG
                 ?>
             </section>
             <?php
