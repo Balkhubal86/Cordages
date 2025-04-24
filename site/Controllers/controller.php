@@ -577,16 +577,12 @@
         public function loadTypePdf()
         {
             $resultTypePdf = $this->myBD->Load('type_pdf');
-            if (is_array($resultTypePdf) && !empty($resultRole))
+            $nbE = 0;
+            while ($nbE<sizeof($resultTypePdf))
             {
-                $nbE = 0;
-                while ($nbE<sizeof($resultTypePdf))
-                {
-                    $this->allTypePdf->addTypePdf($resultTypePdf[$nbE][0],$resultTypePdf[$nbE][1]);
-                    $nbE++;
-                }
+                $this->allTypePdf->addTypePdf($resultTypePdf[$nbE][0],$resultTypePdf[$nbE][1]);
+                $nbE++;
             }
-            
         }
 
         public function loadPdf()
@@ -597,7 +593,7 @@
                 $nbE = 0;
                 while ($nbE<sizeof($resultPdf))
                 {
-                    $objectTypePdf = $this->allTypePdf->giveTypePdfById($resultPdf[$nbE][4]); // On récupère l'object Type De PDF
+                    $objectTypePdf = $this->allTypePdf->giveTypePdfById($resultPdf[$nbE][4]); // On récupère l'object Type PDF
                     $datePdf = $this->stringToDateTime($resultPdf[$nbE][3]);
                     $this->allPdf->addPdf($resultPdf[$nbE][0],$resultPdf[$nbE][1],$resultPdf[$nbE][2],$datePdf,$objectTypePdf);
                     $nbE++;
